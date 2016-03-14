@@ -1,0 +1,43 @@
+/*
+Theme Name: Official Aalto Blogs Theme
+Theme URI: https://blogs.aalto.fi/
+Author: Da-Woon Chung
+Author URI: https://chungdawoon.com/
+Description: Aalto Blogs Official Theme is a multi-purpose template for university blogs and websites. It offers easy and straightforward setup for beginners, and also a wide range of customisation features for advanced users. Detailed tutorials are available at http:/blogs.aalto.fi. The open source version for non-Aalto usage is available at (GitHub Address).
+Version: 0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: university, academic, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns, 
+Text Domain: aaltoblogs
+*/
+
+
+/*
+ * n.0 - Aalto Identity
+ */
+@import 'aalto-identity';
+
+/**
+ * n.0 - Variables for Bootstrap
+ */
+@import 'bootstrap-variables';
+
+/*
+ * n.0 - Custom Presets
+ */
+@import 'presets';
+
+/*
+ * n.0 - Bootstrap
+ */
+@import '../components/bootstrap-sass/assets/stylesheets/bootstrap';
+
+/*
+ * n.0 - Aalto Logo
+ */
+@import 'aalto-logo';
+
+/*
+ * n.0 - Meta Navigation
+ */
+@import 'metanav';

@@ -1,0 +1,37 @@
+$aalto-logo-ratio: (480/300);
+
+.aalto-logo {
+  display: block;
+
+  .q, .e, .d {
+    display: none;
+
+  }
+  &.blue .symbol {
+    fill: $aalto-principal-blue;
+  }
+  &.red .symbol {
+    fill: $aalto-principal-red;
+  }
+  &.yellow .symbol {
+    fill: $aalto-principal-yellow;
+  }
+
+  &.aalto-logo-q {
+    .q {
+      display: inline;
+    }
+  }
+
+  &.aalto-logo-e {
+    .e {
+      display: inline;
+    }
+  }
+
+  &.aalto-logo-d {
+    .d {
+      display: inline;
+    }
+  }
+}
