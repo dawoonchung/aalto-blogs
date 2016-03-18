@@ -1,16 +1,63 @@
-/* n.1 Aalto Identity */
-/* n.1.1 Principal Colours */
+/**
+ * n.0 Aalto Identity
+ */
+
+/**
+ * n.1 Principal Colours 
+ */
+
 $aalto-principal-blue: rgb(0, 94, 184);
 $aalto-principal-red: rgb(239, 51, 64);
 $aalto-principal-yellow: rgb(255, 205, 0);
 
-/* n.1.2 School Colours */
-$aalto-school-biz: rgb(120, 190, 32);
-$aalto-school-chem: rgb(0, 150, 94);
-$aalto-school-elec: rgb(117, 59, 189);
-$aalto-school-eng: rgb(187, 22, 163);
-$aalto-school-sci: rgb(255, 103, 31);
-$aalto-school-arts: rgb(255, 165, 0);
 
-/* n.1.3 Shared Colour */
+/*
+ * n.2 School Colours
+ */
+
+$aalto-school-biz: rgb(120, 190, 32); // light green
+$aalto-school-chem: rgb(0, 150, 94); // green
+$aalto-school-elec: rgb(117, 59, 189); // purple
+$aalto-school-eng: rgb(187, 22, 163); // magenta
+$aalto-school-sci: rgb(255, 103, 31); // orange
+$aalto-school-arts: rgb(255, 165, 0); // dark yellow
+
+
+/**
+ * n.3 Shared Colour
+ */
+
 $aalto-shared-grey: rgb(140, 133, 123);
+
+
+/**
+ * n.4 Aalto Identity Alias
+ */
+
+/**
+ * n.4.1 Principal Colours
+ */
+
+$aalto-blue: $aalto-principal-blue;
+$aalto-red: $aalto-principal-red;
+$aalto-yellow: $aalto-principal-yellow;
+
+
+/**
+ * n.4.2 School Colours
+ */
+
+$aalto-light-green: $aalto-school-biz;
+$aalto-green: $aalto-school-chem;
+$aalto-purple: $aalto-school-elec;
+$aalto-magenta: $aalto-school-eng;
+$aalto-orange: $aalto-school-sci;
+$aalto-dark-yellow: $aalto-school-arts;
+
+
+/**
+ * n.4.3 Shared Colour
+ */
+
+$aalto-grey: $aalto-shared-grey;
+$aalto-gray: $aalto-grey; // To avoid confusion with bootstrap variable's spelling

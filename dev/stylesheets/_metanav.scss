@@ -1,17 +1,35 @@
-#metanav {
-  height: 40px;
-  border-bottom: 1px solid rgba(0,0,0,0.5);
+.site-meta {
+  @include clearfix;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: (40em/21);
+  border-bottom: 1px solid rgba(255,255,255,0.3);
+  z-index: 9999;
 
   .aalto-menu {
     display: block;
-    width: (39px * $aalto-logo-ratio);
-    height: 39px;
-    padding: 7px;
-    margin-left: -7px;
+    float: left;
+    height: (39em/21);
+    padding: (9em/21);
+    margin-left: (-7em/21);
 
     .aalto-logo {
-      width: auto;
-      height: 100%;
+      height: 1em;
+    }
+  }
+
+  .aalto-blogs-link {
+    float: right;
+    font-size: 12px;
+    line-height: (39em/12);
+    margin-right: -0.75em;
+
+    a {
+      display: inline-block;
+      color: #FFF;
+      padding: 0 0.75em;
     }
   }
 }
+

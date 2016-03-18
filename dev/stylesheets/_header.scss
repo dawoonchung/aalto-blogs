@@ -1,0 +1,44 @@
+.site-header {
+  position: relative;
+  padding-top: 40px;
+  background: $brand-primary;
+  /* Fallback for when there is no background colour defined */
+}
+
+.site-title {
+  a {
+    color: #FFF;
+  }
+}
+
+.site-description {
+  color: #FFF;
+}
+
+.site-header-menu {
+  background: rgba(0,0,0,0.5);
+}
+
+.main-navigation {
+  ul {
+    margin-bottom: 0;
+    font-size: $font-size-small;
+    line-height: (40em/14);
+    height: (40em/14);
+    @include clearfix;
+
+    li {
+      float: left;
+
+      &:first-child {
+        margin-left: -0.75em;
+      }
+
+      a {
+        display: inline-block;
+        color: #FFF;
+        padding: 0 0.75em;
+      }
+    }
+  }
+}

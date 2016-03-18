@@ -1,0 +1,84 @@
+.site-footer {
+  background: $brand-primary;
+
+  .social-links {
+    float: right;
+    padding: 0 1em;
+
+    @media screen and (max-width: $screen-xs-max) {
+      float: none;
+    }
+  }
+
+  .social-navigation {
+    margin-top: (20em/21);
+
+    ul {
+      text-align: right;
+
+      @media screen and (max-width: $screen-sm-max) {
+        text-align: left;
+      }
+      
+      li {
+        display: inline-block;
+
+        @media screen and (max-width: $screen-sm-max) {
+          margin-bottom: 0.25em;
+        }
+
+        a {
+          border: 1px solid #FFF;
+          display: block;
+          text-align: center;
+          border-radius: 50%;
+
+          &:before {
+            font-size: 21px;
+            color: #FFF;
+            line-height: 38px;
+            height: 38px;
+            width: 38px;
+          }
+        }
+      }
+    }
+  }
+
+  .aalto-info {
+    @include clearfix;
+    padding: 0 1em;
+
+    @media screen and (max-width: $screen-xs-max) {
+      margin-top: (-24em/21);
+    }
+  }
+  .aalto-link {
+    display: block;
+    position: relative;
+    height: (80em/21);
+    padding: (25em/21);
+    margin-left: (-25em/21);
+    margin-right: (-9em/21);
+    float: left;
+
+    .aalto-logo {
+      height: (30em/21);
+    }
+  }
+
+  .copyright,
+  .powered-by {
+    font-size: 12px;
+    margin-top: (25em/12);
+    margin-bottom: 0;
+    color: #FFF;
+
+    a {
+      color: #FFF;
+    }
+  }
+  .copyright + .powered-by {
+    margin-top: 0;
+  }
+}

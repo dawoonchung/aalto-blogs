@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * The template for displaying all single posts and attachments
  *
  * @package WordPress
  * @subpackage Aalto_Blogs
@@ -18,7 +18,7 @@ get_header(); ?>
         <?php if ( have_posts() ) :
           // Start the loop.
           while ( have_posts() ) : the_post();
-            get_template_part( 'template-parts/content', get_post_format() );
+            get_template_part( 'template-parts/content', 'single' );
           // End the loop.
           endwhile;
 

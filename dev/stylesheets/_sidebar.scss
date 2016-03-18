@@ -1,0 +1,21 @@
+.sidebar {
+  height: 100%;
+}
+
+.main-navigation-sidebar {
+  padding-top: $line-height-computed;
+  padding-bottom: $line-height-computed;
+
+  ul {
+    margin-bottom: 0;
+    line-height: 1em; // 20px
+    @include clearfix;
+
+    li {
+      a {
+        display: block;
+        padding: (12em/21) 1em (7em/21);
+      }
+    }
+  }
+}

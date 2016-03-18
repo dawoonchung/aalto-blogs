@@ -13,6 +13,7 @@
  * TODO: png fallback images for non-svg supporting browsers
  *
  * @since Official Aalto Blogs Theme 1.0
+ * @param boolean $color Option for coloured logo or non-coloured logo
  */
 function generate_aalto_logo( $color = false ) {
   $logo_type = array(

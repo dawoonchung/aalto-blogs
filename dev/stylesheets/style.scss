@@ -11,33 +11,15 @@ Tags: university, academic, responsive-layout, custom-background, custom-colors,
 Text Domain: aalto-blogs
 */
 
-
-/*
- * n.0 - Aalto Identity
- */
 @import 'aalto-identity';
-
-/**
- * n.0 - Variables for Bootstrap
- */
-@import 'bootstrap-variables';
-
-/*
- * n.0 - Custom Presets
- */
+@import 'bootstrap';
+@import 'genericons';
 @import 'presets';
-
-/*
- * n.0 - Bootstrap
- */
-@import '../components/bootstrap-sass/assets/stylesheets/bootstrap';
-
-/*
- * n.0 - Aalto Logo
- */
+@import 'elements';
 @import 'aalto-logo';
-
-/*
- * n.0 - Meta Navigation
- */
 @import 'metanav';
+@import 'header';
+@import 'article';
+@import 'sidebar';
+@import 'footer';
+@import 'social-links';
