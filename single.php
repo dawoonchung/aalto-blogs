@@ -14,24 +14,25 @@ get_header(); ?>
       <?php $offset = is_active_sidebar( 'sidebar-1' ) ? '' : 'col-md-offset-2'; ?>
       <div id="primary" class="content-area col-xs-12 col-md-8 <?php echo $offset; ?>">
         <main id="main" class="site-main row" role="main">
+					<?php while ( have_posts() ) : the_post();
+						get_template_part( 'template-parts/content', 'single' );
 
-        <?php if ( have_posts() ) :
-          // Start the loop.
-          while ( have_posts() ) : the_post();
-            get_template_part( 'template-parts/content', 'single' );
-          // End the loop.
-          endwhile;
+						 // If comments are open or we have at least one comment, load up the comment template.
+						if ( comments_open() || get_comments_number() ) {
+						  comments_template();
+						}
 
-          the_posts_pagination( array(
-            'prev_text'          => 'Previous page',
-            'next_text'          => 'Next page',
-            'before_page_number' => '<span class="meta-nav screen-reader-text">Page</span>',
-          ) );
-
-        // If no content, include the "No posts found" template.
-        else :
-          get_template_part( 'template-parts/content', 'none' );
-        endif; ?>
+						if ( is_singular( 'attachment' ) ) {
+							// Parent post navigation.
+							the_post_navigation( array(
+								'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'twentysixteen' ),
+							) );
+						} elseif ( is_singular( 'post' ) ) {
+              $adjacent_posts = array( get_previous_post( true ), get_next_post( true) );
+              aalto_blogs_retrieve_posts( $adjacent_posts );
+						}
+					endwhile;
+					?>
 
         </main><!-- end .site-main -->
       </div><!-- end .content-area -->

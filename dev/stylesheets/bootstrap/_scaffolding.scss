@@ -117,6 +117,13 @@ hr {
   border-top: 1px solid $hr-border;
 }
 
+hr.section-separator {
+  margin-top: ($line-height-computed * 1.5);
+  margin-bottom: 0;
+  box-sizing: border-box;
+  border-color: $aalto-gray;
+}
+
 
 // Only display content to screen readers
 //

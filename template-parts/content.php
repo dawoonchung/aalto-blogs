@@ -15,26 +15,10 @@
 
   <?php aalto_blogs_post_thumbnail(); ?>
 
-  <a href="<?php the_permalink(); ?>" rel="bookmark" class="link-excerpt">
+  <?php $excerpt_class = has_excerpt() ? 'has-excerpt' : ''; ?>
+  <a href="<?php the_permalink(); ?>" rel="bookmark" class="link-excerpt <?php echo $excerpt_class; ?>">
     <?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
-    <?php echo get_the_excerpt(); ?>
+    <?php aalto_blogs_excerpt(); ?>
   </a>
   <a href="<?php the_permalink(); ?>" class="more-link"><p>Continue reading...<span class="screen-reader-text"><?php the_title(); ?></span></p></a>
-
-  <?php
-    /*
-    the_content(
-      sprintf( 'Continue reading<span class="screen-reader-text"> "%s"</span>', get_the_title() )
-    );
-    */
-
-    wp_link_pages( array(
-      'before'      => '<div class="page-links"><span class="page-links-title">' . 'Pages:' . '</span>',
-      'after'       => '</div>',
-      'link_before' => '<span>',
-      'link_after'  => '</span>',
-      'pagelink'    => '<span class="screen-reader-text">' . 'Page' . ' </span>%',
-      'separator'   => '<span class="screen-reader-text">, </span>',
-    ) );
-  ?>
 </article><!-- #post-## -->

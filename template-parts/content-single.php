@@ -20,6 +20,7 @@
       sprintf( 'Continue reading...<span class="screen-reader-text"> "%s"</span>', get_the_title() )
     );
 
+    // If a post is divided into pages
     wp_link_pages( array(
       'before'      => '<div class="page-links"><span class="page-links-title">' . 'Pages:' . '</span>',
       'after'       => '</div>',

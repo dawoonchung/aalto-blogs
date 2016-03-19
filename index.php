@@ -23,9 +23,9 @@ get_header(); ?>
           endwhile;
 
           the_posts_pagination( array(
-            'prev_text'          => 'Previous page',
-            'next_text'          => 'Next page',
-            'before_page_number' => '<span class="meta-nav screen-reader-text">Page</span>',
+            'prev_text'          => '&lt;',
+            'next_text'          => '&gt;',
+            'before_page_number' => '<span class="meta-nav screen-reader-text">Page</span>'
           ) );
 
         // If no content, include the "No posts found" template.

@@ -58,7 +58,7 @@ $font-size-h2:            1em; // Site Tagline
 $font-size-h3:            (36em / 21); // Post Heading 1
 $font-size-h4:            (30em / 21); // Post Heading 2
 $font-size-h5:            (28em / 21); // Post Heading 3
-$font-size-h6:            $font-size-base; // Not used
+$font-size-h6:            $font-size-base; // Only used as template elements
 
 //** Unit-less `line-height` for use in components like buttons.
 $line-height-base:        1.4;
@@ -68,7 +68,7 @@ $line-height-computed:    floor(($font-size-base * $line-height-base)); // ~20px
 //** By default, this inherits from the `<body>`.
 $headings-font-family:    inherit;
 $headings-font-weight:    bold;
-$headings-line-height:    0.8;
+$headings-line-height:    1.1;
 $headings-color:          inherit;
 
 
@@ -80,7 +80,7 @@ $headings-color:          inherit;
 
 // [converter] If $bootstrap-sass-asset-helper if used, provide path relative to the assets load path.
 // [converter] This is because some asset helpers, such as Sprockets, do not work with file-relative paths.
-$icon-font-path: "./assets/fonts/genericons"; // Aalto Blogs theme uses genericons instead.
+$icon-font-path: "./genericons"; // Aalto Blogs theme uses genericons instead.
 
 //** File name for all font files.
 $icon-font-name:          "glyphicons-halflings-regular";

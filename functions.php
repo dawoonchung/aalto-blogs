@@ -9,11 +9,9 @@
 
 /**
  * Sets up theme defaults and registers support for various WordPress features.
- * Can be overrided in child theme.
  *
  * @since Official Aalto Blogs Theme 1.0
  */
-if ( ! function_exists( 'aalto_blogs_setup' ) ) :
 function aalto_blogs_setup() {
   add_theme_support( 'automatic-feed-links' );
   add_theme_support( 'title-tag' );
@@ -31,7 +29,6 @@ function aalto_blogs_setup() {
     'caption',
   ) );
 }
-endif; // aalto_blogs_setup
 add_action( 'after_setup_theme', 'aalto_blogs_setup' );
 
 /**
@@ -79,7 +76,14 @@ function aalto_blogs_scripts() {
   wp_script_add_data( 'aalto-blogs-respond', 'conditional', 'lt IE 9' );
 
   // Load Bootstrap scripts.
-  wp_enqueue_script( 'aalto-blogs-bootstrap', get_template_directory_uri() . '/assets/js/vendor/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
+  wp_enqueue_script( 'aalto-blogs-bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
+
+  // Load main script.
+  wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '3.3.6', true );
+
+  if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
+    wp_enqueue_script( 'comment-reply' );
+  }
 }
 add_action( 'wp_enqueue_scripts', 'aalto_blogs_scripts' );
 
@@ -89,8 +93,18 @@ add_action( 'wp_enqueue_scripts', 'aalto_blogs_scripts' );
 require get_template_directory() . '/inc/template-tags.php';
 
 /**
- * Aalto Specific functions.
+ * Custom comment walker for display timestamp as 'time ago' format.
+ */
+require get_template_directory() . '/inc/comment-time-ago.php';
+
+/**
+ * Aalto specific functions.
  */
 require get_template_directory() . '/inc/aalto-functions.php';
+
+/**
+ * Editor related functions.
+ */
+require get_template_directory() . '/inc/editor.php';
 
 ?>
