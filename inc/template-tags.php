@@ -13,7 +13,7 @@
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_entry_meta() {
-  if ( 'post' === get_post_type() ) {
+  if ( 'post' === get_post_type() || 'page' === get_post_type() ) {
     $author_avatar_size = apply_filters( 'aalto_blogs_author_avatar_size', 40 );
     $post_categories = ' in ' . get_the_category_list( ', ' );
     $edit_post_link = get_edit_post_link() ? '<span class="edit-link"> · <a class="post-edit-link" href="' . get_edit_post_link() . '">Edit</a><span class="screen-reader-text"> ' . get_the_title() . '</span></span>' : '';

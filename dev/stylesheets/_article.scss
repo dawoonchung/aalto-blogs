@@ -1,4 +1,4 @@
-.post {
+.post, article.page {
   background: #FFF;
   padding-top: $line-height-computed;
   margin-top: 0.5em;
@@ -161,6 +161,7 @@
 .updated:not(.published) {
   display: none;
 }
+
 
 // comment section
 .comment-section-title {

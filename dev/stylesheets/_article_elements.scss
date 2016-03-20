@@ -1,0 +1,47 @@
+article {
+  .wp-caption,
+  img {
+    @extend .img-responsive;
+  }
+}
+
+// reading mode
+.reading-mode {
+  padding: 0 1em;
+
+//  Experimental
+//
+//  .entry-title + p img,
+//  .entry-title + figure.wp-caption img {
+//    visibility: hidden;
+//  }
+
+  > main > article.post,
+  > main > article.page {
+    > * {
+
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (8/12);
+        padding-left: ($grid-gutter-width/2);
+        padding-right: ($grid-gutter-width/2);
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (8/12);
+      }
+    }
+
+    .full-width {
+      max-width: 100vw;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: -($grid-gutter-width/2);
+      margin-right: -($grid-gutter-width/2);
+
+      > img {
+        width: 100%;
+      }
+    }
+  }
+}

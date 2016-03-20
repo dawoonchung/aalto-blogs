@@ -401,7 +401,8 @@ img {
   vertical-align: middle;
 }
 
-.img-responsive {
+.img-responsive, article .wp-caption,
+article img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -7150,7 +7151,7 @@ span.serif {
   padding: 0 0.75em;
 }
 
-.post {
+.post, article.page {
   background: #FFF;
   padding-top: 29px;
   margin-top: 0.5em;
@@ -7445,6 +7446,38 @@ input#submit {
 
 .more-entry-title {
   margin-bottom: 0;
+}
+
+.reading-mode {
+  padding: 0 1em;
+}
+@media (min-width: 992px) {
+  .reading-mode > main > article.post > *,
+  .reading-mode > main > article.page > * {
+    max-width: 654.66667px;
+    padding-left: 21px;
+    padding-right: 21px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+@media (min-width: 1200px) {
+  .reading-mode > main > article.post > *,
+  .reading-mode > main > article.page > * {
+    max-width: 788px;
+  }
+}
+.reading-mode > main > article.post .full-width,
+.reading-mode > main > article.page .full-width {
+  max-width: 100vw;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: -21px;
+  margin-right: -21px;
+}
+.reading-mode > main > article.post .full-width > img,
+.reading-mode > main > article.page .full-width > img {
+  width: 100%;
 }
 
 .sidebar {
