@@ -41,9 +41,30 @@ $( document ).ready(function() {
     $( 'article.post p, article.page p' ).has( '.alignright' ).each( function() {
       $( this ).addClass( 'alignright' );
     });
-
     $( 'article.post p, article.page p' ).has( 'iframe' ).each( function() {
       $( this ).addClass( 'has-embed' );
+    });
+
+    $( '.gallery' ).not( '.gallery-size-thumbnail' ).each( function() {
+      var slider = new Slider( this );
+      slider.Init();
+    });
+
+    galleryNavInit();
+
+    var TO = false;
+    $( window ).resize( function() { // Adjust gallery slide positions on AFTER resize
+      if( TO !== false ) {
+        clearTimeout( TO );
+        $( '.gallery > figure' ).fadeOut(100).css( 'transition', 'none' );
+      }
+      TO = setTimeout( function() {
+        $( '.gallery' ).not( '.gallery-size-thumbnail' ).each( function() {
+          var slider = new Slider( this );
+          slider.Init();
+        });
+        $( '.gallery > figure' ).css( 'transition', 'transform 0.5s ease-in-out' ).fadeIn(300);
+      }, 300 );
     });
 
     /* Experimental feature */

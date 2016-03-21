@@ -79,6 +79,7 @@ function aalto_blogs_scripts() {
   wp_enqueue_script( 'aalto-blogs-bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
 
   // Load main script.
+  wp_enqueue_script( 'aalto-blogs-slider-script', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '3.3.6', true );
   wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '3.3.6', true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {

@@ -240,6 +240,135 @@ article {
       padding-bottom: ($container-lg * (8/12) / 1.6);
     }
   }
+
+  .gallery {
+    margin-bottom: $line-height-computed;
+  }
+  .gallery-size-medium,
+  .gallery-size-large,
+  .gallery-size-full {
+    position: relative;
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+    padding-bottom: (900%/16);
+
+    > figure {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.5s ease-in-out;
+
+      img {
+        display: none;
+      }
+
+      > .wp-caption-text {
+        position: absolute;
+        bottom: 0;
+        font-size: $font-size-small;
+        padding: ($line-height-computed * 0.5);
+        background: rgba(0,0,0,0.5);
+        color: #FFF;
+        width: 100%;
+        text-align: center;
+      }
+    }
+  }
+
+  .gallery-navigation {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    left: 0;
+    top: 50%;
+    transform: translateY(-30px);
+
+    .gallery-prev,
+    .gallery-next {
+      cursor: pointer;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      background: rgba(0,0,0,0.1);
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: middle;
+
+      &:before {
+        @extend .genericon;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 35px;
+        color: rgba(255,255,255,0.5);
+        vertical-align: middle;
+        transform: translateY(2px);
+      }
+      &:hover:before {
+        color: rgba(255,255,255,1);
+      }
+    }
+
+    .gallery-prev {
+      float: left;
+      padding-right: 20px;
+      margin-left: 10px;
+
+      &:before {
+        content: '\f503';
+        text-align: left;
+      }
+    }
+
+    .gallery-next {
+      float: right;
+      padding-left: 20px;
+      margin-right: 10px;
+
+      &:before {
+        content: '\f501';
+        text-align: right;
+      }
+    }
+  }
+
+  .gallery-size-thumbnail {
+    @include clearfix;
+    margin-left: -($grid-gutter-width/2);
+    margin-right: -($grid-gutter-width/2);
+
+    @media (min-width: $screen-sm) {
+      margin-left: -($grid-gutter-width/4);
+      margin-right: -($grid-gutter-width/4);
+    }
+
+    > .gallery-item {
+      float: left;
+      padding: 0;
+
+      @media (min-width: $screen-sm) {
+        padding: ($grid-gutter-width/4);
+      }
+
+      img {
+        margin: 0 auto;
+      }
+
+      > .wp-caption-text {
+        display: none;
+      }
+    }
+
+    @for $i from 0 through 9 {
+      &.gallery-columns-#{$i} > .gallery-item {
+        width: percentage(1/$i);
+      }
+    }
+  }
 }
 
 // reading mode
@@ -378,6 +507,60 @@ article {
       @media (min-width: $screen-lg) {
         max-width: $container-lg * (10/12);
         padding-bottom: ($container-lg * (10/12) / 1.6);
+      }
+    }
+
+    .gallery-size-medium {
+      max-width: 100vw;
+      padding-bottom: (100%/(16/9));
+
+      @media (min-width: $screen-sm) {
+        max-width: $container-sm - $grid-gutter-width;
+        padding-bottom: (($container-sm - $grid-gutter-width) / (16/9));
+      }
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (8/12) - $grid-gutter-width;
+        padding-bottom: (($container-md * (8/12) - $grid-gutter-width) / (16/9));
+      }
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (8/12) - $grid-gutter-width;
+        padding-bottom: (($container-lg * (8/12) - $grid-gutter-width) / (16/9));
+      }
+    }
+    .gallery-size-large {
+        max-width: 100vw;
+        padding-bottom: (100%/(16/9));
+
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (10/12);
+        padding-bottom: ($container-md * (10/12) / (16/9));
+      }
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (10/12);
+        padding-bottom: ($container-lg * (10/12) / (16/9));
+      }
+    }
+    .gallery-size-full {
+      max-width: 100vw;
+      padding-bottom: (100%/(16/9));
+
+      @media (min-width: $screen-md) {
+        > figure > .wp-caption-text {
+          font-size: $font-size-base;
+        }
+      }
+    }
+    .gallery-size-thumbnail {
+      max-width: 100%;
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+      padding-left: 0;
+      padding-right: 0;
+
+      @media (min-width: $screen-sm) {
+        padding-left: ($grid-gutter-width/4);
+        padding-right: ($grid-gutter-width/4);
       }
     }
   }

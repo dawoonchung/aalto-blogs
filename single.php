@@ -31,7 +31,7 @@ get_header(); ?>
                     'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'twentysixteen' ),
                   ) );
                 } elseif ( is_singular( 'post' ) ) {
-                  $adjacent_posts = array( get_previous_post( true ), get_next_post( true) );
+                  $adjacent_posts = array( get_next_post( true ), get_previous_post( true) );
                   aalto_blogs_retrieve_posts( $adjacent_posts );
                 }
               ?>
