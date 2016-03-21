@@ -1,13 +1,258 @@
 article {
+  ul {
+    margin-bottom: $line-height-computed;
+
+    ul {
+      padding-left: 1em;
+      margin-bottom: 0;
+    }
+  }
+
+  ol {
+    margin-bottom: $line-height-computed;
+
+    ol {
+      padding-left: 1.33em;
+      margin-bottom: 0;
+    }
+  }
+
+  .table-responsive {
+    padding: 0 !important;
+  }
+  table {
+    @extend .table;
+    @extend .table-striped;
+  }
+
+  blockquote {
+    font-size: $blockquote-font-size;
+    border-left: none;
+    font-style: italic;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+
+    > p {
+      &:before {
+        content: open-quote;
+      }
+
+      &:after {
+        content: close-quote;
+      }
+    }
+
+    > p:not([style]) {
+      padding-left: ($grid-gutter-width - 5);
+      margin-left: (-$grid-gutter-width/2);
+      border-left: 5px solid $aalto-gray;
+      color: $aalto-gray;
+
+      &:before, &:after {
+        content: none;
+      }
+    }
+
+    > p[style*="center"] {
+      font-size: $font-size-base;
+      padding-left: ($grid-gutter-width/2);
+      padding-right: ($grid-gutter-width/2);
+
+      @media (min-width: $screen-xs) {
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
+      }
+    }
+
+    > p[style*="left"] {
+      color: $aalto-gray;
+
+      @media (min-width: $screen-sm) {
+        padding-right: $line-height-computed;
+        padding-bottom: $line-height-computed;
+        width: 50%;
+        float: left;
+      }
+
+      @media (min-width: $screen-md) {
+        margin-left: -(100%/12*2);
+      }
+    }
+
+    > p[style*="right"] {
+      color: $aalto-gray;
+
+      @media (min-width: $screen-sm) {
+        padding-left: $line-height-computed;
+        padding-bottom: $line-height-computed;
+        width: 50%;
+        float: right;
+      }
+
+      @media (min-width: $screen-md) {
+        margin-right: -(100%/12*2);
+      }
+    }
+
+    > p[style*="justify"] {
+      font-size: $font-size-base;
+
+      padding-left: ($grid-gutter-width/2);
+      padding-right: ($grid-gutter-width/2);
+
+      @media (min-width: $screen-xs) {
+        padding-left: $grid-gutter-width;
+        padding-right: $grid-gutter-width;
+      }
+    }
+  }
+
+  code {
+    font-size: $font-size-small;
+    display: block;
+    padding: $grid-gutter-width/2;
+    margin: $line-height-computed/2 (-$grid-gutter-width/2) $line-height-computed;
+    border-radius: 0;
+  }
+
+  pre {
+    border-radius: 0;
+    border: none;
+    margin-top: $line-height-computed/2;
+    margin-bottom: $line-height-computed;
+  }
+
   .wp-caption,
   img {
     @extend .img-responsive;
+
+  }
+
+  .wp-caption,
+  p {
+    &.small-width,
+    &.default-width {
+
+      &.alignleft {
+        padding-right: ($grid-gutter-width/2);
+        float: left;
+        text-align: left;
+      }
+      &.alignright {
+        padding-left: ($grid-gutter-width/2);
+        float: right;
+        text-align: right;
+      }
+      &.aligncenter {
+        clear: both;
+        text-align: center;
+      }
+
+    }
+
+    &.small-width {
+      @media (max-width: $screen-xs-max) {
+        &.alignleft,
+        &.alignright {
+          float: none !important;
+          text-align: center !important;
+          padding: 0;
+
+          img {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+    &.default-width {
+      @media (max-width: $screen-sm-max) {
+        &.alignleft,
+        &.alignright {
+          float: none !important;
+
+          img {
+            margin-left: auto;
+            margin-right: auto;
+          }
+        }
+      }
+    }
+
+    &.alignleft {
+      text-align: left;
+    }
+    &.alignright {
+      text-align: right;
+    }
+    &.aligncenter {
+      text-align: center;
+    }
+  }
+
+  img {
+    &.size-medium,
+    &.size-large,
+    &.size-full {
+      width: 100%;
+      margin: auto;
+    }
+
+    &.size-medium {
+      max-width: ($container-lg * (8/12) - $grid-gutter-width);
+    }
+  }
+
+  .wp-caption {
+    &.small-width {
+      width: auto !important;
+    }
+
+    .wp-caption-text {
+      font-size: $font-size-small;
+      margin-top: (10.5em/14);
+      margin-bottom: $line-height-computed;
+    }
+  }
+
+  p.has-embed { // responsive embed
+    @extend .embed-responsive;
+    padding-bottom: (100% / 1.6);
+    clear: both;
+
+    @media (min-width: $screen-sm) {
+      padding-bottom: ($container-sm / 1.6);
+
+      iframe,
+      embed,
+      object,
+      video {
+        padding-left: ($grid-gutter-width/2);
+        padding-right: ($grid-gutter-width/2);
+      }
+    }
+    @media (min-width: $screen-md) {
+      padding-bottom: ($container-md * (8/12) / 1.6);
+    }
+    @media (min-width: $screen-lg) {
+      padding-bottom: ($container-lg * (8/12) / 1.6);
+    }
   }
 }
 
 // reading mode
 .reading-mode {
   padding: 0 1em;
+
+  .container { // Used for align elements
+    max-width: none !important;
+
+    &:after {
+      clear: none;
+    }
+  }
 
 //  Experimental
 //
@@ -18,14 +263,20 @@ article {
 
   > main > article.post,
   > main > article.page {
-    > * {
+    padding-left: 0;
+    padding-right: 0;
 
-      @media (min-width: $screen-md) {
-        max-width: $container-md * (8/12);
-        padding-left: ($grid-gutter-width/2);
-        padding-right: ($grid-gutter-width/2);
+    > * {
+      padding-left: ($grid-gutter-width/2);
+      padding-right: ($grid-gutter-width/2);
+
+      @media (min-width: $screen-sm) {
+        max-width: $container-sm;
         margin-left: auto;
         margin-right: auto;
+      }
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (8/12);
       }
       @media (min-width: $screen-lg) {
         max-width: $container-lg * (8/12);
@@ -34,13 +285,99 @@ article {
 
     .full-width {
       max-width: 100vw;
+      width: 100vw !important;
       padding-left: 0;
       padding-right: 0;
-      margin-left: -($grid-gutter-width/2);
-      margin-right: -($grid-gutter-width/2);
 
-      > img {
-        width: 100%;
+      .wp-caption-text {
+        padding-left: ($grid-gutter-width/2);
+        padding-right: ($grid-gutter-width/2);
+      }
+
+      @media (min-width: $screen-sm) {
+        .wp-caption-text {
+          max-width: $container-sm;
+          margin-left: auto;
+          margin-right: auto;
+        }
+      }
+      @media (min-width: $screen-md) {
+        .wp-caption-text {
+          max-width: $container-md * (8/12);
+        }
+      }
+      @media (min-width: $screen-lg) {
+        .wp-caption-text {
+          max-width: $container-lg * (8/12);
+        }
+      }
+    }
+
+    .large-width {
+      max-width: 100vw;
+      width: 100vw !important;
+      padding-left: 0;
+      padding-right: 0;
+
+      .wp-caption-text {
+        padding-left: ($grid-gutter-width/2);
+        padding-right: ($grid-gutter-width/2);
+      }
+
+      @media (min-width: $screen-sm) {
+        max-width: 100%;
+        width: 100% !important;
+        padding-left: ($grid-gutter-width/2);
+        padding-right: ($grid-gutter-width/2);
+        margin-left: auto;
+        margin-right: auto;
+
+        .wp-caption-text {
+          padding-left: 0;
+          padding-right: 0;
+        }
+      }
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (10/12);
+        width: $container-md * (10/12) !important;
+        padding-left: 0;
+        padding-right: 0;
+      }
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (10/12);
+        width: $container-lg * (10/12) !important;
+      }
+    }
+
+    .default-width {
+      width: auto !important;
+    }
+
+    .table-responsive {
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (10/12);
+        width: $container-md * (10/12) !important;
+      }
+
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (10/12);
+        width: $container-lg * (10/12) !important;
+      }
+    }
+
+    p.has-embed {
+      @media (min-width: $screen-sm) {
+        max-width: 100vw;
+        width: 100vw;
+        padding-bottom: (100%/1.6);
+      }
+      @media (min-width: $screen-md) {
+        max-width: $container-md * (10/12);
+        padding-bottom: ($container-md * (10/12) / 1.6);
+      }
+      @media (min-width: $screen-lg) {
+        max-width: $container-lg * (10/12);
+        padding-bottom: ($container-lg * (10/12) / 1.6);
       }
     }
   }

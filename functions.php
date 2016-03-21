@@ -41,7 +41,7 @@ add_action( 'after_setup_theme', 'aalto_blogs_setup' );
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_content_width() {
-  $GLOBALS['content_width'] = apply_filters( 'aalto_blogs_content_width', 788 );
+  $GLOBALS['content_width'] = apply_filters( 'aalto_blogs_content_width', 1140 );
 }
 add_action( 'after_setup_theme', 'aalto_blogs_content_width', 0 );
 

@@ -148,7 +148,7 @@ if ( ! function_exists( 'aalto_blogs_excerpt_html' ) ) :
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_excerpt_html( $text = '' ) {
-  $allowed_tags = '<em>,<strong>,<span>,<p>,<h3>,<h4>,<h5>';
+  $allowed_tags = '<em>,<strong>,<span>,<p>,<h3>,<h4>,<h5>,<blockquote>,<ul>,<ol>,<li>,<dl>,<dt>,<dd>,<table>,<thead>,<tbody>,<tfoot>,<tgroup>,<th>,<tr>,<td>';
   $raw_excerpt = $text;
   if ( '' == $text ) {
     $text = get_the_content('');
