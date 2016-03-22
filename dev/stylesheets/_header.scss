@@ -3,41 +3,128 @@
   padding-top: 40px;
   background: $brand-primary;
   /* Fallback for when there is no background colour defined */
+
+  &.header-custom-image {
+    background-position: center;
+    background-size: cover;
+    background-attachment: local;
+  }
+}
+
+.custom-background-image .header-custom-image {
+  background: transparent !important;
 }
 
 .site-title {
   a {
-    color: #FFF;
+    color: inherit;
   }
 }
 
 .site-description {
-  color: #FFF;
+  color: inherit;
 }
 
 .site-header-menu {
   background: rgba(0,0,0,0.5);
 }
 
+.navbar-toggle {
+  float: left;
+  margin: 0;
+  padding: 12px $grid-gutter-width/2;
+}
+.icon-bar {
+  background: #FFF;
+}
+
 .main-navigation {
+  margin-left: -$grid-gutter-width/2 !important;
+  margin-right: -$grid-gutter-width/2 !important;
+  border-top: none;
+  box-shadow: none;
+
   ul {
     margin-bottom: 0;
     font-size: $font-size-small;
     line-height: (40em/14);
-    height: (40em/14);
-    @include clearfix;
+    width: 100%;
+
+    @media (min-width: $screen-sm) {
+      @include clearfix;
+
+      &.has-nested-menu {
+        line-height: 1.5em;
+        margin-top: 1em;
+
+        ul {
+          line-height: 1.5em;
+          margin-bottom: 1em;
+        }
+      }
+
+    }
 
     li {
-      float: left;
+      &:last-child {
+        margin-bottom: (13em/14);
+      }
 
-      &:first-child {
-        margin-left: -0.75em;
+      @media (min-width: $screen-sm) {
+        float: left;
+        max-width: 25%;
+
+        &:first-child {
+          margin-left: -0.75em;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
       }
 
       a {
         display: inline-block;
         color: #FFF;
-        padding: 0 0.75em;
+        padding: 0 $grid-gutter-width/2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        line-height: inherit;
+
+        &:hover {
+          background: transparent;
+          text-decoration: underline;
+        }
+
+        @media (min-width: $screen-sm) {
+          padding: 0 0.75em;
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-left: $grid-gutter-width/2;
+        border-left: 1px solid rgba(255,255,255,0.3);
+
+        @media (min-width: $screen-sm) {
+          margin-left: 0.75em;
+        }
+
+        li {
+          float: none;
+          max-width: 100%;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          a {
+            padding-left: 0.75em;
+          }
+        }
       }
     }
   }

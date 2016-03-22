@@ -2,6 +2,12 @@
 
 $( document ).ready(function() {
   /**
+   * Check if main navigation has nested menu
+   */
+  if ( $( '.primary-menu' ).find( '.menu-item-has-children' ).length ) {
+    $( '.primary-menu' ).addClass( 'has-nested-menu' );
+  }
+  /**
    * Make tables responsive
    */
   $( 'article' ).find( 'table' ).wrap( '<div class="table-responsive"></div>' );
@@ -30,8 +36,11 @@ $( document ).ready(function() {
       else {
         if ( $( '.reading-mode' ).length ) {
           $( this ).addClass( 'small-width' ).wrap( '<div class="container"></div>' );
-          $( this ).find( '.wp-caption-text' ).css( 'maxWidth', sizeCheck + 'px' );
         }
+        else {
+          $( this ).addClass( 'small-width' );
+        }
+        $( this ).find( '.wp-caption-text' ).css( 'maxWidth', sizeCheck + 'px' );
       }
     });
 

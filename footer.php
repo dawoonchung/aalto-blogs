@@ -20,7 +20,7 @@
 				<?php endif; ?>
 
 				<div class="aalto-info">
-					<a href="#" class="aalto-link"><?php generate_aalto_logo( true ); ?></a>
+					<a href="#" class="aalto-link"><?php generate_aalto_logo( '#FFF' ); ?></a>
 					<p class="copyright">&copy; <?php bloginfo( 'name' ); ?> <?php echo current_time( 'Y' ); ?> </p>
 					<p class="powered-by"><a href="http://blogs.aalto.fi" target="blank">Aalto Blogs</a> service provided by <a href="#" target="blank">Aalto IT</a></p>
 				</div>

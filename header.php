@@ -23,10 +23,14 @@
 
 <body <?php body_class(); ?>>
 <div id="page" class="site">
-  <header id="masthead" class="site-header" role="banner">
-    <aside id="metanav" class="site-meta">
+  <?php if ( get_header_image() ) : ?>
+  <header id="masthead" class="site-header header-custom-image" role="banner" style="background-image: url('<?php header_image(); ?>'); color: <?php echo aalto_blogs_rgba( get_header_textcolor(), 0.9 ); ?>;">
+  <?php else : ?>
+  <header id="masthead" class="site-header" role="banner" style="color: <?php echo aalto_blogs_rgba( get_header_textcolor(), 0.9 ); ?>;">
+  <?php endif; ?>
+    <aside id="metanav" class="site-meta" style="border-bottom: 1px solid <?php echo aalto_blogs_rgba( get_header_textcolor(), 0.4); ?>;">
       <div class="container">
-        <a href="#" class="aalto-menu"><?php generate_aalto_logo( true ); ?></a>
+        <a href="#" class="aalto-menu"><?php generate_aalto_logo( aalto_blogs_rgba( get_header_textcolor(), 0.9 ) ); ?></a>
 
         <div class="aalto-blogs-link">
           <a href="#">Create your blog</a>
@@ -49,11 +53,20 @@
     <?php if ( has_nav_menu( 'primary' ) ) : ?>
       <div id="site-header-menu" class="site-header-menu">
         <div class="container">
-          <nav id="site-navigation" class="main-navigation" role="navigation" aria-label="Primary Menu">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#site-navigation" aria-expanded="false">
+							<span class="screen-reader-text">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+					</div>
+
+          <nav id="site-navigation" class="main-navigation collapse navbar-collapse" role="navigation" aria-label="Primary Menu">
             <?php
               wp_nav_menu( array(
                 'theme_location' => 'primary',
-                'menu_class'     => 'primary-menu list-unstyled'
+                'menu_class'     => 'primary-menu list-unstyled nav navbar-nav'
               ) );
             ?>
           </nav>

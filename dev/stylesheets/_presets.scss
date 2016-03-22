@@ -3,6 +3,10 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+body.custom-background-image {
+  background-size: cover;
+}
+
 span.serif {
   font-family: $font-family-serif;
 }
