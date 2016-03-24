@@ -8,7 +8,7 @@ Description: Aalto Blogs Official Theme is a multi-purpose template for universi
 Version: 0.1
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: university, academic, responsive-layout, custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns, 
+Tags: responsive-layout, custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns 
 Text Domain: aalto-blogs
 */
 /**
@@ -331,12 +331,13 @@ th {
     border: 1px solid #000;
   }
 
-  .table, article table {
+  .table, article table, .widget_calendar table {
     border-collapse: collapse !important;
   }
-  .table td, article table td,
+  .table td, article table td, .widget_calendar table td,
   .table th,
-  article table th {
+  article table th,
+  .widget_calendar table th {
     background-color: #fff !important;
   }
 
@@ -386,7 +387,7 @@ a {
   text-decoration: none;
 }
 a:hover, a:focus {
-  color: #2f2f2f;
+  opacity: .8;
 }
 a:focus {
   outline: thin dotted;
@@ -403,7 +404,7 @@ img {
 }
 
 .img-responsive, article .wp-caption,
-article img {
+article img, .widget img {
   display: block;
   max-width: 100%;
   height: auto;
@@ -442,7 +443,6 @@ hr.section-separator {
   margin-top: 43.5px;
   margin-bottom: 0;
   box-sizing: border-box;
-  border-color: #8c857b;
 }
 
 .sr-only,
@@ -1840,48 +1840,58 @@ th {
   text-align: left;
 }
 
-.table, article table {
+.table, article table, .widget_calendar table {
   width: 100%;
   max-width: 100%;
   margin-bottom: 29px;
 }
-.table > thead > tr > th, article table > thead > tr > th,
+.table > thead > tr > th, article table > thead > tr > th, .widget_calendar table > thead > tr > th,
 .table > thead > tr > td,
 article table > thead > tr > td,
+.widget_calendar table > thead > tr > td,
 .table > tbody > tr > th,
 article table > tbody > tr > th,
+.widget_calendar table > tbody > tr > th,
 .table > tbody > tr > td,
 article table > tbody > tr > td,
+.widget_calendar table > tbody > tr > td,
 .table > tfoot > tr > th,
 article table > tfoot > tr > th,
+.widget_calendar table > tfoot > tr > th,
 .table > tfoot > tr > td,
-article table > tfoot > tr > td {
+article table > tfoot > tr > td,
+.widget_calendar table > tfoot > tr > td {
   padding: 8px;
   line-height: 1.4;
   vertical-align: top;
   border-top: 1px solid #ddd;
 }
-.table > thead > tr > th, article table > thead > tr > th {
+.table > thead > tr > th, article table > thead > tr > th, .widget_calendar table > thead > tr > th {
   vertical-align: bottom;
   border-bottom: 2px solid #ddd;
 }
-.table > caption + thead > tr:first-child > th, article table > caption + thead > tr:first-child > th,
+.table > caption + thead > tr:first-child > th, article table > caption + thead > tr:first-child > th, .widget_calendar table > caption + thead > tr:first-child > th,
 .table > caption + thead > tr:first-child > td,
 article table > caption + thead > tr:first-child > td,
+.widget_calendar table > caption + thead > tr:first-child > td,
 .table > colgroup + thead > tr:first-child > th,
 article table > colgroup + thead > tr:first-child > th,
+.widget_calendar table > colgroup + thead > tr:first-child > th,
 .table > colgroup + thead > tr:first-child > td,
 article table > colgroup + thead > tr:first-child > td,
+.widget_calendar table > colgroup + thead > tr:first-child > td,
 .table > thead:first-child > tr:first-child > th,
 article table > thead:first-child > tr:first-child > th,
+.widget_calendar table > thead:first-child > tr:first-child > th,
 .table > thead:first-child > tr:first-child > td,
-article table > thead:first-child > tr:first-child > td {
+article table > thead:first-child > tr:first-child > td,
+.widget_calendar table > thead:first-child > tr:first-child > td {
   border-top: 0;
 }
-.table > tbody + tbody, article table > tbody + tbody {
+.table > tbody + tbody, article table > tbody + tbody, .widget_calendar table > tbody + tbody {
   border-top: 2px solid #ddd;
 }
-.table .table, article table .table, .table article table, article .table table, article table table {
+.table .table, article table .table, .widget_calendar table .table, .table article table, article .table table, article table table, .table .widget_calendar table, .widget_calendar .table table, article table .widget_calendar table, .widget_calendar table table {
   background-color: #eeeeee;
 }
 
@@ -1910,7 +1920,7 @@ article table > thead:first-child > tr:first-child > td {
   border-bottom-width: 2px;
 }
 
-.table-striped > tbody > tr:nth-of-type(odd), article table > tbody > tr:nth-of-type(odd) {
+.table-striped > tbody > tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
 
@@ -1931,25 +1941,34 @@ table th[class*="col-"] {
   display: table-cell;
 }
 
-.table > thead > tr > td.active, article table > thead > tr > td.active,
+.table > thead > tr > td.active, article table > thead > tr > td.active, .widget_calendar table > thead > tr > td.active,
 .table > thead > tr > th.active,
-article table > thead > tr > th.active, .table > thead > tr.active > td, article table > thead > tr.active > td, .table > thead > tr.active > th, article table > thead > tr.active > th,
+article table > thead > tr > th.active,
+.widget_calendar table > thead > tr > th.active, .table > thead > tr.active > td, article table > thead > tr.active > td, .widget_calendar table > thead > tr.active > td, .table > thead > tr.active > th, article table > thead > tr.active > th, .widget_calendar table > thead > tr.active > th,
 .table > tbody > tr > td.active,
 article table > tbody > tr > td.active,
+.widget_calendar table > tbody > tr > td.active,
 .table > tbody > tr > th.active,
 article table > tbody > tr > th.active,
+.widget_calendar table > tbody > tr > th.active,
 .table > tbody > tr.active > td,
 article table > tbody > tr.active > td,
+.widget_calendar table > tbody > tr.active > td,
 .table > tbody > tr.active > th,
 article table > tbody > tr.active > th,
+.widget_calendar table > tbody > tr.active > th,
 .table > tfoot > tr > td.active,
 article table > tfoot > tr > td.active,
+.widget_calendar table > tfoot > tr > td.active,
 .table > tfoot > tr > th.active,
 article table > tfoot > tr > th.active,
+.widget_calendar table > tfoot > tr > th.active,
 .table > tfoot > tr.active > td,
 article table > tfoot > tr.active > td,
+.widget_calendar table > tfoot > tr.active > td,
 .table > tfoot > tr.active > th,
-article table > tfoot > tr.active > th {
+article table > tfoot > tr.active > th,
+.widget_calendar table > tfoot > tr.active > th {
   background-color: #f5f5f5;
 }
 
@@ -1958,25 +1977,34 @@ article table > tfoot > tr.active > th {
   background-color: #e8e8e8;
 }
 
-.table > thead > tr > td.success, article table > thead > tr > td.success,
+.table > thead > tr > td.success, article table > thead > tr > td.success, .widget_calendar table > thead > tr > td.success,
 .table > thead > tr > th.success,
-article table > thead > tr > th.success, .table > thead > tr.success > td, article table > thead > tr.success > td, .table > thead > tr.success > th, article table > thead > tr.success > th,
+article table > thead > tr > th.success,
+.widget_calendar table > thead > tr > th.success, .table > thead > tr.success > td, article table > thead > tr.success > td, .widget_calendar table > thead > tr.success > td, .table > thead > tr.success > th, article table > thead > tr.success > th, .widget_calendar table > thead > tr.success > th,
 .table > tbody > tr > td.success,
 article table > tbody > tr > td.success,
+.widget_calendar table > tbody > tr > td.success,
 .table > tbody > tr > th.success,
 article table > tbody > tr > th.success,
+.widget_calendar table > tbody > tr > th.success,
 .table > tbody > tr.success > td,
 article table > tbody > tr.success > td,
+.widget_calendar table > tbody > tr.success > td,
 .table > tbody > tr.success > th,
 article table > tbody > tr.success > th,
+.widget_calendar table > tbody > tr.success > th,
 .table > tfoot > tr > td.success,
 article table > tfoot > tr > td.success,
+.widget_calendar table > tfoot > tr > td.success,
 .table > tfoot > tr > th.success,
 article table > tfoot > tr > th.success,
+.widget_calendar table > tfoot > tr > th.success,
 .table > tfoot > tr.success > td,
 article table > tfoot > tr.success > td,
+.widget_calendar table > tfoot > tr.success > td,
 .table > tfoot > tr.success > th,
-article table > tfoot > tr.success > th {
+article table > tfoot > tr.success > th,
+.widget_calendar table > tfoot > tr.success > th {
   background-color: #dff0d8;
 }
 
@@ -1985,25 +2013,34 @@ article table > tfoot > tr.success > th {
   background-color: #d0e9c6;
 }
 
-.table > thead > tr > td.info, article table > thead > tr > td.info,
+.table > thead > tr > td.info, article table > thead > tr > td.info, .widget_calendar table > thead > tr > td.info,
 .table > thead > tr > th.info,
-article table > thead > tr > th.info, .table > thead > tr.info > td, article table > thead > tr.info > td, .table > thead > tr.info > th, article table > thead > tr.info > th,
+article table > thead > tr > th.info,
+.widget_calendar table > thead > tr > th.info, .table > thead > tr.info > td, article table > thead > tr.info > td, .widget_calendar table > thead > tr.info > td, .table > thead > tr.info > th, article table > thead > tr.info > th, .widget_calendar table > thead > tr.info > th,
 .table > tbody > tr > td.info,
 article table > tbody > tr > td.info,
+.widget_calendar table > tbody > tr > td.info,
 .table > tbody > tr > th.info,
 article table > tbody > tr > th.info,
+.widget_calendar table > tbody > tr > th.info,
 .table > tbody > tr.info > td,
 article table > tbody > tr.info > td,
+.widget_calendar table > tbody > tr.info > td,
 .table > tbody > tr.info > th,
 article table > tbody > tr.info > th,
+.widget_calendar table > tbody > tr.info > th,
 .table > tfoot > tr > td.info,
 article table > tfoot > tr > td.info,
+.widget_calendar table > tfoot > tr > td.info,
 .table > tfoot > tr > th.info,
 article table > tfoot > tr > th.info,
+.widget_calendar table > tfoot > tr > th.info,
 .table > tfoot > tr.info > td,
 article table > tfoot > tr.info > td,
+.widget_calendar table > tfoot > tr.info > td,
 .table > tfoot > tr.info > th,
-article table > tfoot > tr.info > th {
+article table > tfoot > tr.info > th,
+.widget_calendar table > tfoot > tr.info > th {
   background-color: #d9edf7;
 }
 
@@ -2012,25 +2049,34 @@ article table > tfoot > tr.info > th {
   background-color: #c4e3f3;
 }
 
-.table > thead > tr > td.warning, article table > thead > tr > td.warning,
+.table > thead > tr > td.warning, article table > thead > tr > td.warning, .widget_calendar table > thead > tr > td.warning,
 .table > thead > tr > th.warning,
-article table > thead > tr > th.warning, .table > thead > tr.warning > td, article table > thead > tr.warning > td, .table > thead > tr.warning > th, article table > thead > tr.warning > th,
+article table > thead > tr > th.warning,
+.widget_calendar table > thead > tr > th.warning, .table > thead > tr.warning > td, article table > thead > tr.warning > td, .widget_calendar table > thead > tr.warning > td, .table > thead > tr.warning > th, article table > thead > tr.warning > th, .widget_calendar table > thead > tr.warning > th,
 .table > tbody > tr > td.warning,
 article table > tbody > tr > td.warning,
+.widget_calendar table > tbody > tr > td.warning,
 .table > tbody > tr > th.warning,
 article table > tbody > tr > th.warning,
+.widget_calendar table > tbody > tr > th.warning,
 .table > tbody > tr.warning > td,
 article table > tbody > tr.warning > td,
+.widget_calendar table > tbody > tr.warning > td,
 .table > tbody > tr.warning > th,
 article table > tbody > tr.warning > th,
+.widget_calendar table > tbody > tr.warning > th,
 .table > tfoot > tr > td.warning,
 article table > tfoot > tr > td.warning,
+.widget_calendar table > tfoot > tr > td.warning,
 .table > tfoot > tr > th.warning,
 article table > tfoot > tr > th.warning,
+.widget_calendar table > tfoot > tr > th.warning,
 .table > tfoot > tr.warning > td,
 article table > tfoot > tr.warning > td,
+.widget_calendar table > tfoot > tr.warning > td,
 .table > tfoot > tr.warning > th,
-article table > tfoot > tr.warning > th {
+article table > tfoot > tr.warning > th,
+.widget_calendar table > tfoot > tr.warning > th {
   background-color: #fcf8e3;
 }
 
@@ -2039,25 +2085,34 @@ article table > tfoot > tr.warning > th {
   background-color: #faf2cc;
 }
 
-.table > thead > tr > td.danger, article table > thead > tr > td.danger,
+.table > thead > tr > td.danger, article table > thead > tr > td.danger, .widget_calendar table > thead > tr > td.danger,
 .table > thead > tr > th.danger,
-article table > thead > tr > th.danger, .table > thead > tr.danger > td, article table > thead > tr.danger > td, .table > thead > tr.danger > th, article table > thead > tr.danger > th,
+article table > thead > tr > th.danger,
+.widget_calendar table > thead > tr > th.danger, .table > thead > tr.danger > td, article table > thead > tr.danger > td, .widget_calendar table > thead > tr.danger > td, .table > thead > tr.danger > th, article table > thead > tr.danger > th, .widget_calendar table > thead > tr.danger > th,
 .table > tbody > tr > td.danger,
 article table > tbody > tr > td.danger,
+.widget_calendar table > tbody > tr > td.danger,
 .table > tbody > tr > th.danger,
 article table > tbody > tr > th.danger,
+.widget_calendar table > tbody > tr > th.danger,
 .table > tbody > tr.danger > td,
 article table > tbody > tr.danger > td,
+.widget_calendar table > tbody > tr.danger > td,
 .table > tbody > tr.danger > th,
 article table > tbody > tr.danger > th,
+.widget_calendar table > tbody > tr.danger > th,
 .table > tfoot > tr > td.danger,
 article table > tfoot > tr > td.danger,
+.widget_calendar table > tfoot > tr > td.danger,
 .table > tfoot > tr > th.danger,
 article table > tfoot > tr > th.danger,
+.widget_calendar table > tfoot > tr > th.danger,
 .table > tfoot > tr.danger > td,
 article table > tfoot > tr.danger > td,
+.widget_calendar table > tfoot > tr.danger > td,
 .table > tfoot > tr.danger > th,
-article table > tfoot > tr.danger > th {
+article table > tfoot > tr.danger > th,
+.widget_calendar table > tfoot > tr.danger > th {
   background-color: #f2dede;
 }
 
@@ -2078,20 +2133,25 @@ article table > tfoot > tr.danger > th {
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: 1px solid #ddd;
   }
-  .table-responsive > .table, article .table-responsive > table {
+  .table-responsive > .table, article .table-responsive > table, .widget_calendar .table-responsive > table {
     margin-bottom: 0;
   }
-  .table-responsive > .table > thead > tr > th, article .table-responsive > table > thead > tr > th,
+  .table-responsive > .table > thead > tr > th, article .table-responsive > table > thead > tr > th, .widget_calendar .table-responsive > table > thead > tr > th,
   .table-responsive > .table > thead > tr > td,
   article .table-responsive > table > thead > tr > td,
+  .widget_calendar .table-responsive > table > thead > tr > td,
   .table-responsive > .table > tbody > tr > th,
   article .table-responsive > table > tbody > tr > th,
+  .widget_calendar .table-responsive > table > tbody > tr > th,
   .table-responsive > .table > tbody > tr > td,
   article .table-responsive > table > tbody > tr > td,
+  .widget_calendar .table-responsive > table > tbody > tr > td,
   .table-responsive > .table > tfoot > tr > th,
   article .table-responsive > table > tfoot > tr > th,
+  .widget_calendar .table-responsive > table > tfoot > tr > th,
   .table-responsive > .table > tfoot > tr > td,
-  article .table-responsive > table > tfoot > tr > td {
+  article .table-responsive > table > tfoot > tr > td,
+  .widget_calendar .table-responsive > table > tfoot > tr > td {
     white-space: nowrap;
   }
   .table-responsive > .table-bordered {
@@ -5098,131 +5158,173 @@ button.list-group-item-danger.active:focus {
   border-top-width: 0;
 }
 
-.panel > .table, article .panel > table,
+.panel > .table, article .panel > table, .widget_calendar .panel > table,
 .panel > .table-responsive > .table,
 article .panel > .table-responsive > table,
+.widget_calendar .panel > .table-responsive > table,
 .panel > .panel-collapse > .table,
-article .panel > .panel-collapse > table {
+article .panel > .panel-collapse > table,
+.widget_calendar .panel > .panel-collapse > table {
   margin-bottom: 0;
 }
-.panel > .table caption, article .panel > table caption,
+.panel > .table caption, article .panel > table caption, .widget_calendar .panel > table caption,
 .panel > .table-responsive > .table caption,
 article .panel > .table-responsive > table caption,
+.widget_calendar .panel > .table-responsive > table caption,
 .panel > .panel-collapse > .table caption,
-article .panel > .panel-collapse > table caption {
+article .panel > .panel-collapse > table caption,
+.widget_calendar .panel > .panel-collapse > table caption {
   padding-left: 15px;
   padding-right: 15px;
 }
-.panel > .table:first-child, article .panel > table:first-child,
+.panel > .table:first-child, article .panel > table:first-child, .widget_calendar .panel > table:first-child,
 .panel > .table-responsive:first-child > .table:first-child,
-article .panel > .table-responsive:first-child > table:first-child {
+article .panel > .table-responsive:first-child > table:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child {
   border-top-right-radius: 3px;
   border-top-left-radius: 3px;
 }
-.panel > .table:first-child > thead:first-child > tr:first-child, article .panel > table:first-child > thead:first-child > tr:first-child,
+.panel > .table:first-child > thead:first-child > tr:first-child, article .panel > table:first-child > thead:first-child > tr:first-child, .widget_calendar .panel > table:first-child > thead:first-child > tr:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child,
 article .panel > table:first-child > tbody:first-child > tr:first-child,
+.widget_calendar .panel > table:first-child > tbody:first-child > tr:first-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child,
 article .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child,
-article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child {
+article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child {
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
 }
-.panel > .table:first-child > thead:first-child > tr:first-child td:first-child, article .panel > table:first-child > thead:first-child > tr:first-child td:first-child,
+.panel > .table:first-child > thead:first-child > tr:first-child td:first-child, article .panel > table:first-child > thead:first-child > tr:first-child td:first-child, .widget_calendar .panel > table:first-child > thead:first-child > tr:first-child td:first-child,
 .panel > .table:first-child > thead:first-child > tr:first-child th:first-child,
 article .panel > table:first-child > thead:first-child > tr:first-child th:first-child,
+.widget_calendar .panel > table:first-child > thead:first-child > tr:first-child th:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child td:first-child,
 article .panel > table:first-child > tbody:first-child > tr:first-child td:first-child,
+.widget_calendar .panel > table:first-child > tbody:first-child > tr:first-child td:first-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:first-child,
 article .panel > table:first-child > tbody:first-child > tr:first-child th:first-child,
+.widget_calendar .panel > table:first-child > tbody:first-child > tr:first-child th:first-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:first-child,
 article .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child td:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child td:first-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:first-child,
 article .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child th:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child th:first-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:first-child,
 article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child td:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child td:first-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:first-child,
-article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:first-child {
+article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:first-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:first-child {
   border-top-left-radius: 3px;
 }
-.panel > .table:first-child > thead:first-child > tr:first-child td:last-child, article .panel > table:first-child > thead:first-child > tr:first-child td:last-child,
+.panel > .table:first-child > thead:first-child > tr:first-child td:last-child, article .panel > table:first-child > thead:first-child > tr:first-child td:last-child, .widget_calendar .panel > table:first-child > thead:first-child > tr:first-child td:last-child,
 .panel > .table:first-child > thead:first-child > tr:first-child th:last-child,
 article .panel > table:first-child > thead:first-child > tr:first-child th:last-child,
+.widget_calendar .panel > table:first-child > thead:first-child > tr:first-child th:last-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child td:last-child,
 article .panel > table:first-child > tbody:first-child > tr:first-child td:last-child,
+.widget_calendar .panel > table:first-child > tbody:first-child > tr:first-child td:last-child,
 .panel > .table:first-child > tbody:first-child > tr:first-child th:last-child,
 article .panel > table:first-child > tbody:first-child > tr:first-child th:last-child,
+.widget_calendar .panel > table:first-child > tbody:first-child > tr:first-child th:last-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child td:last-child,
 article .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child td:last-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child td:last-child,
 .panel > .table-responsive:first-child > .table:first-child > thead:first-child > tr:first-child th:last-child,
 article .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child th:last-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > thead:first-child > tr:first-child th:last-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child td:last-child,
 article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child td:last-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child td:last-child,
 .panel > .table-responsive:first-child > .table:first-child > tbody:first-child > tr:first-child th:last-child,
-article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:last-child {
+article .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:last-child,
+.widget_calendar .panel > .table-responsive:first-child > table:first-child > tbody:first-child > tr:first-child th:last-child {
   border-top-right-radius: 3px;
 }
-.panel > .table:last-child, article .panel > table:last-child,
+.panel > .table:last-child, article .panel > table:last-child, .widget_calendar .panel > table:last-child,
 .panel > .table-responsive:last-child > .table:last-child,
-article .panel > .table-responsive:last-child > table:last-child {
+article .panel > .table-responsive:last-child > table:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child {
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
-.panel > .table:last-child > tbody:last-child > tr:last-child, article .panel > table:last-child > tbody:last-child > tr:last-child,
+.panel > .table:last-child > tbody:last-child > tr:last-child, article .panel > table:last-child > tbody:last-child > tr:last-child, .widget_calendar .panel > table:last-child > tbody:last-child > tr:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child,
 article .panel > table:last-child > tfoot:last-child > tr:last-child,
+.widget_calendar .panel > table:last-child > tfoot:last-child > tr:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child,
 article .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child,
-article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child {
+article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child {
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
 }
-.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child, article .panel > table:last-child > tbody:last-child > tr:last-child td:first-child,
+.panel > .table:last-child > tbody:last-child > tr:last-child td:first-child, article .panel > table:last-child > tbody:last-child > tr:last-child td:first-child, .widget_calendar .panel > table:last-child > tbody:last-child > tr:last-child td:first-child,
 .panel > .table:last-child > tbody:last-child > tr:last-child th:first-child,
 article .panel > table:last-child > tbody:last-child > tr:last-child th:first-child,
+.widget_calendar .panel > table:last-child > tbody:last-child > tr:last-child th:first-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
 article .panel > table:last-child > tfoot:last-child > tr:last-child td:first-child,
+.widget_calendar .panel > table:last-child > tfoot:last-child > tr:last-child td:first-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
 article .panel > table:last-child > tfoot:last-child > tr:last-child th:first-child,
+.widget_calendar .panel > table:last-child > tfoot:last-child > tr:last-child th:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:first-child,
 article .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child td:first-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child td:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:first-child,
 article .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child th:first-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child th:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:first-child,
 article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child td:first-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child td:first-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:first-child,
-article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:first-child {
+article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:first-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:first-child {
   border-bottom-left-radius: 3px;
 }
-.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child, article .panel > table:last-child > tbody:last-child > tr:last-child td:last-child,
+.panel > .table:last-child > tbody:last-child > tr:last-child td:last-child, article .panel > table:last-child > tbody:last-child > tr:last-child td:last-child, .widget_calendar .panel > table:last-child > tbody:last-child > tr:last-child td:last-child,
 .panel > .table:last-child > tbody:last-child > tr:last-child th:last-child,
 article .panel > table:last-child > tbody:last-child > tr:last-child th:last-child,
+.widget_calendar .panel > table:last-child > tbody:last-child > tr:last-child th:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
 article .panel > table:last-child > tfoot:last-child > tr:last-child td:last-child,
+.widget_calendar .panel > table:last-child > tfoot:last-child > tr:last-child td:last-child,
 .panel > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
 article .panel > table:last-child > tfoot:last-child > tr:last-child th:last-child,
+.widget_calendar .panel > table:last-child > tfoot:last-child > tr:last-child th:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child td:last-child,
 article .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child td:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child td:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tbody:last-child > tr:last-child th:last-child,
 article .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child th:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tbody:last-child > tr:last-child th:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child td:last-child,
 article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child td:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child td:last-child,
 .panel > .table-responsive:last-child > .table:last-child > tfoot:last-child > tr:last-child th:last-child,
-article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:last-child {
+article .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:last-child,
+.widget_calendar .panel > .table-responsive:last-child > table:last-child > tfoot:last-child > tr:last-child th:last-child {
   border-bottom-right-radius: 3px;
 }
-.panel > .panel-body + .table, article .panel > .panel-body + table,
+.panel > .panel-body + .table, article .panel > .panel-body + table, .widget_calendar .panel > .panel-body + table,
 .panel > .panel-body + .table-responsive,
 .panel > .table + .panel-body,
 article .panel > table + .panel-body,
+.widget_calendar .panel > table + .panel-body,
 .panel > .table-responsive + .panel-body {
   border-top: 1px solid #ddd;
 }
-.panel > .table > tbody:first-child > tr:first-child th, article .panel > table > tbody:first-child > tr:first-child th,
+.panel > .table > tbody:first-child > tr:first-child th, article .panel > table > tbody:first-child > tr:first-child th, .widget_calendar .panel > table > tbody:first-child > tr:first-child th,
 .panel > .table > tbody:first-child > tr:first-child td,
-article .panel > table > tbody:first-child > tr:first-child td {
+article .panel > table > tbody:first-child > tr:first-child td,
+.widget_calendar .panel > table > tbody:first-child > tr:first-child td {
   border-top: 0;
 }
 .panel > .table-bordered,
@@ -7136,6 +7238,8 @@ html, body {
 
 body.custom-background-image {
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 span.serif {
@@ -7199,6 +7303,10 @@ span.serif {
   height: 1.85714em;
   padding: 0.42857em;
   margin-left: -0.33333em;
+  opacity: 0.9;
+}
+.site-meta .aalto-menu:hover {
+  opacity: 1;
 }
 .site-meta .aalto-menu .aalto-logo {
   height: 1em;
@@ -7213,34 +7321,49 @@ span.serif {
   display: inline-block;
   color: inherit;
   padding: 0 0.75em;
+  opacity: 0.9;
+}
+.site-meta .aalto-blogs-link a:hover {
+  opacity: 1;
 }
 
 .site-header {
   position: relative;
   padding-top: 40px;
-  background: orange;
-  /* Fallback for when there is no background colour defined */
-}
-.site-header.header-custom-image {
   background-position: center;
   background-size: cover;
   background-attachment: local;
 }
-
-.custom-background-image .header-custom-image {
-  background: transparent !important;
+.site-header img {
+  display: none;
+}
+@media (min-width: 768px) {
+  .site-header img {
+    display: block;
+    width: 100%;
+    max-width: 1440px;
+    height: auto;
+    margin-top: -40px;
+    visibility: hidden;
+  }
+  .site-header .header-text-area {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+  }
 }
 
 .site-title a {
   color: inherit;
+  opacity: 0.9;
+}
+.site-title a:hover {
+  opacity: 1;
 }
 
 .site-description {
   color: inherit;
-}
-
-.site-header-menu {
-  background: rgba(0, 0, 0, 0.5);
+  opacity: 0.9;
 }
 
 .navbar-toggle {
@@ -7249,17 +7372,17 @@ span.serif {
   padding: 12px 21px;
 }
 
-.icon-bar {
-  background: #FFF;
-}
-
 .main-navigation {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
   margin-left: -21px !important;
   margin-right: -21px !important;
   border-top: none;
   box-shadow: none;
 }
 .main-navigation ul {
+  margin-left: 0;
+  margin-right: 0;
   margin-bottom: 0;
   font-size: 14px;
   line-height: 2.85714em;
@@ -7288,18 +7411,15 @@ span.serif {
 @media (min-width: 768px) {
   .main-navigation ul li {
     float: left;
-    max-width: 25%;
-  }
-  .main-navigation ul li:first-child {
-    margin-left: -0.75em;
+    width: 16.66667%;
   }
   .main-navigation ul li:last-child {
     margin-bottom: 0;
   }
 }
 .main-navigation ul li a {
+  color: inherit;
   display: inline-block;
-  color: #FFF;
   padding: 0 21px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -7310,38 +7430,33 @@ span.serif {
 .main-navigation ul li a:hover {
   background: transparent;
   text-decoration: underline;
+  opacity: 1;
 }
 @media (min-width: 768px) {
   .main-navigation ul li a {
-    padding: 0 0.75em;
+    padding: 0 21px;
   }
 }
 .main-navigation ul li ul {
   list-style: none;
   padding-left: 0;
   margin-left: 21px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
+  border-left: 1px solid;
 }
 @media (min-width: 768px) {
   .main-navigation ul li ul {
-    margin-left: 0.75em;
+    margin-left: 21px;
   }
 }
 .main-navigation ul li ul li {
   float: none;
-  max-width: 100%;
+  width: 100%;
 }
 .main-navigation ul li ul li:first-child {
   margin-left: 0;
 }
 .main-navigation ul li ul li a {
   padding-left: 0.75em;
-}
-
-.post, article.page {
-  background: #FFF;
-  padding-top: 29px;
-  margin-top: 0.5em;
 }
 
 .author-avatar {
@@ -7371,21 +7486,15 @@ span.serif {
 .comment-metadata .author {
   display: block;
   margin-top: 0.14286em;
-  color: #8c857b;
 }
-.entry-meta .author > a,
-.comment-metadata .author > a {
-  color: orange;
+.entry-meta .author .post-edit-link,
+.comment-metadata .author .post-edit-link {
+  color: inherit;
 }
 .entry-meta .posted-on,
 .comment-metadata .posted-on {
   display: block;
   font-size: 12px;
-  color: #8c857b;
-}
-.entry-meta .post-edit-link,
-.comment-metadata .post-edit-link {
-  color: #8c857b;
 }
 
 .entry-meta + .post-thumbnail {
@@ -7405,11 +7514,9 @@ span.serif {
 }
 
 .link-excerpt {
-  color: #333333;
   display: block;
 }
 .link-excerpt:hover {
-  color: #333333;
   text-decoration: none;
 }
 .link-excerpt p {
@@ -7424,11 +7531,7 @@ span.serif {
 
 .more-link {
   font-size: 14px;
-  color: #8c857b;
   display: block;
-}
-.more-link:hover {
-  color: #333333;
 }
 .more-link p {
   display: inline-block;
@@ -7442,7 +7545,6 @@ span.serif {
 }
 .pagination .nav-links {
   display: inline-block;
-  background: #FFF;
   font-size: 14px;
   padding: 0 1em;
   border-radius: 999em;
@@ -7451,36 +7553,34 @@ span.serif {
 .pagination .nav-links > a {
   display: inline-block;
   padding: 1em;
-  color: #8c857b;
-}
-.pagination .nav-links > span:not(.dots) {
-  color: orange;
-}
-.pagination .nav-links > a:hover {
-  color: #333333;
 }
 
-.post p > a {
-  border-bottom: 1px solid orange;
+.post, article.page {
+  padding-top: 29px;
+  margin-top: 0.5em;
 }
-.post .page-links {
+.post p > a,
+.post p > .span-a-tag, article.page p > a,
+article.page p > .span-a-tag {
+  border-bottom: 1px solid;
+}
+.post p > a:hover,
+.post p > .span-a-tag:hover, article.page p > a:hover,
+article.page p > .span-a-tag:hover {
+  border-bottom-color: transparent;
+}
+.post .page-links, article.page .page-links {
   font-size: 14px;
   margin-bottom: 29px;
 }
 .post .page-links > span,
-.post .page-links > a {
+.post .page-links > a, article.page .page-links > span,
+article.page .page-links > a {
   display: inline-block;
   padding: 1em;
-  color: #8c857b;
 }
-.post .page-links > span:not(.page-links-title) {
-  color: orange;
-}
-.post .page-links > .page-links-title {
+.post .page-links > .page-links-title, article.page .page-links > .page-links-title {
   padding-left: 0;
-}
-.post .page-links > a:hover {
-  color: #333333;
 }
 
 .updated:not(.published) {
@@ -7502,13 +7602,11 @@ span.serif {
 }
 .comment-respond .respond-placeholder {
   line-height: 40px;
-  color: #8c857b;
 }
 .comment-respond .logged-in-as {
   display: none;
   font-size: 14px;
   line-height: 40px;
-  color: #8c857b;
 }
 .comment-respond.active-form .respond-placeholder {
   display: none;
@@ -7531,15 +7629,12 @@ span.serif {
   color: #8c857b;
 }
 
-#cancel-comment-reply-link {
-  color: orange;
-}
-
 textarea#comment {
   width: 100%;
   max-width: 100%;
   border: none;
   resize: none;
+  background: transparent;
 }
 textarea#comment:focus {
   outline: none;
@@ -7550,6 +7645,7 @@ input#email,
 input#url {
   border: none;
   width: 100%;
+  background: transparent;
 }
 input#author:focus,
 input#email:focus,
@@ -7560,10 +7656,9 @@ input#url:focus {
 input#submit {
   background: transparent;
   font-size: 14px;
-  border: 1px solid orange;
   border-radius: 999em;
+  border: 1px solid;
   padding: 0.5em 1em;
-  color: orange;
 }
 
 .form-submit {
@@ -7586,16 +7681,19 @@ input#submit {
 .comment-list li {
   padding: 29px 1em;
   margin-top: 0.5em;
-  background: #FFF;
+}
+.comment-list li .comment-respond {
+  background: transparent;
 }
 .comment-list li ol.children {
   list-style: none;
   padding-left: 0;
-  border-left: 2px solid #8c857b;
+  border-left: 2px solid;
 }
 .comment-list li ol.children li {
   padding: 0 1em;
   margin: 29px 0 43.5px;
+  background: transparent !important;
 }
 .comment-list li ol.children li:last-child {
   margin-bottom: 0;
@@ -7611,10 +7709,9 @@ input#submit {
 .comment-reply-link,
 .comment-reply-login {
   font-size: 12px;
-  color: #8c857b;
   display: inline-block;
   padding: 0.5em 1em;
-  border: 1px solid #8c857b;
+  border: 1px solid;
   border-radius: 999em;
 }
 
@@ -7628,9 +7725,10 @@ input#submit {
 
 article ul {
   margin-bottom: 29px;
+  padding-left: 21px;
 }
 article ul ul {
-  padding-left: 1em;
+  padding-left: 21px;
   margin-bottom: 0;
 }
 article ol {
@@ -7645,6 +7743,7 @@ article .table-responsive {
 }
 article blockquote {
   font-size: 26.25px;
+  font-family: Georgia, "Times New Roman", Times, serif;
   border-left: none;
   font-style: italic;
   padding-top: 0;
@@ -7661,8 +7760,7 @@ article blockquote > p:after {
 article blockquote > p:not([style]) {
   padding-left: 37px;
   margin-left: -21px;
-  border-left: 5px solid #8c857b;
-  color: #8c857b;
+  border-left: 5px solid;
   clear: both;
 }
 article blockquote > p:not([style]):before, article blockquote > p:not([style]):after {
@@ -7704,6 +7802,7 @@ article blockquote > p[style*="right"] {
     padding-bottom: 29px;
     width: 50%;
     float: right;
+    text-align: left !important;
   }
 }
 @media (min-width: 992px) {
@@ -7929,9 +8028,9 @@ article .gallery-size-large > figure img,
 article .gallery-size-full > figure img {
   display: none;
 }
-article .gallery-size-medium > figure > .wp-caption-text,
-article .gallery-size-large > figure > .wp-caption-text,
-article .gallery-size-full > figure > .wp-caption-text {
+article .gallery-size-medium > figure > .gallery-caption,
+article .gallery-size-large > figure > .gallery-caption,
+article .gallery-size-full > figure > .gallery-caption {
   position: absolute;
   bottom: 0;
   font-size: 14px;
@@ -7941,9 +8040,9 @@ article .gallery-size-full > figure > .wp-caption-text {
   width: 100%;
   text-align: center;
 }
-article .gallery-size-medium > figure > .wp-caption-text > *,
-article .gallery-size-large > figure > .wp-caption-text > *,
-article .gallery-size-full > figure > .wp-caption-text > * {
+article .gallery-size-medium > figure > .gallery-caption > *,
+article .gallery-size-large > figure > .gallery-caption > *,
+article .gallery-size-full > figure > .gallery-caption > * {
   /* removes any stylings except for font-weight inside gallery captions */
   margin: 0;
   font-size: inherit;
@@ -8097,6 +8196,10 @@ article .gallery-size-full {
 .reading-mode .container:after {
   clear: none;
 }
+.reading-mode .entry-title + p.has-image,
+.reading-mode .entry-title + figure.wp-caption {
+  margin-top: -14.5px;
+}
 .reading-mode > main > article.post,
 .reading-mode > main > article.page {
   padding-left: 0;
@@ -8133,6 +8236,8 @@ article .gallery-size-full {
   width: 100vw !important;
   padding-left: 0;
   padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .reading-mode > main > article.post .full-width .wp-caption-text,
 .reading-mode > main > article.page .full-width .wp-caption-text {
@@ -8165,6 +8270,8 @@ article .gallery-size-full {
   width: 100vw !important;
   padding-left: 0;
   padding-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .reading-mode > main > article.post .large-width .wp-caption-text,
 .reading-mode > main > article.page .large-width .wp-caption-text {
@@ -8302,8 +8409,8 @@ article .gallery-size-full {
   padding-bottom: 56.25%;
 }
 @media (min-width: 992px) {
-  .reading-mode > main > article.post .gallery-size-full > figure > .wp-caption-text,
-  .reading-mode > main > article.page .gallery-size-full > figure > .wp-caption-text {
+  .reading-mode > main > article.post .gallery-size-full > figure > .gallery-caption,
+  .reading-mode > main > article.page .gallery-size-full > figure > .gallery-caption {
     font-size: 21px;
   }
 }
@@ -8326,30 +8433,102 @@ article .gallery-size-full {
 
 .sidebar {
   height: 100%;
+  margin-top: 0.5em;
+}
+.sidebar a {
+  color: inherit;
 }
 
-.main-navigation-sidebar {
-  padding-top: 29px;
-  padding-bottom: 29px;
+.widget-area {
+  padding: 29px 21px;
+  font-size: 14px;
 }
-.main-navigation-sidebar ul {
+
+h6.widget-title {
+  margin-bottom: 14.5px;
+}
+
+.widget {
+  margin-bottom: 43.5px;
+}
+.widget ul {
+  padding-left: 0;
+  list-style: none;
+}
+.widget ul li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0.40625em 0;
+}
+.widget ul li ul.children, .widget ul li ul.sub-menu {
+  padding-left: 0.5em;
+  border-left: 1px solid;
+}
+
+.widget_calendar table {
   margin-bottom: 0;
-  line-height: 1em;
+  text-align: center;
 }
-.main-navigation-sidebar ul:before, .main-navigation-sidebar ul:after {
-  content: " ";
-  display: table;
+.widget_calendar table caption {
+  text-align: center;
 }
-.main-navigation-sidebar ul:after {
-  clear: both;
+.widget_calendar table thead tr th {
+  text-align: center;
 }
-.main-navigation-sidebar ul li a {
+.widget_calendar table tfoot #prev {
+  text-align: left;
+}
+.widget_calendar table tfoot #next {
+  text-align: right;
+}
+
+.widget_categories select {
+  background: transparent;
+  border: 1px solid;
+}
+
+.widget_recent_entries span.post-date {
+  font-size: 0.85714em;
+}
+
+.widget_rss .rss-widget-icon {
+  display: none;
+}
+.widget_rss ul li {
+  white-space: initial;
+}
+.widget_rss ul li > * {
   display: block;
-  padding: 0.57143em 1em 0.33333em;
+}
+.widget_rss ul li > a {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.widget_rss ul li > span.rss-date {
+  font-size: 0.85714em;
+}
+.widget_rss ul li > div {
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+}
+.widget_rss ul li:last-child > div {
+  margin-bottom: 0;
+}
+
+.widget_tag_cloud .tagcloud a {
+  line-height: 29px;
+  font-size: 12px !important;
+  display: inline-block;
+  border: 1px solid;
+  padding: 0 0.5em;
+  border-radius: 0.5em;
+  margin-right: 0.5em;
+  margin-bottom: 1em;
 }
 
 .site-footer {
-  background: orange;
   margin-top: 43.5px;
 }
 .site-footer .social-links {
@@ -8381,17 +8560,24 @@ article .gallery-size-full {
   }
 }
 .site-footer .social-navigation ul li a {
-  border: 1px solid #FFF;
   display: block;
   text-align: center;
   border-radius: 50%;
+  color: inherit;
+  opacity: 0.9;
 }
 .site-footer .social-navigation ul li a:before {
   font-size: 21px;
-  color: #FFF;
   line-height: 38px;
   height: 38px;
   width: 38px;
+  transition: transform 0.15s ease-in-out;
+}
+.site-footer .social-navigation ul li a:hover {
+  opacity: 1;
+}
+.site-footer .social-navigation ul li a:hover:before {
+  transform: scale(1.2, 1.2);
 }
 .site-footer .aalto-info {
   padding: 0 1em;
@@ -8416,6 +8602,10 @@ article .gallery-size-full {
   margin-left: -1.19048em;
   margin-right: -0.42857em;
   float: left;
+  opacity: 0.9;
+}
+.site-footer .aalto-link:hover {
+  opacity: 1;
 }
 .site-footer .aalto-link .aalto-logo {
   height: 1.42857em;
@@ -8425,11 +8615,15 @@ article .gallery-size-full {
   font-size: 12px;
   margin-top: 2.08333em;
   margin-bottom: 0;
-  color: #FFF;
 }
 .site-footer .copyright a,
 .site-footer .powered-by a {
-  color: #FFF;
+  color: inherit;
+}
+.site-footer .copyright a:hover,
+.site-footer .powered-by a:hover {
+  text-decoration: underline;
+  opacity: 1;
 }
 .site-footer .copyright + .powered-by {
   margin-top: 0;

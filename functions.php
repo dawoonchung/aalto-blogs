@@ -52,8 +52,8 @@ function aalto_blogs_widgets_init() {
     'description'   => 'Add widgets here to appear in your sidebar.',
     'before_widget' => '<section id="%1$s" class="widget %2$s">',
     'after_widget'  => '</section>',
-    'before_title'  => '<h2 class="widget-title">',
-    'after_title'   => '</h2>',
+    'before_title'  => '<h6 class="widget-title">',
+    'after_title'   => '</h6>',
   ) );
 }
 add_action( 'widgets_init', 'aalto_blogs_widgets_init' );

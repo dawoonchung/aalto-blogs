@@ -17,7 +17,7 @@ class Walker_Comment_Time_Ago extends Walker_Comment {
             <?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
           </figure><!-- .author-avatar -->
           <?php
-            $edit_comment_link = get_edit_comment_link() ? '<span class="edit-link"> · <a class="post-edit-link" href="' . get_edit_comment_link() . '">Edit</a></span>' : '';
+            $edit_comment_link = get_edit_comment_link() ? '<span class="edit-link"> &middot; <a class="post-edit-link" href="' . get_edit_comment_link() . '">Edit</a></span>' : '';
             printf( '<span class="author">%1$s %2$s</span>', get_comment_author_link( $comment ), $edit_comment_link );
            ?>
           <span class="posted-on">
@@ -28,7 +28,7 @@ class Walker_Comment_Time_Ago extends Walker_Comment {
         </aside><!-- .comment-metadata -->
 
         <?php if ( '0' == $comment->comment_approved ) : ?>
-        <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></p>
+        <p class="comment-awaiting-moderation">Your comment is awaiting moderation.</p>
         <?php endif; ?>
 
         <?php comment_text(); ?>

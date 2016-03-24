@@ -12,7 +12,12 @@
     height: (39em/21);
     padding: (9em/21);
     margin-left: (-7em/21);
+    opacity: 0.9;
 
+    &:hover {
+      opacity: 1;
+    }
+    
     .aalto-logo {
       height: 1em;
     }
@@ -28,6 +33,11 @@
       display: inline-block;
       color: inherit;
       padding: 0 0.75em;
+      opacity: 0.9;
+
+      &:hover {
+        opacity: 1;
+      }
     }
   }
 }

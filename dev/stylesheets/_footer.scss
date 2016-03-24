@@ -1,5 +1,4 @@
 .site-footer {
-  background: $brand-primary;
   margin-top: ($line-height-computed * 1.5);
 
   .social-links {
@@ -29,17 +28,26 @@
         }
 
         a {
-          border: 1px solid #FFF;
           display: block;
           text-align: center;
           border-radius: 50%;
+          color: inherit;
+          opacity: 0.9;
 
           &:before {
             font-size: 21px;
-            color: #FFF;
             line-height: 38px;
             height: 38px;
             width: 38px;
+            transition: transform 0.15s ease-in-out;
+          }
+
+          &:hover {
+            opacity: 1;
+          }
+
+          &:hover:before {
+            transform: scale(1.2,1.2);
           }
         }
       }
@@ -62,6 +70,11 @@
     margin-left: (-25em/21);
     margin-right: (-9em/21);
     float: left;
+    opacity: 0.9;
+
+    &:hover {
+      opacity: 1;
+    }
 
     .aalto-logo {
       height: (30em/21);
@@ -73,10 +86,14 @@
     font-size: 12px;
     margin-top: (25em/12);
     margin-bottom: 0;
-    color: #FFF;
 
     a {
-      color: #FFF;
+      color: inherit;
+
+      &:hover {
+        text-decoration: underline;
+        opacity: 1;
+      }
     }
   }
   .copyright + .powered-by {

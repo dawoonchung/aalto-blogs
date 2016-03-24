@@ -39,7 +39,7 @@ if ( post_password_required() ) {
         'title_replly_after'    => '',
         'logged_in_as'          => '',
         'comment_notes_before'  => '',
-        'cancel_reply_link'     => ' · Cancel reply'
+        'cancel_reply_link'     => ' &middot; Cancel reply'
       );
       comment_form( $comment_args );
     ?>

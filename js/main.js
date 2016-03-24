@@ -2,6 +2,12 @@
 
 $( document ).ready(function() {
   /**
+   * Adjust header image placeholder's height
+   */
+  var textAreaHeight = $( '.header-text-area' ).outerHeight();
+  $( 'head' ).append( '<style type="text/css" id="aalto-blogs-header-min-height">@media (min-width: 768px) { .site-header { min-height: ' + (textAreaHeight + 40) + 'px; }' + ' }</style>' );
+
+  /**
    * Check if main navigation has nested menu
    */
   if ( $( '.primary-menu' ).find( '.menu-item-has-children' ).length ) {
@@ -23,6 +29,8 @@ $( document ).ready(function() {
 
   if ( $( 'body' ).hasClass( 'single-post' ) || $( 'body' ).hasClass( 'page' ) ) {
     $( 'article.post p, article.page p, figure.wp-caption' ).has( 'img:not(.wp-smiley)' ).each( function() {
+      $( this ).not( 'figure.wp-caption' ).addClass( 'has-image' );
+
       var sizeCheck = $( this ).find( 'img' ).attr( 'width' );
       if ( sizeCheck > 1140 ) {
         $( this ).addClass( 'full-width' );

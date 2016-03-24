@@ -16,7 +16,7 @@ function aalto_blogs_entry_meta() {
   if ( 'post' === get_post_type() || 'page' === get_post_type() ) {
     $author_avatar_size = apply_filters( 'aalto_blogs_author_avatar_size', 40 );
     $post_categories = ' in ' . get_the_category_list( ', ' );
-    $edit_post_link = get_edit_post_link() ? '<span class="edit-link"> · <a class="post-edit-link" href="' . get_edit_post_link() . '">Edit</a><span class="screen-reader-text"> ' . get_the_title() . '</span></span>' : '';
+    $edit_post_link = get_edit_post_link() ? '<span class="edit-link"> &middot; <a class="post-edit-link" href="' . get_edit_post_link() . '">Edit</a><span class="screen-reader-text"> ' . get_the_title() . '</span></span>' : '';
     printf( '<figure class="author-avatar">%1$s</figure><span class="author"><span class="screen-reader-text">Author </span> <a class="url fn n" href="%2$s">%3$s</a>%4$s %5$s</span>%6$s',
       get_avatar( get_the_author_meta( 'user_email' ), $author_avatar_size ),
       esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),

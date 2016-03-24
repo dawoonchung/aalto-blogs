@@ -37,7 +37,7 @@ function hex2rgb( $colour ) {
  * @since Official Aalto Blogs Theme 1.0
  */
 function addOpacity( $colour, $opacity ) {
-  return 'rgba(' . $colour['red'] . ',' . $colour['green'] . ',' . $colour['blue'] . ',' . $opacity . ');';
+  return 'rgba(' . $colour['red'] . ',' . $colour['green'] . ',' . $colour['blue'] . ',' . $opacity . ')';
 }
 
 /**

@@ -52,7 +52,7 @@ a {
 
   &:hover,
   &:focus {
-    color: $link-hover-color;
+    opacity: .8;
   }
 
   &:focus {
@@ -121,7 +121,6 @@ hr.section-separator {
   margin-top: ($line-height-computed * 1.5);
   margin-bottom: 0;
   box-sizing: border-box;
-  border-color: $aalto-gray;
 }
 
 

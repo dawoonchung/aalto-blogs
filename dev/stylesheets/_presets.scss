@@ -5,6 +5,8 @@ html, body {
 
 body.custom-background-image {
   background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 span.serif {

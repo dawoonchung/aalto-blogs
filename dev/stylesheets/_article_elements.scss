@@ -1,9 +1,10 @@
 article {
   ul {
     margin-bottom: $line-height-computed;
+    padding-left: $grid-gutter-width/2;
 
     ul {
-      padding-left: 1em;
+      padding-left: $grid-gutter-width/2;
       margin-bottom: 0;
     }
   }
@@ -22,11 +23,11 @@ article {
   }
   table {
     @extend .table;
-    @extend .table-striped;
   }
 
   blockquote {
     font-size: $blockquote-font-size;
+    font-family: $font-family-serif;
     border-left: none;
     font-style: italic;
     padding-top: 0;
@@ -47,8 +48,7 @@ article {
     > p:not([style]) {
       padding-left: ($grid-gutter-width - 5);
       margin-left: (-$grid-gutter-width/2);
-      border-left: 5px solid $aalto-gray;
-      color: $aalto-gray;
+      border-left: 5px solid;
       clear: both;
 
       &:before, &:after {
@@ -90,6 +90,7 @@ article {
         padding-bottom: $line-height-computed;
         width: 50%;
         float: right;
+        text-align: left !important;
       }
 
       @media (min-width: $screen-md) {
@@ -333,7 +334,7 @@ article {
         display: none;
       }
 
-      > .wp-caption-text {
+      > .gallery-caption {
         position: absolute;
         bottom: 0;
         font-size: $font-size-small;
@@ -485,6 +486,11 @@ article {
 //    visibility: hidden;
 //  }
 
+  .entry-title + p.has-image,
+  .entry-title + figure.wp-caption {
+    margin-top: -($line-height-computed/2);
+  }
+
   > main > article.post,
   > main > article.page {
     padding-left: 0;
@@ -512,6 +518,8 @@ article {
       width: 100vw !important;
       padding-left: 0;
       padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
 
       .wp-caption-text {
         padding-left: ($grid-gutter-width/2);
@@ -542,6 +550,8 @@ article {
       width: 100vw !important;
       padding-left: 0;
       padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
 
       .wp-caption-text {
         padding-left: ($grid-gutter-width/2);
@@ -647,7 +657,7 @@ article {
       padding-bottom: (100%/(16/9));
 
       @media (min-width: $screen-md) {
-        > figure > .wp-caption-text {
+        > figure > .gallery-caption {
           font-size: $font-size-base;
         }
       }

@@ -1,21 +1,126 @@
 .sidebar {
   height: 100%;
+  margin-top: 0.5em;
+
+  a {
+    color: inherit;
+  }
 }
 
-.main-navigation-sidebar {
-  padding-top: $line-height-computed;
-  padding-bottom: $line-height-computed;
+.widget-area {
+  padding: $line-height-computed $grid-gutter-width/2;
+  font-size: $font-size-small;
+}
+
+h6.widget-title {
+  margin-bottom: $line-height-computed/2;
+}
+
+.widget {
+  margin-bottom: $line-height-computed * 1.5;
 
   ul {
-    margin-bottom: 0;
-    line-height: 1em; // 20px
-    @include clearfix;
+    padding-left: 0;
+    list-style: none;
 
     li {
-      a {
-        display: block;
-        padding: (12em/21) 1em (7em/21);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding: ((13em/16)/2) 0;
+
+      ul.children, ul.sub-menu {
+        padding-left: 0.5em;
+        border-left: 1px solid;
       }
     }
+  }
+
+  img {
+    @extend .img-responsive;
+  }
+}
+
+.widget_calendar {
+  table {
+    margin-bottom: 0;
+    @extend .table;
+    text-align: center;
+
+    caption {
+      text-align: center;
+    }
+
+    thead tr th {
+      text-align: center;
+    }
+    tfoot {
+      #prev {
+        text-align: left;
+      }
+      #next {
+        text-align: right;
+      }
+    }
+  }
+}
+
+.widget_categories {
+  select {
+    background: transparent;
+    border: 1px solid;
+  }
+}
+
+.widget_recent_entries {
+  span.post-date {
+    font-size: (12em/14);
+  }
+}
+
+.widget_rss {
+  .rss-widget-icon {
+    display: none;
+  }
+
+  ul li {
+    white-space: initial;
+
+    > * {
+      display: block;
+    }
+
+    > a {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    > span.rss-date {
+      font-size: (12em/14);
+    }
+
+    > div {
+      margin-top: 0.5em;
+      margin-bottom: 1em;
+    }
+
+    &:last-child > div {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.widget_tag_cloud {
+
+  .tagcloud a {
+    line-height: $line-height-computed;
+    font-size: 12px !important;
+    display: inline-block;
+    border: 1px solid;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
   }
 }
