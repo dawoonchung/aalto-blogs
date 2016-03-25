@@ -1,0 +1,125 @@
+.navbar-toggle {
+  float: left;
+  margin: 0;
+  padding: 12px $grid-gutter-width/4 12px $grid-gutter-width/2;
+}
+
+.navbar-search {
+  height: 100%;
+  line-height: 40px;
+
+  label {
+    line-height: 38px;
+    position: relative;
+    padding-right: $grid-gutter-width/2;
+    width: auto;
+    display: table;
+
+    input[type='search'] {
+      display: table-cell;
+    }
+  }
+
+  .search-submit {
+    line-height: 40px;
+    float: left;
+    padding: 0 $grid-gutter-width/4;
+
+    &:before {
+      line-height: 40px;
+    }
+  }
+}
+
+.main-navigation {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  margin-left: -$grid-gutter-width/2 !important;
+  margin-right: -$grid-gutter-width/2 !important;
+  border-top: none;
+  box-shadow: none;
+
+  ul {
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    font-size: $font-size-small;
+    line-height: (40em/14);
+    width: 100%;
+
+    @media (min-width: $screen-sm) {
+      @include clearfix;
+
+      &.has-nested-menu {
+        line-height: 1.5em;
+        margin-top: 1em;
+
+        ul {
+          line-height: 1.5em;
+          margin-bottom: 1em;
+        }
+      }
+
+    }
+
+    li {
+      &:last-child {
+        margin-bottom: (13em/14);
+      }
+
+      @media (min-width: $screen-sm) {
+        float: left;
+        width: (100%/6);
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      a {
+        color: inherit;
+        display: inline-block;
+        padding: 0 $grid-gutter-width/2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        line-height: inherit;
+
+        &:hover {
+          background: transparent;
+          text-decoration: underline;
+          opacity: 1;
+        }
+
+        @media (min-width: $screen-sm) {
+          padding: 0 $grid-gutter-width/2;
+        }
+      }
+
+      ul {
+        list-style: none;
+        padding-left: 0;
+        margin-left: $grid-gutter-width/2;
+        border-left: 1px solid;
+
+        @media (min-width: $screen-sm) {
+          margin-left: $grid-gutter-width/2;
+        }
+
+        li {
+          float: none;
+          width: 100%;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          a {
+            padding-left: 0.75em;
+          }
+        }
+      }
+    }
+  }
+}
