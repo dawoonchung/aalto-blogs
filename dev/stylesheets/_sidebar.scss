@@ -8,8 +8,12 @@
 }
 
 .widget-area {
-  padding: $line-height-computed $grid-gutter-width/2;
   font-size: $font-size-small;
+  padding: $line-height-computed $grid-gutter-width/2;
+
+  @media (min-width: $screen-md) {
+    padding-right: 0;
+  }
 }
 
 h6.widget-title {
@@ -46,6 +50,11 @@ h6.widget-title {
     margin-bottom: 0;
     @extend .table;
     text-align: center;
+
+    a {
+      text-decoration: underline;
+      font-weight: bold;
+    }
 
     caption {
       text-align: center;
@@ -122,5 +131,27 @@ h6.widget-title {
     border-radius: 0.5em;
     margin-right: 0.5em;
     margin-bottom: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.widget_search {
+  position: relative;
+  min-height: $line-height-computed;
+
+  label {
+    border-bottom: 1px solid;
+    padding-right: 35px;
+  }
+
+  input[type="search"] {
+    font-size: $font-size-base;
+    line-height: $line-height-computed;
+  }
+
+  .search-submit {
+    line-height: $line-height-computed;
   }
 }

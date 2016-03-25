@@ -172,6 +172,18 @@ $( document ).ready(function() {
       });
     });
   }
+
+  /**
+   * Prevent empty search.
+   */
+  $( '.search-submit' ).click( function(e) {
+    var $searchForm = $( this ).siblings( 'label' ).children( '.search-field' );
+    if ( ! $searchForm.val().length ) {
+      e.preventDefault();
+      $searchForm.focus();
+    }
+  } );
+
 });
 
 })(jQuery);

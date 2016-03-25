@@ -201,7 +201,6 @@ function aalto_blogs_post_style() {
       border-color: {$linkcolor};
     }
 
-    .more-link:hover,
     .nav-links > a:hover,
     .page-links > a:hover {
       color: {$linkcolor};

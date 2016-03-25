@@ -45,7 +45,12 @@
           if ( $description ) : ?>
             <h2 class="site-description"><?php echo $description; ?></h2>
           <?php endif; ?>
+
+          <div class="header-search hidden-xs">
+            <?php get_search_form(); ?>
+          </div>
         </div><!-- .site-branding -->
+
       </div>
 
       <?php if ( has_nav_menu( 'primary' ) ) : ?>
@@ -58,6 +63,10 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+
+              <div class="navbar-search visible-xs">
+                <?php get_search_form(); ?>
+              </div>
             </div>
 
             <nav id="site-navigation" class="main-navigation collapse navbar-collapse" role="navigation" aria-label="Primary Menu">

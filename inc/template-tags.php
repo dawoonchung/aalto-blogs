@@ -26,28 +26,6 @@ function aalto_blogs_entry_meta() {
       get_aalto_blogs_entry_date()
     );
   }
-
-/*
-  $format = get_post_format();
-  if ( current_theme_supports( 'post-formats', $format ) ) {
-    printf( '<span class="entry-format">%1$s<a href="%2$s">%3$s</a></span>',
-      sprintf( '<span class="screen-reader-text">%s </span>', _x( 'Format', 'Used before post format.', 'twentysixteen' ) ),
-      esc_url( get_post_format_link( $format ) ),
-      get_post_format_string( $format )
-    );
-  }
-
-  if ( 'post' === get_post_type() ) {
-    twentysixteen_entry_taxonomies();
-  }
-
-  if ( ! is_singular() && ! post_password_required() && ( comments_open() || get_comments_number() ) ) {
-    echo '<span class="comments-link">';
-    comments_popup_link( sprintf( __( 'Leave a comment<span class="screen-reader-text"> on %s</span>', 'twentysixteen' ), get_the_title() ) );
-    echo '</span>';
-  }
-}
-*/
 }
 
 /**
