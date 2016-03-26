@@ -1,5 +1,6 @@
 .grid-item {
-  padding: 0 $grid-gutter-width/8 !important;
+  padding: 0 $grid-gutter-width/4 !important;
+  margin-bottom: $grid-gutter-width/4;
 
   article {
     padding: $grid-gutter-width/4;
