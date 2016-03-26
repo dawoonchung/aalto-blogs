@@ -154,16 +154,6 @@ function aalto_blogs_body_classes( $classes ) {
 add_filter( 'body_class', 'aalto_blogs_body_classes' );
 
 /**
- * Load loop for JetPack Infinite Scroll.
- *
- * @since Official Aalto Blogs Theme 1.0
- */
-function aalto_blogs_infinite_scroll_render() {
-  $layout = get_theme_mod( 'front-layout' ) ?: 'list';
-  get_template_part( 'template-parts/content', $layout . '-loop' );
-}
-
-/**
  * Custom template tags for this theme.
  */
 require get_template_directory() . '/inc/template-tags.php';
