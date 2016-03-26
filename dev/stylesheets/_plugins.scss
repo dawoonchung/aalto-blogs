@@ -1,0 +1,25 @@
+.sd-sharing-enabled {
+  margin-bottom: $line-height-computed/2;
+  
+  h3.sd-title {
+    display: none !important;
+  }
+
+  .sd-content {
+
+    ul li a {
+      background: transparent !important;
+      box-shadow: none !important;
+      border: 1px solid #333 !important;
+      margin-top: 0 !important;
+
+      &:before, span {
+        color: orange !important;
+      }
+
+      &:hover {
+        border: inherit;
+      }
+    }
+  }
+}

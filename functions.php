@@ -17,6 +17,7 @@ function aalto_blogs_setup() {
   add_theme_support( 'title-tag' );
   add_theme_support( 'post-thumbnails' );
   set_post_thumbnail_size( 746, 249, true );
+  add_image_size( 'thumbnail-flex', 680, 9999 );
   register_nav_menus( array( 
     'primary' => 'Header Menu',
     'social' => 'Social Links'
@@ -45,16 +46,23 @@ function aalto_blogs_content_width() {
 }
 add_action( 'after_setup_theme', 'aalto_blogs_content_width', 0 );
 
+
 function aalto_blogs_widgets_init() {
-  register_sidebar( array(
-    'name'          => 'Sidebar',
-    'id'            => 'sidebar-1',
-    'description'   => 'Add widgets here to appear in your sidebar.',
-    'before_widget' => '<section id="%1$s" class="widget %2$s">',
-    'after_widget'  => '</section>',
-    'before_title'  => '<h6 class="widget-title">',
-    'after_title'   => '</h6>',
-  ) );
+  $checkGrid = get_theme_mod( 'front-layout' ) ?: 'list';
+  $checkSingle = get_theme_mod( 'single-layout' ) ?: 'wide';
+  $checkPage = get_theme_mod( 'page-layout' ) ?: 'wide';
+
+  if ( $checkGrid != 'grid' || $checkSingle != 'wide' || $checkPage != 'wide' ) {
+    register_sidebar( array(
+      'name'          => 'Sidebar',
+      'id'            => 'sidebar-1',
+      'description'   => 'Add widgets here to appear in your sidebar.',
+      'before_widget' => '<section id="%1$s" class="widget %2$s">',
+      'after_widget'  => '</section>',
+      'before_title'  => '<h6 class="widget-title">',
+      'after_title'   => '</h6>',
+    ) );
+  }
 }
 add_action( 'widgets_init', 'aalto_blogs_widgets_init' );
 
@@ -78,9 +86,17 @@ function aalto_blogs_scripts() {
   // Load Bootstrap scripts.
   wp_enqueue_script( 'aalto-blogs-bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
 
+  if ( get_theme_mod( 'front-layout' ) === 'grid' ) {
+    // Load Masonry script, only if grid layout is set in front page.
+    wp_enqueue_script( 'aalto-blogs-masonry', get_template_directory_uri() . '/js/vendor/masonry.pkgd.min.js', array( 'jquery' ), '4.0.0', true );
+
+    // Load ImagesLoaded script, only if grid layout is set in front page.
+    wp_enqueue_script( 'aalto-blogs-imagesloaded', get_template_directory_uri() . '/js/vendor/imagesloaded.pkgd.min.js', array( 'jquery' ), '4.1.0', true );
+  }
+
   // Load main script.
-  wp_enqueue_script( 'aalto-blogs-slider-script', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '3.3.6', true );
-  wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '3.3.6', true );
+  wp_enqueue_script( 'aalto-blogs-slider-script', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '1.0', true );
+  wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '1.0', true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
@@ -107,10 +123,26 @@ function aalto_blogs_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
-	// Adds a class of no-sidebar to sites without active sidebar.
-	if ( ! is_active_sidebar( 'sidebar-1' ) ) {
-		$classes[] = 'no-sidebar';
+	// Adds a class of active-sidebar to sites with active sidebar.
+	if ( is_active_sidebar( 'sidebar-1' ) ) {
+		$classes[] = 'active-sidebar';
 	}
+
+	// Adds a class to determine post layout.
+  if ( get_theme_mod( 'single-layout' ) === 'narrow') {
+    $classes[] = 'narrow-post';
+  }
+  else {
+    $classes[] = 'wide-post';
+  }
+
+	// Adds a class to determine page layout.
+  if ( get_theme_mod( 'page-layout' ) === 'narrow') {
+    $classes[] = 'narrow-page';
+  }
+  else {
+    $classes[] = 'wide-page';
+  }
 
 	// Adds a class of hfeed to non-singular pages.
 	if ( ! is_singular() ) {
@@ -120,6 +152,16 @@ function aalto_blogs_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'aalto_blogs_body_classes' );
+
+/**
+ * Load loop for JetPack Infinite Scroll.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_infinite_scroll_render() {
+  $layout = get_theme_mod( 'front-layout' ) ?: 'list';
+  get_template_part( 'template-parts/content', $layout . '-loop' );
+}
 
 /**
  * Custom template tags for this theme.

@@ -1,6 +1,6 @@
   </div><!-- end .site-content -->
 
-  <footer class="site-footer">
+  <footer id="footer" class="site-footer">
     <div class="container">
 			<div class="row">
 				<?php if ( has_nav_menu( 'social' ) ) : ?>

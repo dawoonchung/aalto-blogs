@@ -27,7 +27,7 @@
 
 }
 
-.entry-meta + .post-thumbnail {
+.entry-meta + .post-thumbnail { // for main page
   display: block;
   margin-top: 0.5em;
 }
@@ -110,4 +110,22 @@ a.post-thumbnail:hover {
 
 .more-entry-title {
   margin-bottom: 0;
+}
+
+.tag-list {
+  margin-top: $line-height-computed/2;
+
+  a[rel="tag"] {
+    line-height: $line-height-computed;
+    font-size: 12px !important;
+    display: inline-block;
+    border: 1px solid;
+    padding: 0 0.5em;
+    border-radius: 0.5em;
+    margin-right: 0.5em;
+    margin-bottom: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }

@@ -73,7 +73,8 @@
               <?php
                 wp_nav_menu( array(
                   'theme_location' => 'primary',
-                  'menu_class'     => 'primary-menu list-unstyled nav navbar-nav'
+                  'menu_class'     => 'primary-menu list-unstyled nav navbar-nav',
+                  'depth'          => 2
                 ) );
               ?>
             </nav>

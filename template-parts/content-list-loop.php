@@ -6,6 +6,8 @@
  * @subpackage Aalto_Blogs
  * @since Official Aalto Blogs Theme 1.0
  */
+
+while ( have_posts() ) : the_post();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-xs-12 article-list' ); ?>>
@@ -22,3 +24,5 @@
   </a>
   <a href="<?php the_permalink(); ?>" class="more-link"><p>Continue reading...<span class="screen-reader-text"><?php the_title(); ?></span></p></a>
 </article><!-- #post-## -->
+
+<?php endwhile; ?>

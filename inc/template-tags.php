@@ -79,30 +79,27 @@ if ( ! function_exists( 'aalto_blogs_post_thumbnail' ) ) :
  *
  * @since Official Aalto Blogs Theme 1.0
  */ 
-function aalto_blogs_post_thumbnail() {
+function aalto_blogs_post_thumbnail( $size = 'post-thumbnail' ) {
   if ( post_password_required() || is_attachment() || ( ! has_post_thumbnail() && ! get_the_first_attachment_for_post() ) ) {
     return;
   }
 	?>
 
 	<a class="post-thumbnail" href="<?php the_permalink(); ?>" aria-hidden="true">
-
-	<?php if ( has_post_thumbnail() ) {
-    the_post_thumbnail( 'post-thumbnail', array(
-      'alt' => the_title_attribute( 'echo=0' ),
-      'class' => 'img-responsive'
-    ) );
-  }
-  else {
-    echo get_the_first_attachment_for_post( '', 'post-thumbnail', array(
-      'alt' => the_title_attribute( 'echo=0' ),
-      'class' => 'img-responsive wp-post-image'
-    ) );
-  }
-	?>
-
+    <?php if ( has_post_thumbnail() ) {
+      the_post_thumbnail( $size, array(
+        'alt' => the_title_attribute( 'echo=0' ),
+        'class' => 'img-responsive'
+      ) );
+    }
+    else {
+      echo get_the_first_attachment_for_post( '', $size, array(
+        'alt' => the_title_attribute( 'echo=0' ),
+        'class' => 'img-responsive wp-post-image'
+      ) );
+    }
+    ?>
 	</a>
-
 <?php } 
 endif;
 

@@ -101,6 +101,11 @@ input#submit {
     padding: $line-height-computed 1em;
     margin-top: 0.5em;
 
+    article {
+      padding-top: 0;
+      margin-top: 0;
+    }
+
     .comment-respond {
       background: transparent;
     }

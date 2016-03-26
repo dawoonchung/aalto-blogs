@@ -23,6 +23,10 @@ h6.widget-title {
 .widget {
   margin-bottom: $line-height-computed * 1.5;
 
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ul {
     padding-left: 0;
     list-style: none;

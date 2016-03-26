@@ -19,14 +19,16 @@ $( document ).ready(function() {
   $( 'article' ).find( 'table' ).wrap( '<div class="table-responsive"></div>' );
 
   /**
-   * Scripts for single post.
+   * Position scroll for single posts
    */
   if ( $( 'body' ).hasClass( 'single-post' ) ) {
-    /* Position scroll for single posts */
     var headerHeight = $( '.site-header' ).outerHeight();
     $( "html, body" ).scrollTop( headerHeight );
   }
 
+  /**
+   * Initialise image classes.
+   */
   if ( $( 'body' ).hasClass( 'single-post' ) || $( 'body' ).hasClass( 'page' ) ) {
     $( 'article.post p, article.page p, figure.wp-caption' ).has( 'img:not(.wp-smiley)' ).each( function() {
       $( this ).not( 'figure.wp-caption' ).addClass( 'has-image' );
@@ -62,6 +64,9 @@ $( document ).ready(function() {
       $( this ).addClass( 'has-embed' );
     });
 
+    /**
+     * Gallery functions
+     */
     $( '.gallery' ).not( '.gallery-size-thumbnail' ).each( function() {
       var slider = new Slider( this );
       slider.Init();
@@ -185,5 +190,41 @@ $( document ).ready(function() {
   } );
 
 });
+
+$( window ).load( function() {
+  /**
+   * Check image position in relation with sidebar.
+   * Executed after elements are fully loaded to deal better with images (especially for Safari).
+   */
+  if ( $( 'body' ).hasClass( 'active-sidebar' ) && ( $( 'body' ).hasClass( 'single-post' ) || $( 'body' ).hasClass( 'page' ) ) && ! $( '.content-area' ).hasClass( 'reading-mode' ) ) {
+    var $sidebar = $( '.sidebar' );
+    var sidebarPos = $sidebar.offset();
+    var sidebarPosBottom = sidebarPos.top + $sidebar.height();
+    console.log($sidebar.height());
+    console.log(sidebarPosBottom);
+
+    $( 'article.post p, article.page p, figure.wp-caption' ).has( 'img:not(.wp-smiley)' ).each( function() {
+      var imgPos = $( this ).offset();
+      var imgPosTop = imgPos.top;
+
+      if ( imgPosTop > sidebarPosBottom ) {
+        $( this ).addClass( 'below-sidebar' );
+      }
+      console.log(imgPosTop);
+    } );
+
+    $( '.gallery' ).not( '.gallery-size-thumbnail' ).each( function() {
+      var imgPos = $( this ).offset();
+      var imgPosTop = imgPos.top;
+
+      if ( imgPosTop > sidebarPosBottom ) {
+        $( this ).addClass( 'below-sidebar' );
+        var slider = new Slider( this );
+        slider.Init();
+      }
+      console.log(imgPosTop);
+    } );
+  }
+} );
 
 })(jQuery);

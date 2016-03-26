@@ -1,6 +1,19 @@
+article:not(.article-list) {
+  padding-bottom: $line-height-computed;
+}
+
 article {
   padding-top: $line-height-computed;
   margin-top: 0.5em;
+
+  .entry-title + p.has-image,
+  .entry-title + figure.wp-caption {
+    margin-top: -($line-height-computed/2);
+  }
+
+  .entry-meta + * {
+    margin-top: $line-height-computed*0.75;
+  }
 
   p > a,
   p > .span-a-tag { /* distinguish with underlined text */
@@ -88,7 +101,7 @@ article {
       padding-left: ($grid-gutter-width/2);
       padding-right: ($grid-gutter-width/2);
 
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         padding-left: $grid-gutter-width;
         padding-right: $grid-gutter-width;
       }
@@ -103,25 +116,17 @@ article {
         width: 50%;
         float: left;
       }
-
-      @media (min-width: $screen-md) {
-        margin-left: -(100%/12*2);
-      }
     }
 
     > p[style*="right"] {
       color: $aalto-gray;
+      text-align: left !important;
 
       @media (min-width: $screen-sm) {
         padding-left: $line-height-computed;
         padding-bottom: $line-height-computed;
         width: 50%;
         float: right;
-        text-align: left !important;
-      }
-
-      @media (min-width: $screen-md) {
-        margin-right: -(100%/12*2);
       }
     }
 
@@ -131,7 +136,7 @@ article {
       padding-left: ($grid-gutter-width/2);
       padding-right: ($grid-gutter-width/2);
 
-      @media (min-width: $screen-xs) {
+      @media (min-width: $screen-sm) {
         padding-left: $grid-gutter-width;
         padding-right: $grid-gutter-width;
       }
@@ -243,12 +248,32 @@ article {
     margin-right: -$grid-gutter-width/2;
     max-width: initial;
     width: auto !important;
-    
+
     .wp-caption-text {
       padding-left: ($grid-gutter-width/2);
       padding-right: ($grid-gutter-width/2);
     }
 
+
+    @media (min-width: $screen-md) {
+      margin-left: -($container-md * (1/12));
+      margin-right: -($container-md * (1/12));
+
+      .wp-caption-text {
+        max-width: $container-md * (8/12);
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    @media (min-width: $screen-lg) {
+      margin-left: -($container-lg * (1/12));
+      margin-right: -($container-lg * (1/12));
+      .wp-caption-text {
+        max-width: $container-lg * (8/12);
+      }
+    }
+    
     img {
       width: 100%;
     }
@@ -265,16 +290,19 @@ article {
     }
 
     @media (min-width: $screen-md) {
-      margin-left: -(100%/12 * 2);
-      margin-right: -(100%/12 * 2);
+      margin-left: -($container-md * (2/12));
+      margin-right: -($container-md * (2/12));
 
       .wp-caption-text {
         max-width: $container-md * (8/12);
-        margin: 0 auto;
+        margin-left: auto;
+        margin-right: auto;
       }
     }
 
     @media (min-width: $screen-lg) {
+      margin-left: -($container-lg * (2/12));
+      margin-right: -($container-lg * (2/12));
       .wp-caption-text {
         max-width: $container-lg * (8/12);
       }
@@ -480,6 +508,18 @@ article {
     margin-left: -($grid-gutter-width/2);
     margin-right: -($grid-gutter-width/2);
     width: auto;
+
+    @media (min-width: $screen-md) {
+      margin-left: -($container-md * (1/12));
+      margin-right: -($container-md * (1/12));
+      padding-bottom: ($container-md * (10/12) * (9/16));
+    }
+
+    @media (min-width: $screen-lg) {
+      margin-left: -($container-lg * (1/12));
+      margin-right: -($container-lg * (1/12));
+      padding-bottom: ($container-lg * (10/12) * (9/16));
+    }
   }
   .gallery-size-full {
     margin-left: -($grid-gutter-width/2);
@@ -487,9 +527,15 @@ article {
     width: auto;
 
     @media (min-width: $screen-md) {
-      margin-left: -(100%/12 * 2);
-      margin-right: -(100%/12 * 2);
-      padding-bottom: 75%;
+      margin-left: -($container-md * (2/12));
+      margin-right: -($container-md * (2/12));
+      padding-bottom: ($container-md * (9/16));
+    }
+
+    @media (min-width: $screen-lg) {
+      margin-left: -($container-lg * (2/12));
+      margin-right: -($container-lg * (2/12));
+      padding-bottom: ($container-lg * (9/16));
     }
   }
 }
