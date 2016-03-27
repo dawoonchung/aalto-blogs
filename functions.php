@@ -47,7 +47,27 @@ function aalto_blogs_content_width() {
 }
 add_action( 'after_setup_theme', 'aalto_blogs_content_width', 0 );
 
+/**
+ * Force set media sizes on theme change.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_media_size() {
+	update_option( 'thumbnail_size_w', 362 );
+	update_option( 'thumbnail_size_h', 362 );	
+	update_option( 'thumbnail_crop', 1 );
+	update_option( 'medium_size_w', 788 );
+	update_option( 'medium_size_h', 788 );
+	update_option( 'large_size_w', 1140 );
+	update_option( 'large_size_h', 1140 );
+}
+add_action( 'after_switch_theme', 'aalto_blogs_media_size' );
 
+/**
+ * Initialise sidebar.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
 function aalto_blogs_widgets_init() {
   register_sidebar( array(
     'name'          => 'Sidebar',

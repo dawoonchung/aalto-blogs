@@ -44,7 +44,6 @@ function generate_aalto_logo( $color ) {
  *
  * @since Official Aalto Blogs Theme 1.0
  */
-
 $aalto_colour_list = array(
   'aalto-blue'        => '005EB8',
   'aalto-red'         => 'EF3340',
@@ -61,5 +60,24 @@ $aalto_colour_list = array(
 $aalto_colour_key = array_rand( $aalto_colour_list );
 
 $aalto_colour = '#' . $aalto_colour_list[ $aalto_colour_key ];
+
+/**
+ * Aalto search form
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function get_aalto_search_form() {
+?>
+
+<form role="search" method="get" class="search-form aalto-search-form" action="http://www.aalto.fi/en/search" target="_blank">
+  <button type="submit" class="search-submit"><span class="screen-reader-text">Search</span></button>
+  <label>
+    <span class="screen-reader-text">Search in all Aalto websites:</span>
+    <input type="search" class="search-field" name="s" title="Search in all Aalto websites:" placeholder="Search in all Aalto websites" />
+  </label>
+</form>
+
+<?php
+}
 
 ?>

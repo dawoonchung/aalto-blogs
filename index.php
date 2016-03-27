@@ -17,16 +17,15 @@ get_header(); ?>
 
       <div id="primary" class="content-area col-xs-12">
         <main id="main" class="site-main row masonry-grid" role="main">
+          <div class="col-xs-12 col-sm-6 col-md-4 grid-width-init"></div>
 
     <?php else : ?>
 
       <?php $offset = is_active_sidebar( 'sidebar-1' ) ? '' : 'col-md-offset-2'; ?>
       <div id="primary" class="content-area col-xs-12 col-md-8 <?php echo $offset; ?>">
-        <main id="main" class="site-main row masonry-grid" role="main">
+        <main id="main" class="site-main row" role="main">
 
     <?php endif; ?>
-
-          <div class="col-xs-12 col-sm-6 col-md-4 grid-width-init"></div>
 
           <?php if ( have_posts() ) :
             // Start the loop.

@@ -29,11 +29,25 @@
     <?php endif; ?>
     <aside id="metanav" class="site-meta">
       <div class="container">
-        <a href="#" class="aalto-menu"><?php generate_aalto_logo( '#' . get_header_textcolor() ?: 'FFF' ); ?></a>
+        <div class="aalto-menu dropdown">
+          <button class="dropdown-toggle" type="button" id="aalto-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <?php generate_aalto_logo( '#' . get_header_textcolor() ?: 'FFF' ); ?>
+          </button>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+            <li class="clearfix aalto-search"><?php get_aalto_search_form(); ?></li>
+            <li><a href="http://aalto.fi/en">Aalto University</a></li>
+            <li><a href="https://into.aalto.fi/display/enit/Homepage">Aalto IT</a></li>
+          </ul>
+        </div>
 
         <div class="aalto-blogs-link">
-          <a href="#">Create your blog</a>
-          <a href="#">Login</a>
+          <a href="http://blogs.aalto.fi">Create your blog</a>
+          <?php if ( is_user_logged_in() ) : ?>
+          <a href="<?php echo wp_logout_url(); ?>" title="Logout">Logout</a>
+          <?php else : ?>
+          <a href="<?php echo wp_logout_url(); ?>" title="Logout">Login</a>
+          <?php endif; ?>
         </div>
       </div>
     </aside>

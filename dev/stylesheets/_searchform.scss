@@ -1,4 +1,6 @@
 .search-form {
+  @include clearfix;
+
   label {
     margin-bottom: 0;
     width: 100%;

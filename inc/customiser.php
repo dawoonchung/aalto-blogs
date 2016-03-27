@@ -327,6 +327,11 @@ function aalto_blogs_sanitize_rgba( $value ) {
  */
 function aalto_blogs_header_style() {
   global $aalto_colour;
+
+  $header_textcolor = '#' . ( get_header_textcolor() ?: 'FFF' );
+  $header_background = get_theme_mod( 'header_background_color' ) ?: $aalto_colour;
+  $header_menu_background = get_theme_mod( 'header_menu_color' ) ?: 'rgba(0,0,0,0.5)';
+  $header_menu_textcolor = get_theme_mod( 'header_menu_textcolor' ) ?: '#FFF';
 ?>
 <style>
   .site-header {
@@ -334,25 +339,43 @@ function aalto_blogs_header_style() {
     <?php if ( get_header_image() ) : ?>
       background-image: url(' <?php echo get_header_image(); ?>' );
     <?php else : ?>
-      background-color: <?php echo get_theme_mod( 'header_background_color' ) ?: $aalto_colour; ?>;
+      background-color: <?php echo $header_background; ?>;
     <?php endif; ?>
   }
 
   .icon-bar {
-    background: <?php echo get_theme_mod( 'header_menu_textcolor' ) ?: '#FFF'; ?>;
+    background: <?php echo $header_textcolor; ?>;
   }
-
   .site-header-menu {
-    background-color: <?php echo get_theme_mod( 'header_menu_color' ) ?: 'rgba(0,0,0,0.5)'; ?>;
-    color: <?php echo get_theme_mod( 'header_menu_textcolor' ) ?: '#FFF'; ?>;
+    background-color: <?php echo $header_menu_background; ?>;
+    color: <?php echo $header_menu_textcolor; ?>;
   }
-
   .main-navigation ul li ul {
-    border-color: <?php echo aalto_blogs_rgba( ( get_theme_mod( 'header_menu_textcolor' ) ?: '#FFF' ), 0.4 ); ?>;
+    border-color: <?php echo aalto_blogs_rgba( $header_menu_textcolor, 0.4 ); ?>;
   }
 
   .site-meta {
-    border-bottom: 1px solid <?php echo get_header_textcolor() ? aalto_blogs_rgba( get_header_textcolor(), 0.4 ) : 'rgba(255,255,255,0.4)'; ?>;
+    border-bottom: 1px solid <?php echo aalto_blogs_rgba( $header_textcolor, 0.4); ?>;
+  }
+  .site-meta .aalto-menu ul.dropdown-menu {
+    background-color: <?php echo $header_background; ?>;
+    color: <?php echo $header_menu_textcolor; ?>;
+  }
+  .site-meta .aalto-menu ul.dropdown-menu li {
+    background-color: <?php echo $header_menu_background; ?>; /* Add more opacity by applying the background color both on ul and li */
+    border-color: <?php echo aalto_blogs_rgba( $header_menu_textcolor, 0.4 ); ?>;
+  }
+  .site-meta .aalto-menu ul.dropdown-menu li.aalto-search input[type="search"]::-webkit-input-placeholder {
+    color: <?php echo aalto_blogs_rgba( $header_menu_textcolor, 0.7 ); ?>;
+    font-style: italic;
+  }
+  .site-meta .aalto-menu ul.dropdown-menu li.aalto-search input[type="search"]::-moz-placeholder {
+    color: <?php echo aalto_blogs_rgba( $header_menu_textcolor, 0.7 ); ?>;
+    font-style: italic;
+  }
+  .site-meta .aalto-menu ul.dropdown-menu li.aalto-search input[type="search"]:-ms-input-placeholder {
+    color: <?php echo aalto_blogs_rgba( $header_menu_textcolor, 0.7 ); ?>;
+    font-style: italic;
   }
 </style>
 
@@ -478,6 +501,7 @@ function aalto_blogs_body_style() {
   $css ="
     .comment-section-title,
     .more-posts-section-title,
+    .author-section-title,
     hr.section-separator {
       color: {$bodytext};
       border-color: {$bodytext};

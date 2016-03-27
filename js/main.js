@@ -10,11 +10,11 @@ function detectNestedMenu() {
 }
 
 /**
- * Detect menu with less than 4 items
+ * Detect menu with less than 5 items
  */
 function hasSingleLine() {
   $navbar = $( '.main-navigation' );
-  if ( $navbar.find( '.primary-menu' ).find( 'li' ).length < 4 ) {
+  if ( $navbar.find( '.primary-menu' ).find( 'li' ).length < 5 ) {
     $navbar.addClass( 'single-row' );
     $( '.navbar-header' ).addClass( 'single-row' );
   }
@@ -286,6 +286,13 @@ $( document ).ready(function() {
    */
   if ( $( 'body' ).hasClass( 'single-post' ) ) {
     var headerHeight = $( '.site-header' ).outerHeight();
+    var screenWidth = $( window ).width();
+
+    if ( screenWidth < 601 && $( 'body' ).hasClass( 'admin-bar' ) ) {
+      headerHeight += 46;
+      console.log( headerHeight );
+    }
+
     $( "html, body" ).scrollTop( headerHeight );
   }
 

@@ -15,7 +15,11 @@
   <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-xs-12 ' . $grid_class ); ?>>
       <?php aalto_blogs_post_thumbnail( 'thumbnail-flex' ); ?>
       <a href="<?php the_permalink(); ?>" rel="bookmark" class="grid-title-link">
-        <?php the_title( '<h3 class="entry-title grid-title">', '</h3>' ); ?>
+        <?php if ( get_the_title() ) :
+          the_title( '<h3 class="entry-title grid-title">', '</h3>' );
+        else : ?>
+          <h3 class="entry-title grid-title">(No Title)</h3>
+        <?php endif; ?>
       </a>
   </article><!-- #post-## -->
 </div>

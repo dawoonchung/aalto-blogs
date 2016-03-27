@@ -34,6 +34,7 @@ body.active-sidebar.narrow-post .content-area:not(.reading-mode) article {
         margin-right: -($container-md * (2/12) + $grid-gutter-width/2);
 
         .wp-caption-text {
+          margin-left: 0;
           max-width: $container-md * (8/12);
           margin-right: $container-md * (2/12);
         }
@@ -59,6 +60,7 @@ body.active-sidebar.narrow-post .content-area:not(.reading-mode) article {
         margin-right: -($container-md * (4/12) + $grid-gutter-width/2);
 
         .wp-caption-text {
+          margin-left: 0;
           max-width: $container-md * (8/12);
           margin-right: $container-md * (4/12) - $grid-gutter-width/2;
         }

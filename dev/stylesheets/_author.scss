@@ -1,0 +1,36 @@
+article#about-author {
+  padding-bottom: $line-height-computed;
+
+  .author-avatar {
+    margin-bottom: $line-height-computed;
+  }
+
+  h3.author-name {
+    clear: none;
+    margin-top: (22em/36);
+    margin-bottom: 0;
+
+    &.has-website {
+      margin-top: $line-height-computed/2;
+    }
+  }
+
+  p:not(.author-website) {
+    clear: both;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .author-website {
+    font-size: $font-size-small;
+    margin: 0;
+  }
+}
+
+body.author {
+  h6.author-section-title {
+    margin-top: $line-height-computed * 1.5;
+  }
+}

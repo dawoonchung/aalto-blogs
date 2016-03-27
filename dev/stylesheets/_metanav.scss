@@ -13,9 +13,56 @@
     padding: (9em/21);
     margin-left: (-7em/21);
     opacity: 0.9;
+    position: relative;
 
     &:hover {
       opacity: 1;
+    }
+
+    button#aalto-dropdown {
+      border: none;
+      background: transparent;
+      padding: 0;
+    }
+
+    ul.dropdown-menu {
+      border-radius: 0;
+      box-shadow: none;
+      font-size: $font-size-small;
+      padding: 0;
+      min-width: (320px - $grid-gutter-width + 14); // fits full width in iPhone 4 (320px wide screen)
+
+      li {
+        border-bottom: 1px solid;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &.aalto-search {
+          padding: 0.5em 1em; 
+
+          .aalto-search-form {
+            position: relative;
+
+            .search-submit:before {
+              font-size: 21px;
+            }
+            label {
+              padding-right: 2em;
+            }
+          }
+        }
+
+        a {
+          color: inherit;
+          padding: 0.5em 1em;
+
+          &:hover {
+            background: transparent;
+          }
+        }
+      }
     }
     
     .aalto-logo {
