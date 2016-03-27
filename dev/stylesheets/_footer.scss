@@ -79,6 +79,7 @@
 
     .aalto-logo {
       height: (30em/21);
+      width: (30em/21) * $aalto-logo-ratio;
     }
   }
 
