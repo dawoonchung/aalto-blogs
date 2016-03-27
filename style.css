@@ -7445,6 +7445,7 @@ article .gallery-navigation .gallery-next:before, .bypostauthor span.author > a.
 .site-description {
   color: inherit;
   opacity: 0.9;
+  margin-bottom: 21.75px;
 }
 @media (min-width: 992px) {
   .site-description {

@@ -51,6 +51,7 @@
 .site-description {
   color: inherit;
   opacity: 0.9;
+  margin-bottom: $line-height-computed*0.75;
 
   @media (min-width: $screen-md) {
     padding-right: $grid-gutter-width/2;
