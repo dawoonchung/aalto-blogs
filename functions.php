@@ -110,7 +110,12 @@ function aalto_blogs_scripts() {
   }
 
   // Load main script.
-  wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '1.0', true );
+  if ( WP_DEBUG ) {
+    wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/dev/js/main.js', array( 'jquery' ), '1.0', true );
+  }
+  else {
+    wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.min.js', array( 'jquery' ), '1.0', true );
+  }
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
     wp_enqueue_script( 'comment-reply' );
