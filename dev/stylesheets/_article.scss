@@ -8,15 +8,18 @@ section.no-results {
 
   form {
     position: relative;
-    width: 50%;
     margin: 0 auto;
+
+    @media (min-width: $screen-sm) {
+      width: 50%;
+    }
   }
 
   label {
     padding-right: 1.5em;
+    border-bottom: 1px solid;
 
     input[type="search"] {
-      border-bottom: 1px solid;
       text-align: center;
     }
   }

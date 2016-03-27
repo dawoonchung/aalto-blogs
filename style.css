@@ -7646,14 +7646,18 @@ section.no-results {
 }
 section.no-results form {
   position: relative;
-  width: 50%;
   margin: 0 auto;
+}
+@media (min-width: 768px) {
+  section.no-results form {
+    width: 50%;
+  }
 }
 section.no-results label {
   padding-right: 1.5em;
+  border-bottom: 1px solid;
 }
 section.no-results label input[type="search"] {
-  border-bottom: 1px solid;
   text-align: center;
 }
 
@@ -8970,6 +8974,9 @@ body.author h6.author-section-title {
 }
 .comment-respond.active-form .logged-in-as {
   display: inline;
+}
+.comment-respond.active-form small {
+  white-space: nowrap;
 }
 .comment-respond > form {
   display: none;

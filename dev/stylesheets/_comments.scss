@@ -27,6 +27,9 @@
     .logged-in-as {
       display: inline;
     }
+    small {
+      white-space: nowrap;
+    }
   }
 
   > form {
