@@ -7402,6 +7402,7 @@ article .gallery-navigation .gallery-next:before, .bypostauthor span.author > a.
   background-position: center;
   background-size: cover;
   background-attachment: local;
+  min-height: 190px;
 }
 .site-header img {
   display: none;
