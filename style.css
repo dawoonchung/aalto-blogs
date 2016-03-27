@@ -9268,7 +9268,7 @@ h6.widget-title {
   clear: both;
 }
 @media screen and (max-width: 767px) {
-  .site-footer .aalto-info {
+  .site-footer .social-links + .aalto-info {
     margin-top: -1.14286em;
   }
 }

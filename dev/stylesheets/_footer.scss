@@ -57,8 +57,9 @@
   .aalto-info {
     @include clearfix;
     padding: 0 1em;
-
-    @media screen and (max-width: $screen-xs-max) {
+  }
+  @media screen and (max-width: $screen-xs-max) {
+    .social-links + .aalto-info {
       margin-top: (-24em/21);
     }
   }
