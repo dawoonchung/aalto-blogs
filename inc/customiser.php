@@ -585,7 +585,7 @@ add_action( 'wp_enqueue_scripts', 'aalto_blogs_footer_style' );
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_customiser_js() {
-  if ( WP_DEBUG ) {
+  if ( SCRIPT_DEBUG ) {
     wp_enqueue_script( 'aalto-blogs-customiser-script', get_template_directory_uri() . '/dev/js/customiser.js', array( 'customize-preview' ), '20160326', true );
   }
   else {

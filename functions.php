@@ -110,7 +110,7 @@ function aalto_blogs_scripts() {
   }
 
   // Load main script.
-  if ( WP_DEBUG ) {
+  if ( SCRIPT_DEBUG ) {
     wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/dev/js/main.js', array( 'jquery' ), '1.0', true );
   }
   else {
