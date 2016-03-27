@@ -27,6 +27,12 @@ h6.widget-title {
     margin-bottom: 0;
   }
 
+  select {
+    background: transparent;
+    border: 1px solid;
+    max-width: 100%;
+  }
+
   ul {
     padding-left: 0;
     list-style: none;
@@ -38,6 +44,7 @@ h6.widget-title {
       padding: ((13em/16)/2) 0;
 
       ul.children, ul.sub-menu {
+        margin-top: ((13em/16)/2);
         padding-left: 0.5em;
         border-left: 1px solid;
       }
@@ -78,13 +85,6 @@ h6.widget-title {
   }
 }
 
-.widget_categories {
-  select {
-    background: transparent;
-    border: 1px solid;
-  }
-}
-
 .widget_recent_entries {
   span.post-date {
     font-size: (12em/14);
@@ -115,6 +115,10 @@ h6.widget-title {
 
     > div {
       margin-top: 0.5em;
+      margin-bottom: 1em;
+    }
+    
+    > cite {
       margin-bottom: 1em;
     }
 
