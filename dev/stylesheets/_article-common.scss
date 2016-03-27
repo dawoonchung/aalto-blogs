@@ -32,6 +32,13 @@ ol {
 
 table {
   @extend .table;
+
+  tbody > tr:first-child > td {
+    border-top: none;
+  }
+  thead + tbody > tr:first-child > td {
+    border-top: 1px solid;
+  }
 }
 
 blockquote {

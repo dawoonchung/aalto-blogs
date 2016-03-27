@@ -7923,6 +7923,12 @@ article ol ol {
 article .table-responsive {
   padding: 0 !important;
 }
+article table tbody > tr:first-child > td {
+  border-top: none;
+}
+article table thead + tbody > tr:first-child > td {
+  border-top: 1px solid;
+}
 article blockquote {
   font-size: 26.25px;
   font-family: Georgia, "Times New Roman", Times, serif;

@@ -451,10 +451,10 @@ function aalto_blogs_post_style() {
       color: {$secondarycolor};
       border-color: {$secondarycolor};
     }
-    article table > thead > tr > th,
-    article table > tbody > tr > td,
+    article table th,
+    article table td,
     .table-responsive {
-      border-color: {$secondarycolor};
+      border-color: {$secondarycolor} !important;
     }
     ::-webkit-input-placeholder {
       color: {$secondarycolor};
