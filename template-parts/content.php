@@ -20,5 +20,13 @@
     <?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
     <?php aalto_blogs_excerpt(); ?>
   </a>
+
+  <?php if ( get_comments_number() ) :
+  $comment_class = ( 1 == get_comments_number() ) ? '' : 'multiple'; ?>
+    <span class="comment-count <?php echo $comment_class; ?>">
+      <?php echo get_comments_number(); ?>
+    </span>
+  <?php endif; ?>
+
   <a href="<?php the_permalink(); ?>" class="more-link"><p>Continue reading...<span class="screen-reader-text"><?php the_title(); ?></span></p></a>
 </article><!-- #post-## -->

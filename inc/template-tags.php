@@ -44,8 +44,9 @@ function aalto_blogs_entry_meta() {
  *
  * @since Official Aalto Blogs Theme 1.0
  */
-function aalto_blogs_retrieve_posts( $posts_list ) {
+function aalto_blogs_retrieve_posts( $posts_list, $type = 'post' ) {
   $has_post = false;
+
   foreach ( $posts_list as $single_post ) {
     if ( !empty( $single_post ) ) {
       $has_post = true;
@@ -54,15 +55,22 @@ function aalto_blogs_retrieve_posts( $posts_list ) {
   }
               
   if ( $has_post ) :
+    if ( $type == 'attachment' ) {
+      $section_text = 'Post with this attachment';
+    }
+    else if ( $type == 'post' ) {
+      $section_text = 'More posts from this category';
+    }
+
     ?>
 		<hr class="section-separator col-xs-2 col-xs-offset-5" />
     <div class="col-xs-12 more-posts">
-      <h6 class="more-posts-section-title">More posts from this category</h6>
+    <h6 class="more-posts-section-title"><?php echo $section_text; ?></h6>
       <div class="row more-posts-list">
         <?php foreach ( $posts_list as $single_post ) :
           if ( !empty( $single_post ) ) :
             global $post;
-            $post = $single_post;
+            $post = $single_post ?: $post;
 						setup_postdata( $post );
 						get_template_part( 'template-parts/content', get_post_format() );
 						wp_reset_postdata( $post );
@@ -187,6 +195,10 @@ remove_filter( 'get_the_excerpt', 'wp_trim_excerpt' );
 add_filter( 'get_the_excerpt', 'aalto_blogs_excerpt_html' ); 
 
 function aalto_blogs_excerpt() {
+  if ( post_password_required() ) {
+    return;
+  }
+
 	if ( has_excerpt() ) :
     the_excerpt();
   else :
@@ -272,5 +284,17 @@ function aalto_blogs_comment_default_fields( $args = array() ) {
 }
 endif;
 add_filter( 'comment_form_default_fields', 'aalto_blogs_comment_default_fields' );
+
+function aalto_blogs_password_form() {
+  global $post;
+	$label = 'pwbox-'.( empty( $post->ID ) ? rand() : $post->ID );
+	$output = '<form action="' . esc_url( site_url( 'wp-login.php?action=postpass', 'login_post' ) ) . '" method="post" class="post-password-form">
+						 	 <p>This content is password protected.</p>
+						 	 <p><input name="post_password" id="' . $label . '" type="password" size="30" maxlength="20" placeholder="Enter password to view" /><input type="submit" name="Submit" value="Submit" /></p>
+					   </form>
+				    ';
+	return $output;
+}
+add_filter( 'the_password_form', 'aalto_blogs_password_form' );
 
 ?>

@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-<?php $layout = get_theme_mod( 'page-layout' ) ?: 'wide';
+<?php $layout = get_theme_mod( 'page_layout' ) ?: 'wide';
 
 if ( $layout === 'narrow' ) : ?>
 

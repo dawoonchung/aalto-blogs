@@ -1,3 +1,68 @@
+article, section.no-results {
+  padding-top: $line-height-computed;
+  margin-top: 0.5em;
+}
+
+section.no-results {
+  padding-bottom: $line-height-computed * 1.5;
+
+  form {
+    position: relative;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  label {
+    padding-right: 1.5em;
+
+    input[type="search"] {
+      border-bottom: 1px solid;
+      text-align: center;
+    }
+  }
+}
+
+.sticky .is-sticky {
+  float: right;
+
+  &:before {
+    @extend .genericon;
+    content: '\f308';
+    font-size: $font-size-base;
+  }
+}
+
+.breadcrumbs {
+  position: relative;
+  text-align: right;
+  font-size: 12px;
+
+  a {
+    color: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 1;
+    }
+  }
+
+  > span:not(.separator) {
+    overflow: hidden;
+    display: inline-block;
+    max-width: (100%/6);
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+  }
+
+  & + * {
+    margin-top: $line-height-computed/2;
+  }
+}
+
 .author-avatar {
   float: left;
   margin-right: 0.5em;
@@ -80,6 +145,23 @@ a.post-thumbnail:hover {
   }
 }
 
+.comment-count {
+  float: right;
+  font-size: $font-size-small;
+  vertical-align: bottom;
+
+  &:before {
+    @extend .genericon;
+    content: '\f300';
+    font-size: $font-size-base;
+    vertical-align: bottom;
+  }
+
+  &.multiple:before {
+    content: '\f108';
+  }
+}
+
 .pagination {
   width: 100%;
   text-align: center;
@@ -100,6 +182,17 @@ a.post-thumbnail:hover {
   }
 }
 
+.grid-item > .pagination > .nav-links {
+  span.current {
+    font-weight: bold;
+  }
+  
+  a:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+}
+
 .updated:not(.published) {
   display: none;
 }
@@ -112,8 +205,31 @@ a.post-thumbnail:hover {
   margin-bottom: 0;
 }
 
+.post-password-form {
+  margin-bottom: $line-height-computed * 2;
+
+  input[type="password"] {
+    border: none;
+    border-bottom: 1px solid;
+    background: none;
+    margin-right: 1em;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  input[type="submit"] {
+    font-size: $font-size-small;
+    background: none;
+    border: 1px solid;
+    border-radius: 999em;
+    padding: 0.5em 1em;
+  }
+}
+
 .tag-list {
-  margin-top: $line-height-computed/2;
+  margin-bottom: $line-height-computed;
 
   a[rel="tag"] {
     line-height: $line-height-computed;

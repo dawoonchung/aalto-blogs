@@ -9,7 +9,7 @@
 
 get_header(); ?>
 
-<?php $layout = get_theme_mod( 'single-layout' ) ?: 'wide';
+<?php $layout = get_theme_mod( 'single_layout' ) ?: 'wide';
 
 if ( $layout === 'narrow' ) : ?>
 
@@ -27,12 +27,15 @@ if ( $layout === 'narrow' ) : ?>
             if ( comments_open() || get_comments_number() ) {
               comments_template();
             }
+
             if ( is_singular( 'attachment' ) ) {
               // Parent post navigation.
-              the_post_navigation( array(
-                'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'twentysixteen' ),
-              ) );
-            } elseif ( is_singular( 'post' ) ) {
+              // Parent post navigation.
+              $ancestors = get_post_ancestors( get_the_ID() );
+              aalto_blogs_retrieve_posts( $ancestors, 'attachment' );
+            }
+
+            elseif ( is_singular( 'post' ) ) {
               $adjacent_posts = array( get_previous_post( true ), get_next_post( true) );
               aalto_blogs_retrieve_posts( $adjacent_posts );
             }
@@ -64,11 +67,12 @@ if ( $layout === 'narrow' ) : ?>
 
                 if ( is_singular( 'attachment' ) ) {
                   // Parent post navigation.
-                  the_post_navigation( array(
-                    'prev_text' => _x( '<span class="meta-nav">Published in</span><span class="post-title">%title</span>', 'Parent post link', 'twentysixteen' ),
-                  ) );
-                } elseif ( is_singular( 'post' ) ) {
-                  $adjacent_posts = array( get_next_post( true ), get_previous_post( true) );
+                  $ancestors = get_post_ancestors( get_the_ID() );
+                  aalto_blogs_retrieve_posts( $ancestors, 'attachment' );
+                }
+
+                elseif ( is_singular( 'post' ) ) {
+                  $adjacent_posts = array( get_next_post( true ), get_previous_post( true ) );
                   aalto_blogs_retrieve_posts( $adjacent_posts );
                 }
               ?>

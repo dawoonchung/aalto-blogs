@@ -24,7 +24,9 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
   <header id="masthead" class="site-header" role="banner">
-    <img src="<?php echo( get_header_image() ); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" class="header-placeholder-image" />
+    <?php if ( get_header_image() ) : ?>
+      <img src="<?php echo( get_header_image() ); ?>" alt="<?php echo( get_bloginfo( 'title' ) ); ?>" class="header-placeholder-image" />
+    <?php endif; ?>
     <aside id="metanav" class="site-meta">
       <div class="container">
         <a href="#" class="aalto-menu"><?php generate_aalto_logo( '#' . get_header_textcolor() ?: 'FFF' ); ?></a>

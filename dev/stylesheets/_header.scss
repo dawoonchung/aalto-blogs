@@ -9,7 +9,7 @@
     display: none;
   }
 
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-md) {
     img {
       display: block;
       width: 100%;
@@ -32,7 +32,7 @@
 }
 
 .site-title {
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-md) {
     padding-right: $grid-gutter-width/2;
     max-width: percentage(2/3);
   }
@@ -51,7 +51,7 @@
   color: inherit;
   opacity: 0.9;
 
-  @media (min-width: $screen-sm) {
+  @media (min-width: $screen-md) {
     padding-right: $grid-gutter-width/2;
     max-width: percentage(2/3);
   }

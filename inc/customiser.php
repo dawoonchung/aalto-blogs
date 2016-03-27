@@ -43,6 +43,9 @@ function aalto_blogs_customize_register( $wp_customize ) {
    */
   require_once get_template_directory() . '/inc/alpha-color-picker.php';
 
+  $wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
+  $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+
   $wp_customize->remove_control( 'display_header_text' );
 
   $wp_customize->remove_control( 'background_repeat' );
@@ -56,28 +59,30 @@ function aalto_blogs_customize_register( $wp_customize ) {
   ) );
 
   $wp_customize->add_section( 'layout_style', array(
-    'title'       => 'Site Layout',
-    'priority'    => 20
+    'title'    => 'Site Layout',
+    'priority' => 20,
   ) );
 
-  $wp_customize->add_setting( 'front-layout', array(
-    'default' => 'list'
+  $wp_customize->add_setting( 'front_layout', array(
+    'default'           => 'list',
+    'sanitize_callback' => 'aalto_blogs_sanitize_front'
   ) );
-  $wp_customize->add_control( 'front-layout', array(
-    'label'   => 'Front Page Layout',
-    'section' => 'layout_style',
-    'type'    => 'radio',
+  $wp_customize->add_control( 'front_layout', array(
+    'label'       => 'Front Page Layout',
+    'section'     => 'layout_style',
+    'type'        => 'radio',
     'description' => 'In Safari, images may not display correctly in preview screen for Grid layout. (Does not affect actual layout)',
-    'choices' => array(
+    'choices'     => array(
       'list'     => 'List (text-based)',
       'grid'     => 'Grid (image-based)'
     )
   ) );
 
-  $wp_customize->add_setting( 'single-layout', array(
-    'default' => 'wide'
+  $wp_customize->add_setting( 'single_layout', array(
+    'default'           => 'wide',
+    'sanitize_callback' => 'aalto_blogs_sanitize_layout'
   ) );
-  $wp_customize->add_control( 'single-layout', array(
+  $wp_customize->add_control( 'single_layout', array(
     'label'   => 'Single Post Layout',
     'section' => 'layout_style',
     'type'    => 'radio',
@@ -87,10 +92,11 @@ function aalto_blogs_customize_register( $wp_customize ) {
     )
   ) );
 
-  $wp_customize->add_setting( 'page-layout', array(
-    'default' => 'wide'
+  $wp_customize->add_setting( 'page_layout', array(
+    'default'           => 'wide',
+    'sanitize_callback' => 'aalto_blogs_sanitize_layout'
   ) );
-  $wp_customize->add_control( 'page-layout', array(
+  $wp_customize->add_control( 'page_layout', array(
     'label'   => 'Page Layout',
     'section' => 'layout_style',
     'type'    => 'radio',
@@ -100,37 +106,76 @@ function aalto_blogs_customize_register( $wp_customize ) {
     )
   ) );
 
-  $wp_customize->add_setting( 'header_background_color' );
+  $wp_customize->add_setting( 'breadcrumbs', array(
+    'sanitize_callback' => 'aalto_blogs_sanitize_checkbox'
+  ) );
+  $wp_customize->add_control( 'breadcrumbs', array(
+    'label'       => 'Show Breadcrumb',
+    'description' => '(For single post and page)',
+    'section'     => 'layout_style',
+    'type'        => 'checkbox'
+  ) );
+
+  $wp_customize->add_setting( 'header_background_color', array(
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    'transport'         => 'postMessage'
+  ) );
   $wp_customize->add_control(new Customize_Alpha_Color_Control( $wp_customize, 'header_background_color', array(
     'label'       => 'Header Background',
     'section'     => 'colors',
     'description' => 'This will be ignored if you have a header image set.',
-    'priority'    => 1,
-
+    'priority'    => 1
   ) ) );
 
   $wp_customize->add_setting( 'header_menu_color', array(
-    'default'     => 'rgba(0,0,0,0.5)'
+    'default'           => 'rgba(0,0,0,0.5)',
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    'transport'         => 'postMessage'
   ) );
   $wp_customize->add_control(new Customize_Alpha_Color_Control( $wp_customize, 'header_menu_color', array(
-    'label'       => 'Header Menu Background',
-    'section'     => 'colors',
-    'priority'    => 2
+    'label'    => 'Header Menu Background',
+    'section'  => 'colors',
+    'priority' => 2
   ) ) );
 
   $wp_customize->get_control( 'background_color' )->label = 'Main Background';
   $wp_customize->get_control( 'background_color' )->description = 'This will be ignored if you have a background image set.';
 
   $wp_customize->add_setting( 'post_background_color', array(
-    'default' => 'rgba(255,255,255,0.8)'
+    'default'           => 'rgba(255,255,255,0.8)',
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    'transport'         => 'postMessage'
   ) );
   $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'post_background_color', array(
     'label'   => 'Post Background',
     'section' => 'colors'
   ) ) );
 
+  $wp_customize->add_setting( 'grid_background_color', array(
+    'default'           => 'rgba(255,255,255,0.9)',
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    'transport'         => 'postMessage'
+  ) );
+  $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'grid_background_color', array(
+    'label'       => 'Grid Background',
+    'section'     => 'colors',
+    'description' => 'Used only if grid layout is selected.'
+  ) ) );
+
+  $wp_customize->add_setting( 'grid_hover_color', array(
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    // 'transport'         => 'postMessage'
+    // jQuery cannot handle hover state, so use refresh.
+  ) );
+  $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'grid_hover_color', array(
+    'label'       => 'Grid Mouse Over',
+    'section'     => 'colors',
+    'description' => 'Used only if grid layout is selected.'
+  ) ) );
+
   $wp_customize->add_setting( 'footer_background_color', array(
-    'default' => ''
+    'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
+    'transport'         => 'postMessage'
   ) );
   $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'footer_background_color', array(
     'label'   => 'Footer Background',
@@ -140,71 +185,140 @@ function aalto_blogs_customize_register( $wp_customize ) {
   $wp_customize->get_control( 'header_textcolor' )->section = 'text_colors';
 
   $wp_customize->add_setting( 'header_menu_textcolor', array(
-    'default' => '#FFF'
+    'default'           => '#FFF',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'header_menu_textcolor', array(
-    'label'             => 'Header Menu Text Colour',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'   => 'Header Menu Text Colour',
+    'section' => 'text_colors'
   ) ) );
 
   $wp_customize->add_setting( 'post_textcolor', array(
-    'default' => '#333'
+    'default'           => '#333',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'post_textcolor', array(
-    'label'             => 'Post Text Colour',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'   => 'Post Text Colour',
+    'section' => 'text_colors'
   ) ) );
 
   $wp_customize->add_setting( 'quote_color', array(
-    'default' => '#8C857B'
+    'default'           => '#8C857B',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'quote_color', array(
-    'label'             => 'Blockquote Colour',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'   => 'Blockquote Colour',
+    'section' => 'text_colors',
   ) ) );
 
   $wp_customize->add_setting( 'link_color', array(
-    'default' => ''
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'link_color', array(
-    'label'             => 'Links',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'   => 'Links',
+    'section' => 'text_colors'
   ) ) );
 
   $wp_customize->add_setting( 'secondary_textcolor', array(
-    'default' => '#8C857B'
+    'default'           => '#8C857B',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'secondary_textcolor', array(
-    'label'             => 'Secondary Texts',
-    'description'       => 'Also used for table border colour.',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'       => 'Secondary Texts',
+    'description' => 'Also used for table border colour.',
+    'section'     => 'text_colors'
   ) ) );
 
   $wp_customize->add_setting( 'body_textcolor', array(
-    'default' => '#333'
+    'default'           => '#333',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'body_textcolor', array(
-    'label'             => 'Body Text Colour',
-    'section'           => 'text_colors',
-    'description'       => 'Texts that are directly above main background.',
+    'label'       => 'Body Text Colour',
+    'section'     => 'text_colors',
+    'description' => 'Texts that are directly above main background.',
+  ) ) );
+
+  $wp_customize->add_setting( 'grid_textcolor', array(
+    'default'           => '#FFF',
     'sanitize_callback' => 'sanitize_hex_color'
+  ) );
+  $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'grid_textcolor', array(
+    'label'       => 'Grid Title',
+    'section'     => 'text_colors',
+    'description' => 'Used only if grid layout is selected.'
   ) ) );
 
   $wp_customize->add_setting( 'footer_textcolor', array(
-    'default' => '#FFF'
+    'default'           => '#FFF',
+    'sanitize_callback' => 'sanitize_hex_color'
   ) );
   $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'footer_textcolor', array(
-    'label'             => 'Footer Text Colour',
-    'section'           => 'text_colors',
-    'sanitize_callback' => 'sanitize_hex_color'
+    'label'   => 'Footer Text Colour',
+    'section' => 'text_colors',
   ) ) );
 }
 add_action( 'customize_register', 'aalto_blogs_customize_register', 11 );
+
+/**
+ * Sanitize Front Layout
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_front( $value ) {
+  $option = array( 'list', 'grid' );
+
+  if ( ! in_array ( $value, $option ) ) {
+    $value = 'list';
+  }
+
+  return $value;
+}
+
+/**
+ * Sanitize Single Layout
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_layout( $value ) {
+  $option = array( 'wide', 'narrow' );
+
+  if ( ! in_array ( $value, $option ) ) {
+    $value = 'wide';
+  }
+
+  return $value;
+}
+
+/**
+ * Sanitize Checkbox
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_checkbox( $value ) {
+  $value = (int) $value;
+
+  return $value;
+}
+
+/**
+ * Sanitize RGBA
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_rgba( $value ) {
+  if ( substr( $value, 0, 1 ) === '#' ) {
+    $value = sanitize_hex_color( $value );
+    return $value;
+  }
+  else if ( substr( $value, 0, 4 ) === 'rgba' ) {
+    return $value;
+  }
+  else {
+    $value = sanitize_hex_color_no_hash( $value );
+    return $value;
+  }
+}
 
 /**
  * Applies custom header style.
@@ -212,6 +326,7 @@ add_action( 'customize_register', 'aalto_blogs_customize_register', 11 );
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_header_style() {
+  global $aalto_colour;
 ?>
 <style>
   .site-header {
@@ -219,7 +334,7 @@ function aalto_blogs_header_style() {
     <?php if ( get_header_image() ) : ?>
       background-image: url(' <?php echo get_header_image(); ?>' );
     <?php else : ?>
-      background-color: <?php echo get_theme_mod( 'header_background_color' ) ?: 'rgb(255,165,0)'; ?>;
+      background-color: <?php echo get_theme_mod( 'header_background_color' ) ?: $aalto_colour; ?>;
     <?php endif; ?>
   }
 
@@ -250,19 +365,22 @@ function aalto_blogs_header_style() {
  * @since Official Aalto Blogs Theme 1.0
  */
 function aalto_blogs_post_style() {
+  global $aalto_colour;
   $background = get_theme_mod( 'post_background_color' ) ?: 'rgba(255,255,255,0.9)';
   $textcolor = get_theme_mod( 'post_textcolor' ) ?: '#333';
-  $linkcolor = get_theme_mod( 'link_color' ) ?: 'rgb(255,165,0)';
+  $linkcolor = get_theme_mod( 'link_color' ) ?: $aalto_colour;
   $blockquotecolor = get_theme_mod( 'quote_color' ) ?: 'rgb(140,133,123)';
   $secondarycolor = get_theme_mod( 'secondary_textcolor' ) ?: 'rgb(140,133,123)';
 
   $css = "
-    article.post, article.page,
+    article.post, article.page, article.attachment,
+    section.no-results,
     .comment-respond, .comment-list li,
     .nav-links {
       background: {$background};
       color: {$textcolor};
     }
+    .tag-list a,
     .link-excerpt {
       color: {$textcolor};
     }
@@ -275,7 +393,10 @@ function aalto_blogs_post_style() {
     .page-links > span:not(.page-links-title),
     span.author > a,
     input#submit,
-    #cancel-comment-reply-link {
+    #cancel-comment-reply-link,
+    section.no-results p > a,
+    section.no-results input.search-field,
+    section.no-results button.search-submit:before {
       color: {$linkcolor};
       border-color: {$linkcolor};
     }
@@ -291,15 +412,19 @@ function aalto_blogs_post_style() {
       border-color: {$blockquotecolor};
     }
 
+    .sticky .is-sticky,
     .more-link,
+    .comment-count,
     .nav-links > span,
     .nav-links > a,
     .page-links > span,
     .page-links > a,
+    .breadcrumbs,
     span.author, .posted-on,
     .logged-in-as,
     .respond-placeholder,
-    .comment-reply-link, .comment-reply-login {
+    .comment-reply-link, .comment-reply-login,
+    .post-password-form input {
       color: {$secondarycolor};
       border-color: {$secondarycolor};
     }
@@ -323,6 +448,18 @@ function aalto_blogs_post_style() {
 
     .comment-list li ol.children {
       border-color: {$secondarycolor};
+    }
+
+    .sd-sharing-enabled .sd-content ul li a,
+    .sd-sharing-enabled .sd-content ul li a:before {
+      color: {$secondarycolor} !important;
+      border-color: {$secondarycolor} !important;
+    }
+
+    .sd-sharing-enabled .sd-content ul li a:hover,
+    .sd-sharing-enabled .sd-content ul li a:hover:before {
+      color: {$linkcolor} !important;
+      border-color: {$linkcolor} !important;
     }
 
   ";
@@ -361,23 +498,72 @@ add_action( 'wp_enqueue_scripts', 'aalto_blogs_body_style' );
  *
  * @since Official Aalto Blogs Theme 1.0
  */
-function aalto_blogs_footer_style() {
-  $textcolor = get_theme_mod( 'footer_textcolor' ) ?: '#FFF';
-  $background = get_theme_mod( 'footer_background_color' ) ?: 'rgb(255,165,0)';
+function aalto_blogs_grid_style() {
+  global $aalto_colour;
+  $background = get_theme_mod( 'grid_background_color' ) ?: 'rgba(255,255,255,0.9)';
+  $hovercolor = get_theme_mod( 'grid_hover_color' ) ?: $aalto_colour;
+  $textcolor = get_theme_mod( 'grid_textcolor' ) ?: '#FFF';
 
   $css = "
-      .site-footer {
-        color: {$textcolor};
-        background-color: {$background};
-      }
+    .grid-item > article,
+    .grid-item > .pagination > .nav-links {
+      background: {$background};
+    }
 
-      .social-navigation ul li a {
-        border: 1px solid {$textcolor};
-      }
+    .grid-item > article > .grid-title-link:hover,
+    .grid-item > article.no-thumbnail > .grid-title-link,
+    .grid-item > .pagination > .nav-links {
+      background: {$hovercolor};
+    }
+
+    .grid-item > article > .grid-title-link > .entry-title,
+    .grid-item > article.no-thumbnail > .grid-title-link > .entry-title,
+    .grid-item > .pagination > .nav-links > span,
+    .grid-item > .pagination > .nav-links > a {
+      color: {$textcolor};
+    }
+
+    .is-mobile .grid-item > article > .grid-title-link {
+      background: {$hovercolor};
+    }
+  ";
+  wp_add_inline_style( 'aalto-blogs-style', $css );
+}
+add_action( 'wp_enqueue_scripts', 'aalto_blogs_grid_style' );
+
+/**
+ * Applies custom footer style.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_footer_style() {
+  global $aalto_colour;
+  $textcolor = get_theme_mod( 'footer_textcolor' ) ?: '#FFF';
+  $background = get_theme_mod( 'footer_background_color' ) ?: $aalto_colour;
+
+  $css = "
+    .site-footer {
+      color: {$textcolor};
+      background-color: {$background};
+    }
+
+    .social-navigation ul li a {
+      border: 1px solid {$textcolor};
+    }
   ";
   wp_add_inline_style( 'aalto-blogs-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'aalto_blogs_footer_style' );
+
+/**
+ * Binds JS handlers to make the Customizer preview reload changes asynchronously.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_customiser_js() {
+  wp_enqueue_script( 'aalto-blogs-customiser-script', get_template_directory_uri() . '/js/customiser.js', array( 'customize-preview' ), '20160326', true );
+}
+add_action( 'customize_preview_init', 'aalto_blogs_customiser_js' );
 
 /**
  * Initialise Masonry for grid layout.
@@ -386,16 +572,18 @@ add_action( 'wp_enqueue_scripts', 'aalto_blogs_footer_style' );
  */
 function aalto_blogs_masonry_init() {
   if ( wp_script_is( 'aalto-blogs-masonry') ) : ?>
-    <script tyle="text/javascript">
-      var $grid = $( '.masonry-grid' ).masonry( {
-        columnWidth: '.grid-width-init',
-        itemSelector: '.grid-item',
-        percentPosition: true,
-      } );
+    <script type="text/javascript">
+      (function($) {
+        var $grid = $( '.masonry-grid' ).masonry( {
+          columnWidth: '.grid-width-init',
+          itemSelector: '.grid-item',
+          percentPosition: true,
+        } );
 
-      $grid.imagesLoaded().progress( function() {
-        $grid.masonry( 'layout' );
-      } );
+        $grid.imagesLoaded().progress( function() {
+          $grid.masonry( 'layout' );
+        } );
+      })(jQuery);
     </script>
   <?php endif;
 }

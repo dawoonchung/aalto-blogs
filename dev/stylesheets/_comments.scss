@@ -147,3 +147,10 @@ input#submit {
   border-radius: 999em;
 }
 
+.bypostauthor span.author > a.url {
+  &:after {
+    @extend .genericon;
+    content: '\f411';
+    z-index: 10;
+  }
+}

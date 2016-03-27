@@ -29,6 +29,7 @@ function aalto_blogs_setup() {
     'gallery',
     'caption',
   ) );
+  add_editor_style( 'css/editor-style.css' );
 }
 add_action( 'after_setup_theme', 'aalto_blogs_setup' );
 
@@ -48,21 +49,15 @@ add_action( 'after_setup_theme', 'aalto_blogs_content_width', 0 );
 
 
 function aalto_blogs_widgets_init() {
-  $checkGrid = get_theme_mod( 'front-layout' ) ?: 'list';
-  $checkSingle = get_theme_mod( 'single-layout' ) ?: 'wide';
-  $checkPage = get_theme_mod( 'page-layout' ) ?: 'wide';
-
-  if ( $checkGrid != 'grid' || $checkSingle != 'wide' || $checkPage != 'wide' ) {
-    register_sidebar( array(
-      'name'          => 'Sidebar',
-      'id'            => 'sidebar-1',
-      'description'   => 'Add widgets here to appear in your sidebar.',
-      'before_widget' => '<section id="%1$s" class="widget %2$s">',
-      'after_widget'  => '</section>',
-      'before_title'  => '<h6 class="widget-title">',
-      'after_title'   => '</h6>',
-    ) );
-  }
+  register_sidebar( array(
+    'name'          => 'Sidebar',
+    'id'            => 'sidebar-1',
+    'description'   => 'Sidebar will only visible in List layout and Narrow layout.',
+    'before_widget' => '<section id="%1$s" class="widget %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h6 class="widget-title">',
+    'after_title'   => '</h6>',
+  ) );
 }
 add_action( 'widgets_init', 'aalto_blogs_widgets_init' );
 
@@ -86,7 +81,7 @@ function aalto_blogs_scripts() {
   // Load Bootstrap scripts.
   wp_enqueue_script( 'aalto-blogs-bootstrap', get_template_directory_uri() . '/js/vendor/bootstrap.min.js', array( 'jquery' ), '3.3.6', true );
 
-  if ( get_theme_mod( 'front-layout' ) === 'grid' ) {
+  if ( get_theme_mod( 'front_layout' ) === 'grid' ) {
     // Load Masonry script, only if grid layout is set in front page.
     wp_enqueue_script( 'aalto-blogs-masonry', get_template_directory_uri() . '/js/vendor/masonry.pkgd.min.js', array( 'jquery' ), '4.0.0', true );
 
@@ -95,7 +90,6 @@ function aalto_blogs_scripts() {
   }
 
   // Load main script.
-  wp_enqueue_script( 'aalto-blogs-slider-script', get_template_directory_uri() . '/js/slider.js', array( 'jquery' ), '1.0', true );
   wp_enqueue_script( 'aalto-blogs-script', get_template_directory_uri() . '/js/main.js', array( 'jquery' ), '1.0', true );
 
   if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -123,13 +117,18 @@ function aalto_blogs_body_classes( $classes ) {
 		$classes[] = 'group-blog';
 	}
 
+  // Adds a class to detect mobile browser.
+  if ( wp_is_mobile() ) {
+    $classes[] = 'is-mobile';
+  }
+
 	// Adds a class of active-sidebar to sites with active sidebar.
 	if ( is_active_sidebar( 'sidebar-1' ) ) {
 		$classes[] = 'active-sidebar';
 	}
 
 	// Adds a class to determine post layout.
-  if ( get_theme_mod( 'single-layout' ) === 'narrow') {
+  if ( get_theme_mod( 'single_layout' ) === 'narrow') {
     $classes[] = 'narrow-post';
   }
   else {
@@ -137,7 +136,7 @@ function aalto_blogs_body_classes( $classes ) {
   }
 
 	// Adds a class to determine page layout.
-  if ( get_theme_mod( 'page-layout' ) === 'narrow') {
+  if ( get_theme_mod( 'page_layout' ) === 'narrow') {
     $classes[] = 'narrow-page';
   }
   else {
@@ -152,6 +151,21 @@ function aalto_blogs_body_classes( $classes ) {
 	return $classes;
 }
 add_filter( 'body_class', 'aalto_blogs_body_classes' );
+
+/**
+ * Remove Jetpack sharing button filter to relocate them.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function jptweak_remove_share() {
+  remove_filter( 'the_content', 'sharing_display',19 );
+  remove_filter( 'the_excerpt', 'sharing_display',19 );
+  if ( class_exists( 'Jetpack_Likes' ) ) {
+    remove_filter( 'the_content', array( Jetpack_Likes::init(), 'post_likes' ), 30, 1 );
+  }
+}
+ 
+add_action( 'loop_start', 'jptweak_remove_share' );
 
 /**
  * Custom template tags for this theme.

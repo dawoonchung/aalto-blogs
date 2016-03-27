@@ -33,6 +33,8 @@ body {
   color: $text-color;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #EEE;
+  // Fallback for if body colour is not set.
 
   &.custom-background-image {
     background-size: cover;

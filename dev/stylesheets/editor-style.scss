@@ -1,0 +1,15 @@
+/**
+Theme Name: Official Aalto Blogs Theme
+Description: Used to style TinyMCE editor.
+*/
+
+@import 'aalto-identity';
+@import 'bootstrap';
+@import 'genericons';
+
+body {
+  margin: 20px;
+  background-color: #FFF;
+}
+
+@import 'article-common';

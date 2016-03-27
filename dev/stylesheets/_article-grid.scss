@@ -45,7 +45,6 @@
       }
 
       &:hover {
-        background: rgba(0,0,0,0.7);
         opacity: 1;
 
         .entry-title {
@@ -65,9 +64,12 @@
         max-height: 100%;
         text-overflow: ellipsis;
         overflow: hidden;
-        color: #FFF;
         z-index: 10;
       }
+
+      .is-mobile & .entry-title {
+        visibility: visible;
+      } 
     }
 
     &.no-thumbnail {
@@ -78,7 +80,10 @@
         display: block;
         top: 0;
         left: 0;
-        background: rgba(0,0,0,0.7);
+
+        &:hover {
+          opacity: .9;
+        }
 
         &:before {
           min-height: (36px*6);
@@ -86,6 +91,7 @@
 
         .entry-title {
           visibility: visible;
+          transition: color 0.15s ease-in-out;
         }
       }
     }

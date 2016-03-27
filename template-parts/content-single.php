@@ -9,6 +9,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class( 'col-xs-12' ); ?>>
+  <?php aalto_blogs_breadcrumbs(); ?>
   <?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
 
   <?php
@@ -29,7 +30,14 @@
 
   <aside class="entry-meta">
     <?php the_tags( '<div class="tag-list">', '', '</div>' ); ?>
-    <?php aalto_blogs_entry_meta(); ?>
+		<div class="pull-left">
+			<?php aalto_blogs_entry_meta(); ?>
+		</div>
+		<?php
+			if ( function_exists( 'sharing_display' ) ) {
+				sharing_display( '', true );
+			}
+		?>
   </aside>
 
 </article><!-- #post-## -->

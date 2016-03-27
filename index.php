@@ -12,7 +12,7 @@ get_header(); ?>
   <div class="container">
     <div class="row">
 
-    <?php $layout = get_theme_mod( 'front-layout' ) ?: 'list';
+    <?php $layout = get_theme_mod( 'front_layout' ) ?: 'list';
     if ( $layout === 'grid' ) : ?>
 
       <div id="primary" class="content-area col-xs-12">
