@@ -13,7 +13,7 @@ get_header(); ?>
     <div class="row">
       <?php $offset = is_active_sidebar( 'sidebar-1' ) ? '' : 'col-md-offset-2'; ?>
       <div id="primary" class="content-area col-xs-12 col-md-8 <?php echo $offset; ?>">
-        <main id="main" class="site-main row masonry-grid" role="main">
+        <main id="main" class="site-main row" role="main">
           <article id="about-author" <?php post_class( 'col-xs-12 article-list' ); ?>>
             <figure class="author-avatar">
               <?php
@@ -46,10 +46,10 @@ get_header(); ?>
             <?php endif; ?>
           </article><!-- #post-## -->
 
+          <hr class="section-separator col-xs-2 col-xs-offset-5" />
 
           <?php if ( have_posts() ) : ?>
 
-          <hr class="section-separator col-xs-2 col-xs-offset-5" />
           <h6 class="author-section-title col-xs-12">Posts by this author</h6>
 
           <?php
@@ -68,9 +68,11 @@ get_header(); ?>
           ?>
           <?php
           // If no content, include the "No posts found" template.
-          else :
-            get_template_part( 'template-parts/content', 'none' );
-          endif; ?>
+          else : ?>
+
+          <h6 class="author-section-title col-xs-12">This author has not published any posts yet.</h6>
+
+          <?php endif; ?>
 
         </main><!-- end .site-main -->
       </div><!-- end .content-area -->
