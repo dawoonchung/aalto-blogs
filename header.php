@@ -31,7 +31,7 @@
       <div class="container">
         <div class="aalto-menu dropdown">
           <button class="dropdown-toggle" type="button" id="aalto-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php generate_aalto_logo( '#' . get_header_textcolor() ?: 'FFF' ); ?>
+            <?php generate_aalto_logo( '#' . ( get_header_textcolor() ?: 'FFF' ) ); ?>
           </button>
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

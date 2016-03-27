@@ -20,7 +20,7 @@ function aalto_blogs_custom_header_and_background() {
     'default-attachment' => 'fixed'
 	) ) );
   add_theme_support( 'custom-header', apply_filters( 'aalto_blogs_custom_header_args', array(
-    'default-text-color'     => '#FFF',
+    'default-text-color'     => 'FFF',
     'width'                  => 1440,
     'height'                 => 400,
     'flex-height'            => true,
@@ -335,7 +335,7 @@ function aalto_blogs_header_style() {
 ?>
 <style>
   .site-header {
-    color: #<?php echo get_header_textcolor() ?: 'FFF'; ?>;
+    color: <?php echo $header_textcolor ?>;
     <?php if ( get_header_image() ) : ?>
       background-image: url(' <?php echo get_header_image(); ?>' );
     <?php else : ?>
