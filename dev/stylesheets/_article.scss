@@ -248,3 +248,32 @@ a.post-thumbnail:hover {
     text-overflow: ellipsis;
   }
 }
+
+/* Adjust font size on mobile phones. */
+@media (max-width: $screen-xs-max) {
+  article {
+    & {
+      font-size: $font-size-base * 0.9;
+    }
+
+    h3, .h3,
+    h4, .h4,
+    h5, .h5 {
+      margin-top: ($line-height-computed * 1.5) * 0.9;
+      margin-bottom: ($line-height-computed) * 0.9;
+    }
+
+    p, pre {
+      font-size: $font-size-base * 0.9 !important;
+      margin-bottom: $line-height-computed * 0.9;
+    }
+
+    .more-link > p {
+      font-size: $font-size-small !important;
+    }
+  }
+
+  .comment-respond {
+    font-size: $font-size-base * 0.9;
+  }
+}
