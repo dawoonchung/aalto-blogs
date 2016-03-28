@@ -550,6 +550,27 @@ h2, .h2 {
   font-weight: normal;
 }
 
+article h1, article .h1 {
+  font-size: 1.71429em;
+  margin-top: 43.5px;
+  margin-bottom: 29px;
+}
+article h1 small,
+article h1 .small, article .h1 small,
+article .h1 .small {
+  font-size: 75%;
+}
+article h2, article .h2 {
+  font-size: 1.42857em;
+  margin-top: 43.5px;
+  margin-bottom: 29px;
+}
+article h2 small,
+article h2 .small, article .h2 small,
+article .h2 .small {
+  font-size: 75%;
+}
+
 h3, .h3 {
   font-size: 1.71429em;
 }
@@ -7872,6 +7893,8 @@ a.post-thumbnail:hover {
   article {
     font-size: 18.9px;
   }
+  article h1, article .h1,
+  article h2, article .h2,
   article h3, article .h3,
   article h4, article .h4,
   article h5, article .h5 {
@@ -8059,6 +8082,8 @@ article p.small-width.aligncenter,
 article p.default-width.aligncenter {
   clear: both;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 article .wp-caption.small-width.alignleft,
 article p.small-width.alignleft {
@@ -8698,11 +8723,6 @@ body.active-sidebar.narrow-post .content-area:not(.reading-mode) article .below-
   .reading-mode > main > article.attachment blockquote > p[style*="right"] {
     margin-right: -16.66667%;
   }
-}
-.reading-mode > main > article.post .default-width,
-.reading-mode > main > article.page .default-width,
-.reading-mode > main > article.attachment .default-width {
-  width: auto !important;
 }
 .reading-mode > main > article.post .default-width.alignleft,
 .reading-mode > main > article.page .default-width.alignleft,
@@ -9476,6 +9496,132 @@ h6.widget-title {
 .sd-sharing-enabled .sd-content ul li a:hover {
   border: inherit;
   opacity: 1;
+}
+
+@media print {
+  .aalto-blogs-link,
+  .site-header-menu,
+  .breadcrumbs,
+  .sharedaddy,
+  .section-separator,
+  .comments-area,
+  .more-posts,
+  .sidebar,
+  .social-links,
+  .site-footer,
+  form {
+    display: none !important;
+  }
+
+  svg {
+    fill: black !important;
+  }
+
+  body {
+    font-size: 14pt;
+    padding: 2em;
+  }
+
+  .row {
+    margin: 0 !important;
+  }
+
+  .container {
+    padding: 0 !important;
+  }
+
+  .site-meta,
+  .aalto-menu {
+    height: auto !important;
+    position: relative;
+  }
+
+  .site-meta .aalto-menu .aalto-logo {
+    height: 50px;
+    width: 80px;
+  }
+
+  a[href]::after {
+    content: none;
+  }
+
+  .site-title > a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 21px;
+  }
+
+  .header-text-area {
+    position: relative;
+    clear: both;
+  }
+
+  .site-title {
+    margin-top: 14.5px;
+    padding-left: 0 !important;
+  }
+
+  .container,
+  .content-area {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  article {
+    width: 100% !important;
+    padding: 0 !important;
+  }
+  article > * {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    max-width: initial !important;
+  }
+  article table thead th,
+  article table tbody td {
+    border-color: black !important;
+  }
+  article .gallery {
+    display: none;
+  }
+  article .full-width,
+  article .large-width,
+  article .size-large,
+  article .size-full {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  article .default-width.aligncenter {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  article blockquote {
+    font-size: 21px !important;
+    border: none;
+  }
+  article blockquote > p[style*="left"] {
+    margin-left: 0 !important;
+  }
+  article blockquote > p[style*="right"] {
+    margin-right: 0 !important;
+  }
+
+  .reading-mode > main > article.post .full-width,
+  .reading-mode > main > article.post .large-width,
+  .reading-mode > main > article.post .size-large,
+  .reading-mode > main > article.post .size-full, .reading-mode > main > article.page .full-width,
+  .reading-mode > main > article.page .large-width,
+  .reading-mode > main > article.page .size-large,
+  .reading-mode > main > article.page .size-full {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

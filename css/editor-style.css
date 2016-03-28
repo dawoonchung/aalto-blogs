@@ -541,6 +541,27 @@ h2, .h2 {
   font-weight: normal;
 }
 
+article h1, article .h1 {
+  font-size: 1.71429em;
+  margin-top: 43.5px;
+  margin-bottom: 29px;
+}
+article h1 small,
+article h1 .small, article .h1 small,
+article .h1 .small {
+  font-size: 75%;
+}
+article h2, article .h2 {
+  font-size: 1.42857em;
+  margin-top: 43.5px;
+  margin-bottom: 29px;
+}
+article h2 small,
+article h2 .small, article .h2 small,
+article .h2 .small {
+  font-size: 75%;
+}
+
 h3, .h3 {
   font-size: 1.71429em;
 }
@@ -7284,6 +7305,8 @@ p.small-width.aligncenter,
 p.default-width.aligncenter {
   clear: both;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .wp-caption.small-width.alignleft,
 p.small-width.alignleft {
