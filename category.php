@@ -27,7 +27,7 @@ get_header(); ?>
 
     <?php endif; ?>
 
-        <h6 class="taxonomy-title"><?php single_cat_title( 'Posts in ' ); ?></h6>
+        <h6 class="taxonomy-title col-xs-12"><?php single_cat_title( 'Posts in ' ); ?></h6>
 
           <?php if ( have_posts() ) :
             // Start the loop.

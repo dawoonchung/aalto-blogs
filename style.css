@@ -5,7 +5,7 @@ Theme URI: https://blogs.aalto.fi/
 Author: Da-Woon Chung
 Author URI: https://chungdawoon.com/
 Description: Aalto Blogs Official Theme is a multi-purpose template for university blogs and websites. It offers easy and straightforward setup for beginners, and also a wide range of customisation features for advanced users. Detailed tutorials are available at http:/blogs.aalto.fi. The open source version for non-Aalto usage is available at (GitHub Address).
-Version: 1.0
+Version: 0.9-beta
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: responsive-layout, custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns 
@@ -9767,5 +9767,3 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
-
-/*# sourceMappingURL=style.css.map */
