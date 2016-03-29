@@ -1,5 +1,6 @@
 p > a,
-p > .span-a-tag { /* distinguish with underlined text */
+p > .span-a-tag,
+ul li > a { /* distinguish with underlined text */
   border-bottom: 1px solid;
 
   &:hover {

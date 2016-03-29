@@ -1,0 +1,79 @@
+.widecolumn {
+  @extend .container;
+  margin-top: $grid-gutter-width/4;
+
+  h2 {
+    font-size: $font-size-h4;
+    margin-bottom: ($line-height-computed);
+    font-weight: bold;
+
+    small,
+    .small {
+      font-size: 75%;
+    }
+  }
+
+  p + h2 {
+    margin-top: $line-height-computed*1.5;
+  }
+
+  .mu_register, .wp-activate-container {
+    padding: $line-height-computed $grid-gutter-width/2;
+    width: 100%;
+    margin: 0 auto;
+    
+    a {
+      border-bottom: 1px solid;
+    }
+
+    ul {
+      margin-bottom: $line-height-computed;
+    }
+
+    span.h3 {
+      padding-left: 0;
+    }
+    
+    @media (min-width: $screen-md) {
+      width: $container-md * (8/12);
+    }
+    @media (min-width: $screen-lg) {
+      width: $container-lg * (8/12);
+    }
+
+    form {
+      font-size: $font-size-small;
+      font-weight: normal;
+
+      input {
+        width: initial !important;
+      }
+
+      label[for="user_email"],
+      label[for="blog_title"] {
+        margin-top: $line-height-computed;
+      }
+
+      input#signupblog {
+        margin-top: $line-height-computed;
+      }
+
+      input[type="text"],
+      input[type="email"] {
+        background: transparent;
+        border: none;
+        border-bottom: 1px solid;
+        outline: none;
+      }
+      
+      input[type="submit"] {
+        background: none;
+        border-radius: 999em;
+        border: 1px solid;
+        padding: 0.5em 1em;
+        font-size: $font-size-small;
+        outline: none;
+      }
+    }
+  }
+}

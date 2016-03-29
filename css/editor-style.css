@@ -527,7 +527,7 @@ h5 .small, .h5 small,
 
 h6, .h6 {
   margin-top: 0;
-  margin-bottom: 29px;
+  margin-bottom: 14.5px;
 }
 
 h1, .h1 {
@@ -7165,12 +7165,14 @@ body {
 }
 
 p > a,
-p > .span-a-tag {
+p > .span-a-tag,
+ul li > a {
   /* distinguish with underlined text */
   border-bottom: 1px solid;
 }
 p > a:hover,
-p > .span-a-tag:hover {
+p > .span-a-tag:hover,
+ul li > a:hover {
   border-bottom-color: transparent;
 }
 

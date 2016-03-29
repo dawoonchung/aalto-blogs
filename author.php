@@ -1,6 +1,6 @@
 <?php
 /**
- * The main template file
+ * The template for displaying the author
  *
  * @package WordPress
  * @subpackage Aalto_Blogs

@@ -46,7 +46,7 @@
           <?php if ( is_user_logged_in() ) : ?>
           <a href="<?php echo wp_logout_url(); ?>" title="Logout">Logout</a>
           <?php else : ?>
-          <a href="<?php echo wp_logout_url(); ?>" title="Logout">Login</a>
+          <a href="<?php echo wp_login_url(); ?>" title="Login">Login</a>
           <?php endif; ?>
         </div>
       </div>

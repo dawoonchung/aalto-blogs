@@ -1,6 +1,6 @@
 <?php
 /**
- * The template part for displaying content
+ * The template part for displaying content in grid layout
  *
  * @package WordPress
  * @subpackage Aalto_Blogs

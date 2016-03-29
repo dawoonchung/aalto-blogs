@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts and attachments
+ * The template for displaying pages
  *
  * @package WordPress
  * @subpackage Aalto_Blogs

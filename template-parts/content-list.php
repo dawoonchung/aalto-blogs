@@ -1,6 +1,6 @@
 <?php
 /**
- * The template part for displaying content
+ * The template part for displaying content in list layout
  *
  * @package WordPress
  * @subpackage Aalto_Blogs

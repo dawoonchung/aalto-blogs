@@ -1,3 +1,13 @@
+<?php     
+/**     
+ * The template for displaying the footer
+ *
+ * @package WordPress
+ * @subpackage Aalto_Blogs
+ * @since Official Aalto Blogs Theme 1.0
+ */ 
+?>
+
   </div><!-- end .site-content -->
 
   <footer id="footer" class="site-footer">

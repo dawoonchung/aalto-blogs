@@ -398,6 +398,8 @@ function aalto_blogs_post_style() {
   $css = "
     article.post, article.page, article.attachment,
     section.no-results,
+    .mu_register,
+    .wp-activate-container,
     .comment-respond, .comment-list li,
     .nav-links {
       background: {$background};
@@ -412,6 +414,11 @@ function aalto_blogs_post_style() {
     article.post p > .span-a-tag,
     article.page p > a,
     article.page p > .span-a-tag,
+    article.post ul li > a,
+    article.page ul li > a,
+    .mu_register a,
+    .mu_register input[type='submit'],
+    .wp-activate-container a,
     .nav-links > span:not(.dots),
     .page-links > span:not(.page-links-title),
     span.author > a,
@@ -424,6 +431,9 @@ function aalto_blogs_post_style() {
       border-color: {$linkcolor};
     }
 
+    .mu_register a:hover,
+    .mu_register input[type='submit']:hover,
+    .wp-activate-container a:hover,
     .nav-links > a:hover,
     .page-links > a:hover {
       color: {$linkcolor};
@@ -443,6 +453,7 @@ function aalto_blogs_post_style() {
     .page-links > span,
     .page-links > a,
     .breadcrumbs,
+    .mu_register input,
     span.author, .posted-on,
     .logged-in-as,
     .respond-placeholder,

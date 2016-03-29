@@ -1,6 +1,10 @@
 article, section.no-results {
   padding-top: $line-height-computed;
   margin-top: 0.5em;
+
+  h6.taxonomy-title + & {
+    margin-top: 0;
+  }
 }
 
 section.no-results {
@@ -204,6 +208,10 @@ a.post-thumbnail:hover {
   margin-top: ($line-height-computed * 1.5);
 }
 
+.more-posts-list > article:first-child {
+  margin-top: 0;
+}
+
 .more-entry-title {
   margin-bottom: 0;
 }
@@ -247,6 +255,10 @@ a.post-thumbnail:hover {
     overflow: hidden;
     text-overflow: ellipsis;
   }
+}
+
+h6.taxonomy-title {
+  margin-top: $line-height-computed * 1.5;
 }
 
 /* Adjust font size on mobile phones. */
