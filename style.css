@@ -8298,13 +8298,13 @@ article .gallery-size-full > figure > .gallery-caption {
   width: 100%;
   text-align: center;
 }
-article .gallery-size-medium > figure > .gallery-caption > *,
-article .gallery-size-large > figure > .gallery-caption > *,
-article .gallery-size-full > figure > .gallery-caption > * {
+article .gallery-size-medium > figure > .gallery-caption > span > *,
+article .gallery-size-large > figure > .gallery-caption > span > *,
+article .gallery-size-full > figure > .gallery-caption > span > * {
   /* removes any stylings except for font-weight inside gallery captions */
-  margin: 0;
-  font-size: inherit;
-  line-height: 1.4em;
+  margin: 0 !important;
+  font-size: 1em !important;
+  line-height: 1.4em !important;
 }
 article .gallery-navigation {
   position: absolute;
@@ -8385,17 +8385,68 @@ article .gallery-size-thumbnail:after {
 article .gallery-size-thumbnail > .gallery-item {
   float: left;
   padding: 0;
+  position: relative;
 }
 @media (min-width: 768px) {
   article .gallery-size-thumbnail > .gallery-item {
     padding: 10.5px;
   }
 }
-article .gallery-size-thumbnail > .gallery-item img {
+article .gallery-size-thumbnail > .gallery-item > .gallery-icon {
+  position: relative;
+  overflow: hidden;
+}
+article .gallery-size-thumbnail > .gallery-item > .gallery-icon img {
   margin: 0 auto;
+  width: 100%;
+  transition: transform 0.15s ease-in-out;
+}
+article .gallery-size-thumbnail > .gallery-item > .gallery-icon a > img:hover {
+  transform: scale(1.03, 1.03);
+}
+article .gallery-size-thumbnail > .gallery-item > .gallery-icon .overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.15s ease-in-out;
+  opacity: 0;
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.5);
 }
 article .gallery-size-thumbnail > .gallery-item > .wp-caption-text {
   display: none;
+  position: absolute;
+  text-align: center;
+  padding: 10.5px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  font: 0/0 a;
+  pointer-events: none;
+  color: #FFF;
+}
+article .gallery-size-thumbnail > .gallery-item > .wp-caption-text:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+}
+article .gallery-size-thumbnail > .gallery-item > .wp-caption-text span {
+  display: inline-block;
+  padding: 21px;
+  font-size: 36px;
+  line-height: 1;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+article .gallery-size-thumbnail > .gallery-item > .wp-caption-text span > * {
+  display: inline !important;
 }
 article .gallery-size-thumbnail.gallery-columns-0 > .gallery-item {
   width: Infinity%;
@@ -8426,6 +8477,14 @@ article .gallery-size-thumbnail.gallery-columns-8 > .gallery-item {
 }
 article .gallery-size-thumbnail.gallery-columns-9 > .gallery-item {
   width: 11.11111%;
+}
+@media (min-width: 768px) {
+  article .gallery-size-thumbnail.gallery-columns-1 > .gallery-item:hover > .gallery-icon > .overlay, article .gallery-size-thumbnail.gallery-columns-2 > .gallery-item:hover > .gallery-icon > .overlay, article .gallery-size-thumbnail.gallery-columns-3 > .gallery-item:hover > .gallery-icon > .overlay {
+    opacity: 1;
+  }
+  article .gallery-size-thumbnail.gallery-columns-1 > .gallery-item:hover > .wp-caption-text, article .gallery-size-thumbnail.gallery-columns-2 > .gallery-item:hover > .wp-caption-text, article .gallery-size-thumbnail.gallery-columns-3 > .gallery-item:hover > .wp-caption-text {
+    display: block;
+  }
 }
 article .gallery-size-large {
   margin-left: -21px;
@@ -8488,7 +8547,6 @@ article .gallery-size-full {
   height: auto;
 }
 .grid-item article:hover img {
-  -webkit-transform: scale(1.03, 1.03);
   transform: scale(1.03, 1.03);
 }
 .grid-item article .grid-title-link {

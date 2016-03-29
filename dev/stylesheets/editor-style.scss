@@ -13,3 +13,27 @@ body {
 }
 
 @import 'article-common';
+
+.wpview-wrap[data-wpview-text*='medium'],
+.wpview-wrap[data-wpview-text*='large'],
+.wpview-wrap[data-wpview-text*='full'] {
+  .wpview-type-gallery {
+    text-align: center;
+    border: 1px solid #333;
+    background: #EEE;
+    vertical-align: middle;
+    padding: ((900%/16)/2) 0;
+
+    > * {
+      display: none !important;
+    }
+
+    &:before {
+      content: "Gallery Slider";
+    }
+  }
+}
+
+.wpview-wrap .wpview-type-gallery .gallery-caption {
+  display: none !important;
+}

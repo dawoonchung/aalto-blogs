@@ -306,6 +306,8 @@ $( document ).ready(function() {
 
     galleryNavInit();
 
+    $( '.gallery-caption' ).wrapInner( '<span></span>' ).siblings( '.gallery-icon' ).append( '<div class="overlay"></div>' );
+
     /* Experimental feature */
     // var $firstImg = $( '.entry-title + p, .entry-title + figure.wp-caption' ).has( 'img' );
     // var imgSrc = $firstImg.children( 'img' ).attr( 'src' );
