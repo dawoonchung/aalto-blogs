@@ -3,7 +3,7 @@ module.exports = function( grunt ) {
     pkg: grunt.file.readJSON( 'package.json' ),
 
     jshint: {
-      files: [ 'Gruntfile.js', 'dev/js/*.js' ],
+      files: [ 'Gruntfile.js', 'js/*.js' ],
       options: {
         globals: {
           jQuery: true
@@ -14,8 +14,8 @@ module.exports = function( grunt ) {
     uglify: {
       dist: {
         files: {
-          'js/main.min.js' : 'dev/js/main.js',
-          'js/customiser.min.js' : 'dev/js/customiser.js'
+          '../js/main.min.js' : 'js/main.js',
+          '../js/customiser.min.js' : 'js/customiser.js'
         }
       }
     },
