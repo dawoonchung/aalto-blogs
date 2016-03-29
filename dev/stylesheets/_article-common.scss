@@ -476,10 +476,6 @@ p.has-embed { // responsive embed
         transition: transform 0.15s ease-in-out;
       }
 
-      a > img:hover {
-        transform: scale(1.03, 1.03)
-      }
-
       .overlay {
         position: absolute;
         width: 100%;

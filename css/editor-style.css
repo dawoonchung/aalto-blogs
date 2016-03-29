@@ -7636,9 +7636,6 @@ p.has-embed {
   width: 100%;
   transition: transform 0.15s ease-in-out;
 }
-.gallery-size-thumbnail > .gallery-item > .gallery-icon a > img:hover {
-  transform: scale(1.03, 1.03);
-}
 .gallery-size-thumbnail > .gallery-item > .gallery-icon .overlay {
   position: absolute;
   width: 100%;
