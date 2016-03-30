@@ -7,9 +7,14 @@ Description: Used to style TinyMCE editor.
 @import 'bootstrap';
 @import 'genericons';
 
-body {
-  margin: 20px;
+body.mce-content-body {
+  background: #FFF;
+  margin: 0.5em auto 0;
   background-color: #FFF;
+  max-width: $container-lg * (8/12);
+  padding-top: $line-height-computed !important;
+  padding-left: $grid-gutter-width/2 !important;
+  padding-right: $grid-gutter-width/2 !important;
 }
 
 @import 'article-common';
@@ -40,4 +45,12 @@ body {
 
 .wp-caption-dd {
   margin-bottom: $line-height-computed;
+}
+
+p > img {
+  margin-bottom: $line-height-computed !important;
+}
+
+.gallery-icon > img {
+  margin: 0 auto;
 }

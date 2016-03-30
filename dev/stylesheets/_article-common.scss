@@ -318,14 +318,6 @@ p.has-embed { // responsive embed
 
   @media (min-width: $screen-sm) {
     padding-bottom: ($container-sm / 1.6);
-
-    iframe,
-    embed,
-    object,
-    video {
-      padding-left: ($grid-gutter-width/2);
-      padding-right: ($grid-gutter-width/2);
-    }
   }
   @media (min-width: $screen-md) {
     padding-bottom: ($container-md * (8/12) / 1.6);

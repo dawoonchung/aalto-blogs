@@ -51,24 +51,10 @@ h2, .h2 { // Site Tagline
 }
 article {
   h1, .h1 { // fallback to behave like h3 in posts
-    font-size: $font-size-h3;
-    margin-top: ($line-height-computed * 1.5);
-    margin-bottom: ($line-height-computed);
-
-    small,
-    .small {
-      font-size: 75%;
-    }
+    @extend h3;
   }
   h2, .h2 { // fallback to behave like h4 in posts
-    font-size: $font-size-h4;
-    margin-top: ($line-height-computed * 1.5);
-    margin-bottom: ($line-height-computed);
-
-    small,
-    .small {
-      font-size: 75%;
-    }
+    @extend h4;
   }
 }
 
