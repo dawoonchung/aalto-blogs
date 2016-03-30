@@ -7606,7 +7606,7 @@ article .gallery-navigation .gallery-next:before, .bypostauthor span.author > a.
 }
 .main-navigation ul li a {
   color: inherit;
-  display: inline-block;
+  display: block;
   padding: 0 21px;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -7799,6 +7799,17 @@ a.post-thumbnail:hover {
 }
 .link-excerpt:not(.has-excerpt) p:last-child:after {
   content: '...';
+}
+.link-excerpt:not(.has-excerpt) blockquote > p {
+  float: none;
+  width: 100%;
+  padding-bottom: 0;
+}
+.link-excerpt:not(.has-excerpt) blockquote > p:last-child:after {
+  content: close-quote;
+}
+.link-excerpt:not(.has-excerpt) blockquote:only-child > p:last-child:after {
+  content: '...' close-quote;
 }
 
 .more-link {
@@ -9792,5 +9803,3 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
-
-/*# sourceMappingURL=style.css.map */

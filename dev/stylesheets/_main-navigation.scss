@@ -131,7 +131,7 @@
 
       a {
         color: inherit;
-        display: inline-block;
+        display: block; // if set to inline-block, IE creates weird extra height due to an overflow bug.
         padding: 0 $grid-gutter-width/2;
         text-overflow: ellipsis;
         white-space: nowrap;

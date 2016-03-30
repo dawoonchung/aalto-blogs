@@ -22,7 +22,7 @@ get_header(); ?>
           <?php if ( category_description() ) : ?>
             <div class="col-xs-12 col-md-8 col-md-offset-2 grid-item category-description-container">
               <article class="category-description">
-                <h3 class="entry-title category-description-title"><?php single_cat_title( 'About ' ); ?></h3>
+                <h3 class="entry-title category-description-title"><?php single_cat_title(); ?></h3>
                 <?php echo category_description(); ?>
               </article>
               <hr class="section-separator col-xs-2 col-xs-offset-5" />

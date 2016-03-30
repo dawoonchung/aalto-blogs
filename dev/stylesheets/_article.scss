@@ -144,6 +144,20 @@ a.post-thumbnail:hover {
     p:last-child:after {
       content: '...';
     }
+
+    blockquote > p {
+      float: none;
+      width: 100%;
+      padding-bottom: 0;
+
+      &:last-child:after {
+        content: close-quote;
+      }
+    }
+
+    blockquote:only-child > p:last-child:after {
+      content: '...' close-quote;
+    }
   }
 }
 

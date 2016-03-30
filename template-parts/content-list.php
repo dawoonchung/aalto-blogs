@@ -21,7 +21,7 @@
   <?php $excerpt_class = has_excerpt() ? 'has-excerpt' : ''; ?>
   <a href="<?php the_permalink(); ?>" rel="bookmark" class="link-excerpt <?php echo $excerpt_class; ?>">
     <?php the_title( '<h3 class="entry-title">', '</h3>' ); ?>
-    <?php aalto_blogs_excerpt(); ?>
+    <div class="excerpt-content"><?php aalto_blogs_excerpt(); ?></div>
   </a>
 
   <?php if ( get_comments_number() ) :

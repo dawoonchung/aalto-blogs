@@ -515,6 +515,7 @@ function aalto_blogs_body_style() {
     .comment-section-title,
     .more-posts-section-title,
     .author-section-title,
+    .taxonomy-title,
     hr.section-separator {
       color: {$bodytext};
       border-color: {$bodytext};
@@ -522,7 +523,10 @@ function aalto_blogs_body_style() {
     .sidebar * {
       color: {$bodytext};
     }
-    .sidebar .widget ul li ul {
+    .sidebar .widget ul li ul,
+    .sidebar .widget table thead th,
+    .sidebar .widget table tbody td,
+    .sidebar .widget table tfoot td {
       border-color: {$sidebar_border};
     }
   ";
