@@ -7292,6 +7292,8 @@ article .gallery-navigation .gallery-next:before, .bypostauthor span.author > a.
   font-weight: normal;
   width: 100%;
   pointer-events: initial;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 .search-form input[type='search']:focus {
   outline: none;
@@ -9796,5 +9798,3 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
-
-/*# sourceMappingURL=style.css.map */

@@ -64,6 +64,24 @@ function aalto_blogs_media_size() {
 add_action( 'after_switch_theme', 'aalto_blogs_media_size' );
 
 /**
+ * Set media sizes when new multisite is created.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_multisite_media_size( $blog_id ) {
+  switch_to_blog( $blog_id );
+	update_option( 'thumbnail_size_w', 362 );
+	update_option( 'thumbnail_size_h', 362 );	
+	update_option( 'thumbnail_crop', 1 );
+	update_option( 'medium_size_w', 788 );
+	update_option( 'medium_size_h', 788 );
+	update_option( 'large_size_w', 1140 );
+	update_option( 'large_size_h', 1140 );
+  restore_current_blog();
+}
+add_action( 'wpmu_new_blog', 'aalto_blogs_multisite_media_size' );
+
+/**
  * Initialise sidebar.
  *
  * @since Official Aalto Blogs Theme 1.0
