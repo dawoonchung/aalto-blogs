@@ -37,3 +37,7 @@ body {
 .wpview-wrap .wpview-type-gallery .gallery-caption {
   display: none !important;
 }
+
+.wp-caption-dd {
+  margin-bottom: $line-height-computed;
+}

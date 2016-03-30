@@ -7783,4 +7783,8 @@ p.has-embed {
   display: none !important;
 }
 
+.wp-caption-dd {
+  margin-bottom: 29px;
+}
+
 /*# sourceMappingURL=editor-style.css.map */
