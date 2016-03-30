@@ -8863,12 +8863,6 @@ body.active-sidebar.narrow-post .content-area:not(.reading-mode) article .below-
     margin-left: auto;
     margin-right: auto;
   }
-  .reading-mode > main > article.post .large-width .wp-caption-text,
-  .reading-mode > main > article.page .large-width .wp-caption-text,
-  .reading-mode > main > article.attachment .large-width .wp-caption-text {
-    padding-left: 0;
-    padding-right: 0;
-  }
 }
 @media (min-width: 992px) {
   .reading-mode > main > article.post .large-width,
@@ -9798,3 +9792,5 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
+
+/*# sourceMappingURL=style.css.map */
