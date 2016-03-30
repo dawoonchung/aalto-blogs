@@ -9569,6 +9569,23 @@ h6.widget-title {
   opacity: 1;
 }
 
+.comment-subscription-form {
+  margin-top: 29px;
+  margin-bottom: 14.5px;
+  font-size: 14px;
+}
+.comment-subscription-form + .comment-subscription-form {
+  margin-top: 0;
+}
+.comment-subscription-form label {
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.grav-clone-a {
+  opacity: 0 !important;
+}
+
 @media print {
   .aalto-blogs-link,
   .site-header-menu,
@@ -9754,6 +9771,7 @@ h6.widget-title {
   background: transparent;
   border: none;
   border-bottom: 1px solid;
+  border-radius: 0;
   outline: none;
 }
 .widecolumn .mu_register form input[type="submit"], .widecolumn .wp-activate-container form input[type="submit"] {

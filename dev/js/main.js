@@ -217,7 +217,7 @@ function initCommentForm() {
       e.stopPropagation();
     } ) ;
 
-    $( '#respond textarea, #respond input ').click( function( e ) {
+    $( '#respond textarea, #respond input, #respond label').click( function( e ) {
       e.stopPropagation();
     } ) ;
 

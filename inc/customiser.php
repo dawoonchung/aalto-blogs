@@ -458,6 +458,7 @@ function aalto_blogs_post_style() {
     .logged-in-as,
     .respond-placeholder,
     .comment-reply-link, .comment-reply-login,
+    .comment-subscription-form,
     .post-password-form input {
       color: {$secondarycolor};
       border-color: {$secondarycolor};
