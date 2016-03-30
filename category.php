@@ -27,8 +27,10 @@ get_header(); ?>
               </article>
               <hr class="section-separator col-xs-2 col-xs-offset-5" />
             </div>
+            <h6 class="taxonomy-title col-xs-12 col-md-8 col-md-offset-2 grid-item"><?php single_cat_title( 'Posts in ' ); ?></h6>
+          <?php else : ?>
+            <h6 class="taxonomy-title col-xs-12 grid-item"><?php single_cat_title( 'Posts in ' ); ?></h6>
           <?php endif; ?>
-          <h6 class="taxonomy-title col-xs-12 col-md-8 col-md-offset-2 grid-item"><?php single_cat_title( 'Posts in ' ); ?></h6>
 
     <?php else : ?>
 
