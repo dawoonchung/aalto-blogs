@@ -27,7 +27,7 @@ get_header(); ?>
 
     <?php endif; ?>
 
-        <h6 class="taxonomy-title col-xs-12"><?php single_tag_title( 'Posts tagged in ' ); ?></h6>
+        <h6 class="taxonomy-title col-xs-12 grid-item"><?php single_tag_title( 'Posts tagged in ' ); ?></h6>
 
           <?php if ( have_posts() ) :
             // Start the loop.

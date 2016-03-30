@@ -397,6 +397,7 @@ function aalto_blogs_post_style() {
 
   $css = "
     article.post, article.page, article.attachment,
+    article.category-description,
     section.no-results,
     .mu_register,
     .wp-activate-container,
@@ -541,7 +542,7 @@ function aalto_blogs_grid_style() {
   $textcolor = get_theme_mod( 'grid_textcolor' ) ?: '#FFF';
 
   $css = "
-    .grid-item > article,
+    .grid-item > article:not(.category-description),
     .grid-item > .pagination > .nav-links {
       background: {$background};
     }

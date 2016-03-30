@@ -7663,7 +7663,7 @@ article, section.no-results {
   padding-top: 29px;
   margin-top: 0.5em;
 }
-h6.taxonomy-title + article, h6.taxonomy-title + section.no-results {
+h6.taxonomy-title + article, .category-description + article, h6.taxonomy-title + section.no-results, .category-description + section.no-results {
   margin-top: 0;
 }
 
@@ -7749,6 +7749,9 @@ section.no-results label input[type="search"] {
 .comment-metadata .author {
   display: block;
   margin-top: 0.14286em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .entry-meta .author .post-edit-link,
 .comment-metadata .author .post-edit-link {
@@ -7897,8 +7900,23 @@ a.post-thumbnail:hover {
   text-overflow: ellipsis;
 }
 
+.category-description-container.grid-item {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+.category-description-container.grid-item > article {
+  padding: 29px 21px 0 !important;
+}
+
+article.category-description {
+  padding-bottom: 0 !important;
+}
+
 h6.taxonomy-title {
   margin-top: 43.5px;
+}
+h6.taxonomy-title.grid-item {
+  padding: 0 21px !important;
 }
 
 /* Adjust font size on mobile phones. */
@@ -7936,11 +7954,7 @@ article:not(.article-list) .entry-meta {
 article:not(.article-list) .entry-meta .pull-left {
   margin-right: 21px;
   margin-bottom: 14.5px;
-}
-article:not(.article-list) .entry-meta .pull-left .author {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 article .entry-title + p.has-image,

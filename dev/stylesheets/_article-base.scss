@@ -8,12 +8,7 @@ article:not(.article-list) {
     .pull-left {
       margin-right: $grid-gutter-width/2;
       margin-bottom: $line-height-computed/2;
-
-      .author {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      max-width: 100%;
     }
   }
 }

@@ -2,7 +2,8 @@ article, section.no-results {
   padding-top: $line-height-computed;
   margin-top: 0.5em;
 
-  h6.taxonomy-title + & {
+  h6.taxonomy-title + &,
+  .category-description + & {
     margin-top: 0;
   }
 }
@@ -86,6 +87,9 @@ section.no-results {
   .author {
     display: block;
     margin-top: (2em/14);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 
     .post-edit-link {
       color: inherit;
@@ -257,8 +261,25 @@ a.post-thumbnail:hover {
   }
 }
 
+.category-description-container.grid-item {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+
+  > article {
+    padding: $line-height-computed $grid-gutter-width/2 0 !important;
+  }
+}
+
+article.category-description {
+  padding-bottom: 0 !important;
+}
+
 h6.taxonomy-title {
   margin-top: $line-height-computed * 1.5;
+
+  &.grid-item {
+    padding: 0 $grid-gutter-width/2 !important;
+  }
 }
 
 /* Adjust font size on mobile phones. */

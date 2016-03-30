@@ -86,8 +86,8 @@ function aalto_blogs_breadcrumbs( $args = array() ) {
 		$category = get_the_category();
 		$category_values = array_values( $category );
 		$last_category = end( $category_values );
-		$cat_parents = rtrim( get_category_parents( $last_category->term_id, true, ',' ), ',' );
-		$cat_parents = explode( ',', $cat_parents );
+		$cat_parents = rtrim( get_category_parents( $last_category->term_id, true, ';' ), ';' );
+		$cat_parents = explode( ';', $cat_parents );
 		foreach ( $cat_parents as $parent ) {
 			$html .= '<span class="item-cat">' . wp_kses( $parent, wp_kses_allowed_html( 'a' ) ) . '</span>';
 			$html .= $separator;

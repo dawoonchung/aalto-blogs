@@ -19,15 +19,33 @@ get_header(); ?>
         <main id="main" class="site-main row masonry-grid" role="main">
           <div class="col-xs-12 col-sm-6 col-md-4 grid-width-init"></div>
 
+          <?php if ( category_description() ) : ?>
+            <div class="col-xs-12 col-md-8 col-md-offset-2 grid-item category-description-container">
+              <article class="category-description">
+                <h3 class="entry-title category-description-title"><?php single_cat_title( 'About ' ); ?></h3>
+                <?php echo category_description(); ?>
+              </article>
+              <hr class="section-separator col-xs-2 col-xs-offset-5" />
+            </div>
+          <?php endif; ?>
+          <h6 class="taxonomy-title col-xs-12 col-md-8 col-md-offset-2 grid-item"><?php single_cat_title( 'Posts in ' ); ?></h6>
+
     <?php else : ?>
 
       <?php $offset = is_active_sidebar( 'sidebar-1' ) ? '' : 'col-md-offset-2'; ?>
       <div id="primary" class="content-area col-xs-12 col-md-8 <?php echo $offset; ?>">
         <main id="main" class="site-main row" role="main">
 
-    <?php endif; ?>
-
+        <?php if ( category_description() ) : ?>
+          <article class="category-description col-xs-12">
+            <h3 class="entry-title category-description-title"><?php single_cat_title( 'About ' ); ?></h3>
+            <?php echo category_description(); ?>
+          </article>
+          <hr class="section-separator col-xs-2 col-xs-offset-5" />
+        <?php endif; ?>
         <h6 class="taxonomy-title col-xs-12"><?php single_cat_title( 'Posts in ' ); ?></h6>
+
+    <?php endif; ?>
 
           <?php if ( have_posts() ) :
             // Start the loop.
