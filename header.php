@@ -42,7 +42,7 @@
         </div>
 
         <div class="aalto-blogs-link">
-          <a href="http://blogs.aalto.fi">Create your blog</a>
+        <a href="<?php echo wp_registration_url(); ?>">Create your blog</a>
           <?php if ( is_user_logged_in() ) : ?>
           <a href="<?php echo wp_logout_url(); ?>" title="Logout">Logout</a>
           <?php else : ?>
