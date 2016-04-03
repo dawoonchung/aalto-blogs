@@ -20,7 +20,7 @@ function aalto_blogs_setup() {
   add_image_size( 'thumbnail-flex', 680, 9999 );
   register_nav_menus( array( 
     'primary' => 'Header Menu',
-    'social' => 'Social Links'
+    'social' => 'Social Links (Appears on Footer)'
   ) );
 	add_theme_support( 'html5', array(
     'search-form',
@@ -64,22 +64,77 @@ function aalto_blogs_media_size() {
 add_action( 'after_switch_theme', 'aalto_blogs_media_size' );
 
 /**
- * Set media sizes when new multisite is created.
+ * Generate sample items when new multisite is created.
  *
  * @since Official Aalto Blogs Theme 1.0
  */
-function aalto_blogs_multisite_media_size( $blog_id ) {
+function aalto_blogs_multisite_setup( $blog_id ) {
   switch_to_blog( $blog_id );
-	update_option( 'thumbnail_size_w', 362 );
-	update_option( 'thumbnail_size_h', 362 );	
-	update_option( 'thumbnail_crop', 1 );
-	update_option( 'medium_size_w', 788 );
-	update_option( 'medium_size_h', 788 );
-	update_option( 'large_size_w', 1140 );
-	update_option( 'large_size_h', 1140 );
+
+  aalto_blogs_media_size();
+  aalto_blogs_create_header_menu();
+  aalto_blogs_create_social_menu();
+
   restore_current_blog();
 }
-add_action( 'wpmu_new_blog', 'aalto_blogs_multisite_media_size' );
+add_action( 'wpmu_new_blog', 'aalto_blogs_multisite_setup' );
+
+/**
+ * Generate Header Menu when new multisite is created.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_create_header_menu() {
+  $menu_name = 'Header Menu';
+  $locations = get_nav_menu_locations();
+  $menu_id = wp_create_nav_menu( $menu_name );
+
+	wp_update_nav_menu_item( $menu_id, 0, array(
+    'menu-item-title'   => 'Home',
+    'menu-item-classes' => 'home',
+    'menu-item-url'     => home_url( '/' ), 
+    'menu-item-status'  => 'publish'
+	) );
+
+  wp_update_nav_menu_item( $menu_id, 0, array(
+    'menu-item-title'     => 'Sample Page',
+    'menu-item-object'    => 'page',
+    'menu-item-object-id' => get_page_by_path( 'sample-page' )->ID, 
+    'menu-item-type'      => 'post_type',
+    'menu-item-status'    => 'publish'
+  ) );
+
+  $locations[ 'primary' ] = $menu_id;
+
+  set_theme_mod( 'nav_menu_locations', $locations );
+}
+
+/**
+ * Generate Social Menu when new multisite is created.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_create_social_menu() {
+  $menu_name = 'Social Links';
+  $locations = get_nav_menu_locations();
+  $menu_id = wp_create_nav_menu( $menu_name );
+
+	wp_update_nav_menu_item( $menu_id, 0, array(
+    'menu-item-title'   =>  'Add your social links.',
+    'menu-item-url'     => 'https://facebook.com/your-url', 
+    'menu-item-status'  => 'publish'
+	) );
+
+	wp_update_nav_menu_item( $menu_id, 0, array(
+    'menu-item-title'   =>  'Icons will generate automatically.',
+    'menu-item-url'     => 'https://twitter.com/your-url', 
+    'menu-item-status'  => 'publish'
+	) );
+
+  $locations[ 'social' ] = $menu_id;
+
+  set_theme_mod( 'nav_menu_locations', $locations );
+}
 
 /**
  * Initialise sidebar.

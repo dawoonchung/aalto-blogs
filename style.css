@@ -8004,6 +8004,9 @@ article .page-links > a {
 article .page-links > .page-links-title {
   padding-left: 0;
 }
+article * {
+  word-wrap: break-word;
+}
 article p > a,
 article p > .span-a-tag,
 article ul li > a {
@@ -9811,3 +9814,5 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
+
+/*# sourceMappingURL=style.css.map */

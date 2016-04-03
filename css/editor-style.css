@@ -7180,6 +7180,10 @@ body.mce-content-body {
   padding-right: 21px !important;
 }
 
+* {
+  word-wrap: break-word;
+}
+
 p > a,
 p > .span-a-tag,
 ul li > a {
@@ -7803,3 +7807,5 @@ p > img {
 .gallery-icon > img {
   margin: 0 auto;
 }
+
+/*# sourceMappingURL=editor-style.css.map */

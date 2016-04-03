@@ -1,3 +1,7 @@
+* {
+  word-wrap: break-word;
+}
+
 p > a,
 p > .span-a-tag,
 ul li > a { /* distinguish with underlined text */

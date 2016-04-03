@@ -344,7 +344,7 @@ function aalto_blogs_header_style() {
   }
 
   .icon-bar {
-    background: <?php echo $header_textcolor; ?>;
+    background: <?php echo $header_menu_textcolor; ?>;
   }
   .site-header-menu {
     background-color: <?php echo $header_menu_background; ?>;

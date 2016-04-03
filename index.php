@@ -26,6 +26,9 @@ get_header(); ?>
         <main id="main" class="site-main row" role="main">
 
     <?php endif; ?>
+          <?php if ( is_customize_preview() && $layout === 'grid' ) :
+            get_template_part( 'template-parts/content', 'grid-sample' );
+          endif; ?>
 
           <?php if ( have_posts() ) :
             // Start the loop.
