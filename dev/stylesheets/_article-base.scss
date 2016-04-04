@@ -9,6 +9,7 @@ article:not(.article-list) {
       margin-right: $grid-gutter-width/2;
       margin-bottom: $line-height-computed/2;
       max-width: 100%;
+      min-width: 33%;
     }
   }
 }

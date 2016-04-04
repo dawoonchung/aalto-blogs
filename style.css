@@ -7983,6 +7983,7 @@ article:not(.article-list) .entry-meta .pull-left {
   margin-right: 21px;
   margin-bottom: 14.5px;
   max-width: 100%;
+  min-width: 33%;
 }
 
 article .entry-title + p.has-image,
