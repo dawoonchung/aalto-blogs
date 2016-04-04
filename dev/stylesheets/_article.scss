@@ -103,6 +103,10 @@ section.no-results {
 
 }
 
+ol.comment-list li article {
+  padding-bottom: 0;
+}
+
 .entry-meta + .post-thumbnail { // for main page
   display: block;
   margin-top: 0.5em;

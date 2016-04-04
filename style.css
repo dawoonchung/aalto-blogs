@@ -7776,6 +7776,10 @@ section.no-results label input[type="search"] {
   font-size: 12px;
 }
 
+ol.comment-list li article {
+  padding-bottom: 0;
+}
+
 .entry-meta + .post-thumbnail {
   display: block;
   margin-top: 0.5em;
