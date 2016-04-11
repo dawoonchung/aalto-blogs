@@ -9441,9 +9441,8 @@ h6.widget-title {
   display: block;
   position: relative;
   height: 3.80952em;
-  padding: 1.19048em;
-  margin-left: -1.19048em;
-  margin-right: -0.42857em;
+  padding: 0.95238em;
+  margin-left: -0.95238em;
   float: left;
   opacity: 0.9;
 }
@@ -9451,26 +9450,8 @@ h6.widget-title {
   opacity: 1;
 }
 .site-footer .aalto-link .aalto-logo {
-  height: 1.42857em;
-  width: 2.28571em;
-}
-.site-footer .copyright,
-.site-footer .powered-by {
-  font-size: 12px;
-  margin-top: 2.08333em;
-  margin-bottom: 0;
-}
-.site-footer .copyright a,
-.site-footer .powered-by a {
-  color: inherit;
-}
-.site-footer .copyright a:hover,
-.site-footer .powered-by a:hover {
-  text-decoration: underline;
-  opacity: 1;
-}
-.site-footer .copyright + .powered-by {
-  margin-top: 0;
+  height: 1.90476em;
+  width: 8.29206em;
 }
 
 .social-navigation a[href*="codepen.io"]:before {

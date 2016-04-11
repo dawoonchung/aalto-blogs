@@ -67,9 +67,8 @@
     display: block;
     position: relative;
     height: (80em/21);
-    padding: (25em/21);
-    margin-left: (-25em/21);
-    margin-right: (-9em/21);
+    padding: (20em/21);
+    margin-left: (-20em/21);
     float: left;
     opacity: 0.9;
 
@@ -78,27 +77,8 @@
     }
 
     .aalto-logo {
-      height: (30em/21);
-      width: (30em/21) * $aalto-logo-ratio;
+      height: (40em/21);
+      width: (40em/21) * $aalto-logo-ratio-text;
     }
-  }
-
-  .copyright,
-  .powered-by {
-    font-size: 12px;
-    margin-top: (25em/12);
-    margin-bottom: 0;
-
-    a {
-      color: inherit;
-
-      &:hover {
-        text-decoration: underline;
-        opacity: 1;
-      }
-    }
-  }
-  .copyright + .powered-by {
-    margin-top: 0;
   }
 }

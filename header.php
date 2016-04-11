@@ -31,7 +31,15 @@
       <div class="container">
         <div class="aalto-menu dropdown">
           <button class="dropdown-toggle" type="button" id="aalto-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?php generate_aalto_logo( '#' . ( get_header_textcolor() ?: 'FFF' ) ); ?>
+            <?php
+              if ( get_theme_mod( 'header_logo_color' ) == 'black' ) {
+                $logo_color = '000';
+              }
+              else {
+                $logo_color = 'FFF';
+              }
+              generate_aalto_logo( '#' . $logo_color );
+            ?>
           </button>
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">

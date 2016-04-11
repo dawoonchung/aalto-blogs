@@ -3,7 +3,13 @@
  */
 
 (function($) {
-  var api = wp.customize;
+  var style = $( '#aalto-blogs-color-scheme-css' ),
+      api = wp.customize;
+
+  if ( ! style.length ) {
+    style = $( 'head' ).append( '<style type="text/css" id="aalto-blogs-color-scheme-css" />' )
+                       .find( '#aalto-blogs-color-scheme-css' );
+  }
   
   // Site title.
   api( 'blogname', function( value ) {
@@ -62,4 +68,12 @@
       $( '.site-footer' ).css( 'background-color', to );
     } );
   } );
+
+  // Color Scheme CSS
+  api.bind( 'preview-ready', function() {
+    api.preview.bind( 'update-color-scheme-css', function( css ) {
+      style.html( css );
+    } );
+  } );
+
 })(jQuery);

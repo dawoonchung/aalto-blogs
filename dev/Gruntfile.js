@@ -15,7 +15,8 @@ module.exports = function( grunt ) {
       dist: {
         files: {
           '../js/main.min.js' : 'js/main.js',
-          '../js/customiser.min.js' : 'js/customiser.js'
+          '../js/customiser.min.js' : 'js/customiser.js',
+          '../js/color-scheme-control.min.js' : 'js/color-scheme-control.js',
         }
       }
     },

@@ -22,7 +22,7 @@ function aalto_blogs_custom_header_and_background() {
   add_theme_support( 'custom-header', apply_filters( 'aalto_blogs_custom_header_args', array(
     'default-text-color'     => 'FFF',
     'width'                  => 1440,
-    'height'                 => 400,
+    'height'                 => 300,
     'flex-height'            => true,
     'wp-head-callback'       => 'aalto_blogs_header_style'
   ) ) );
@@ -43,8 +43,11 @@ function aalto_blogs_customize_register( $wp_customize ) {
    */
   require_once get_template_directory() . '/inc/alpha-color-picker.php';
 
+  $wp_customize->get_section( 'title_tagline' )->title = "Site Name and Tagline";
   $wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
   $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
+  $wp_customize->get_control( 'site_icon' )->label = 'Favicon';
+  $wp_customize->get_control( 'site_icon' )->description = 'Favicon is used as a browser and app icon for your site. Icons must be square, and at least 512px wide and tall.';
 
   $wp_customize->remove_control( 'display_header_text' );
 
@@ -52,15 +55,55 @@ function aalto_blogs_customize_register( $wp_customize ) {
   $wp_customize->remove_control( 'background_position_x' );
   $wp_customize->remove_control( 'background_attachment' );
 
-  $wp_customize->get_section( 'colors' )->title = 'Layout Colours';
-  $wp_customize->add_section( 'text_colors', array(
-    'title'     => 'Text Colours',
-    'priority'  => 50
+  $wp_customize->add_section( 'aalto_settings', array(
+    'title'    => 'Aalto Preset and Logo',
+    'priority' => 20
+  ) );
+
+  $wp_customize->add_setting( 'department', array(
+    'sanitize_callback' => 'aalto_blogs_sanitize_color_scheme',
+    'transport'         => 'postMessage'
+  ) );
+  $wp_customize->add_control( 'department', array(
+    'label'       => 'School Colours',
+    'description' => 'This option will set Header, Footer and Link colours into school colours.',
+    'section'     => 'aalto_settings',
+    'type'        => 'select',
+    'priority'    => 1,
+    'choices'     => aalto_blogs_get_color_scheme_choices()
+  ) );
+
+  $wp_customize->add_setting( 'header_logo_color', array(
+    'default'           => 'white',
+    'sanitize_callback' => 'aalto_blogs_sanitize_logo'
+  ) );
+  $wp_customize->add_control( 'header_logo_color', array(
+    'label'    => 'Header Logo Color',
+    'section'  => 'aalto_settings',
+    'type'     => 'radio',
+    'choices'  => array(
+      'white'   => 'White',
+      'black'   => 'Black'
+    )
+  ) );
+
+  $wp_customize->add_setting( 'footer_logo_color', array(
+    'default'           => 'white',
+    'sanitize_callback' => 'aalto_blogs_sanitize_logo'
+  ) );
+  $wp_customize->add_control( 'footer_logo_color', array(
+    'label'    => 'Footer Logo Color',
+    'section'  => 'aalto_settings',
+    'type'     => 'radio',
+    'choices'  => array(
+      'white'   => 'White',
+      'black'   => 'Black'
+    )
   ) );
 
   $wp_customize->add_section( 'layout_style', array(
     'title'    => 'Site Layout',
-    'priority' => 20,
+    'priority' => 30,
   ) );
 
   $wp_customize->add_setting( 'front_layout', array(
@@ -116,15 +159,17 @@ function aalto_blogs_customize_register( $wp_customize ) {
     'type'        => 'checkbox'
   ) );
 
+  $wp_customize->get_section( 'colors' )->title = 'Layout Colours';
+
   $wp_customize->add_setting( 'header_background_color', array(
     'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
     'transport'         => 'postMessage'
   ) );
-  $wp_customize->add_control(new Customize_Alpha_Color_Control( $wp_customize, 'header_background_color', array(
+  $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'header_background_color', array(
     'label'       => 'Header Background',
     'section'     => 'colors',
     'description' => 'This will be ignored if you have a header image set.',
-    'priority'    => 1
+    'priority'    => 2
   ) ) );
 
   $wp_customize->add_setting( 'header_menu_color', array(
@@ -132,10 +177,10 @@ function aalto_blogs_customize_register( $wp_customize ) {
     'sanitize_callback' => 'aalto_blogs_sanitize_rgba',
     'transport'         => 'postMessage'
   ) );
-  $wp_customize->add_control(new Customize_Alpha_Color_Control( $wp_customize, 'header_menu_color', array(
+  $wp_customize->add_control( new Customize_Alpha_Color_Control( $wp_customize, 'header_menu_color', array(
     'label'    => 'Header Menu Background',
     'section'  => 'colors',
-    'priority' => 2
+    'priority' => 3
   ) ) );
 
   $wp_customize->get_control( 'background_color' )->label = 'Main Background';
@@ -182,6 +227,11 @@ function aalto_blogs_customize_register( $wp_customize ) {
     'section' => 'colors'
   ) ) );
 
+  $wp_customize->add_section( 'text_colors', array(
+    'title'     => 'Text Colours',
+    'priority'  => 50
+  ) );
+
   $wp_customize->get_control( 'header_textcolor' )->section = 'text_colors';
 
   $wp_customize->add_setting( 'header_menu_textcolor', array(
@@ -212,7 +262,8 @@ function aalto_blogs_customize_register( $wp_customize ) {
   ) ) );
 
   $wp_customize->add_setting( 'link_color', array(
-    'sanitize_callback' => 'sanitize_hex_color'
+    'sanitize_callback' => 'sanitize_hex_color',
+    'transport'         => 'postMessage'
   ) );
   $wp_customize->add_control( new WP_Customize_color_Control( $wp_customize, 'link_color', array(
     'label'   => 'Links',
@@ -259,6 +310,171 @@ function aalto_blogs_customize_register( $wp_customize ) {
   ) ) );
 }
 add_action( 'customize_register', 'aalto_blogs_customize_register', 11 );
+
+/**
+ * Aalto University Colour Scheme
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_get_color_schemes() {
+  global $aalto_colour_list;
+
+  return apply_filters( 'aalto_blogs_color_schemes', array(
+    'default' => array(
+      'label'  => 'Default (Random School Colour)',
+      'color'  => ''
+    ),
+    'biz'     => array(
+      'label'  => 'School of Business',
+      'color'  => '#' . $aalto_colour_list['aalto-light-green']
+    ),
+    'chem'    => array(
+      'label'  => 'School of Chemical Technology',
+      'color'  => '#' . $aalto_colour_list['aalto-green']
+    ),
+    'elec'    => array(
+      'label'  => 'School of Electrical Engineering',
+      'color'  => '#' . $aalto_colour_list['aalto-purple']
+    ),
+    'eng'     => array(
+      'label'  => 'School of Engineering',
+      'color'  => '#' . $aalto_colour_list['aalto-magenta']
+    ),
+    'sci'     => array(
+      'label'  => 'School of Science',
+      'color'  => '#' . $aalto_colour_list['aalto-orange']
+    ),
+    'arts'    => array(
+      'label'  => 'School of Arts, Design and Architecture',
+      'color'  => '#' . $aalto_colour_list['aalto-dark-yellow']
+    )
+  ) );
+}
+
+/**
+ * Preset Colour Choices
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_get_color_scheme_choices() {
+  $color_schemes = aalto_blogs_get_color_schemes();
+  $color_scheme_control_options = array();
+
+  foreach ( $color_schemes as $color_scheme => $value ) {
+    $color_scheme_control_options[ $color_scheme ] = $value[ 'label' ];
+  }
+
+  return $color_scheme_control_options;
+}
+
+/**
+ * Outputs an Underscore template for generating CSS for the color scheme.
+ *
+ * The template generates the css dynamically for instant display in the
+ * Customizer preview.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_color_scheme_css_template() {
+  $colors = array(
+    'header_background_color' => '{{ data.header_background_color }}',
+    'link_color'              => '{{ data.link_color }}',
+    'footer_background_color' => '{{ data.footer_background_color }}'
+  );
+  ?>
+  <script type="text/html" id="tmpl-aalto-blogs-color-scheme">
+    <?php echo aalto_blogs_get_color_scheme_css( $colors ); ?>
+  </script>
+  <?php
+}
+add_action( 'customize_controls_print_footer_scripts', 'aalto_blogs_color_scheme_css_template' );
+
+/**
+ * Return CSS for the color schemes.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_get_color_scheme_css( $colors ) {
+  $colors = wp_parse_args( $colors, array(
+    'header_background_color' => '',
+    'link_color'              => '',
+    'footer_background_color' => ''
+  ) );
+
+  return <<<CSS
+  .site-header {
+    background-color: {$colors['header_background_color']};
+  }
+
+  article.post p > a,
+  article.post p > .span-a-tag,
+  article.page p > a,
+  article.page p > .span-a-tag,
+  article.post ul li > a,
+  article.page ul li > a,
+  .mu_register a,
+  .mu_register input[type='submit'],
+  .wp-activate-container a,
+  .nav-links > span:not(.dots),
+  .page-links > span:not(.page-links-title),
+  span.author > a,
+  input#submit,
+  #cancel-comment-reply-link,
+  section.no-results p > a,
+  section.no-results input.search-field,
+  section.no-results button.search-submit:before {
+    color: {$colors['link_color']};
+    border-color: {$colors['link_color']};
+  }
+
+  .mu_register a:hover,
+  .mu_register input[type='submit']:hover,
+  .wp-activate-container a:hover,
+  .nav-links > a:hover,
+  .page-links > a:hover {
+    color: {$colors['link_color']};
+  }
+
+  .sd-sharing-enabled .sd-content ul li a:hover,
+  .sd-sharing-enabled .sd-content ul li a:hover:before {
+    color: {$colors['link_color']} !important;
+    border-color: {$colors['link_color']} !important;
+  }
+
+  .site-footer {
+    background-color: {$colors['footer_background_color']};
+  }
+CSS;
+}
+
+/**
+ * Sanitize Preset
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_color_scheme( $value ) {
+  $color_schemes = aalto_blogs_get_color_scheme_choices();
+
+  if ( ! array_key_exists( $value, $color_schemes ) ) {
+    return 'default';
+  }
+
+  return $value;
+}
+
+/**
+ * Sanitize Logo Colour
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_sanitize_logo( $value ) {
+  $option = array( 'white', 'black' );
+
+  if ( ! in_array ( $value, $option ) ) {
+    $value = 'white';
+  }
+
+  return $value;
+}
 
 /**
  * Sanitize Front Layout
@@ -595,6 +811,24 @@ function aalto_blogs_footer_style() {
   wp_add_inline_style( 'aalto-blogs-style', $css );
 }
 add_action( 'wp_enqueue_scripts', 'aalto_blogs_footer_style' );
+
+/**
+ * Binds the JS listener to make Customizer color_scheme control.
+ *
+ * Passes color scheme data as colorScheme global.
+ *
+ * @since Official Aalto Blogs Theme 1.0
+ */
+function aalto_blogs_customize_control_js() {
+  if ( SCRIPT_DEBUG ) {
+    wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160411', true );
+  }
+  else {
+    wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/color-scheme-control.min.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160411', true );
+  }
+  wp_localize_script( 'color-scheme-control', 'colorScheme', aalto_blogs_get_color_schemes() );
+}
+add_action( 'customize_controls_enqueue_scripts', 'aalto_blogs_customize_control_js' );
 
 /**
  * Binds JS handlers to make the Customizer preview reload changes asynchronously.
