@@ -34,11 +34,12 @@ if ( post_password_required() ) {
         'comment_field'         => '<p class="comment-form-comment"><span class="screen-reader-text">Comment </span><textarea id="comment" name="comment" rows="3" aria-required="true"></textarea></p>',
         'label_submit'          => 'Publish',
         'title_reply'           => '<figure class="author-avatar">' . $user_avatar . '</figure><span class="respond-placeholder">Write your thoughts...</span><span class="logged-in-as">' . $user_identity . '</span></a>',
-        'must_log_in'          => '<span class="must-log-in" data-value="' . wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) . '">You must be logged in to post a comment.</span>',
+        'must_log_in'           => '<span class="must-log-in" data-value="' . wp_login_url( apply_filters( 'the_permalink', get_permalink( $post_id ) ) ) . '">You must be logged in to post a comment.</span>',
         'title_reply_before'    => '',
-        'title_replly_after'    => '',
+        'title_reply_after'     => '',
         'logged_in_as'          => '',
         'comment_notes_before'  => '',
+        'comment_notes_after'   => '',
         'cancel_reply_link'     => ' &middot; Cancel reply'
       );
       comment_form( $comment_args );

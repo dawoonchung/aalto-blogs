@@ -9239,6 +9239,16 @@ input#submit {
   z-index: 10;
 }
 
+/* Legacy for 4.2.2 */
+h3#reply-title, article h1#reply-title, article #reply-title.h1 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: normal;
+}
+h3#reply-title small, article h1#reply-title small, article #reply-title.h1 small {
+  font-size: 12px;
+}
+
 .sidebar {
   height: 100%;
   margin-top: 0.5em;
@@ -9800,5 +9810,3 @@ h6.widget-title {
   font-size: 14px;
   outline: none;
 }
-
-/*# sourceMappingURL=style.css.map */

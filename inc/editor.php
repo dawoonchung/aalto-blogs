@@ -41,6 +41,13 @@ function custom_tiny_mce_options( $in ) {
                         'filtered = filtered.replace(/<\/h1>/g, "</h3>");' .
                       '}';
 
+	if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
+    $plugins = 'charmap, colorpicker, compat3x, directionality, fullscreen, hr, image, lists, media, paste, tabfocus, textcolor, wordpress, wpautoresize, wpdialogs, wpeditimage, wpemoji, wpgallery, wplink, wpview';
+	}
+  else {
+    $plugins = 'charmap, colorpicker, compat3x, directionality, fullscreen, hr, image, lists, media, paste, tabfocus, textcolor, wordpress, wpautoresize, wpdialogs, wpeditimage, wpembed, wpemoji, wpgallery, wplink, wptextpattern, wpview';
+  }
+
   $in[ 'style_formats' ]                 = json_encode( $style_formats );
   $in[ 'paste_remove_styles' ]           = true;
   $in[ 'paste_remove_spans']             = true;
@@ -49,7 +56,7 @@ function custom_tiny_mce_options( $in ) {
   $in[ 'paste_strip_class_attributes' ]  = 'all';
   $in[ 'paste_retain_style_properties' ] = 'none';
   $in[ 'menubar' ]                       = true;
-  $in[ 'plugins' ]                       = 'charmap, colorpicker, compat3x, directionality, fullscreen, hr, image, lists, media, paste, tabfocus, textcolor, wordpress, wpautoresize, wpdialogs, wpeditimage, wpembed, wpemoji, wpgallery, wplink, wptextpattern, wpview';
+  $in[ 'plugins' ]                       = $plugins;
   $in[ 'toolbar1' ]                      = 'undo, redo, |, styleselect, bold, italic, underline, forecolor, removeformat, |, alignleft, aligncenter, alignright, alignjustify, |, link, blockquote, table, |, bullist, numlist, outdent, indent, |, wp_help, dfw';
   $in[ 'toolbar2' ]                      = '';
   $in[ 'paste_preprocess' ]              = $paste_preprocess;

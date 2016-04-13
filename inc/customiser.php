@@ -46,8 +46,11 @@ function aalto_blogs_customize_register( $wp_customize ) {
   $wp_customize->get_section( 'title_tagline' )->title = "Site Name and Tagline";
   $wp_customize->get_setting( 'blogname' )->transport        = 'postMessage';
   $wp_customize->get_setting( 'blogdescription' )->transport = 'postMessage';
-  $wp_customize->get_control( 'site_icon' )->label = 'Favicon';
-  $wp_customize->get_control( 'site_icon' )->description = 'Favicon is used as a browser and app icon for your site. Icons must be square, and at least 512px wide and tall.';
+
+	if ( version_compare( $GLOBALS['wp_version'], '4.3', '>=' ) ) {
+    $wp_customize->get_control( 'site_icon' )->label = 'Favicon';
+    $wp_customize->get_control( 'site_icon' )->description = 'Favicon is used as a browser and app icon for your site. Icons must be square, and at least 512px wide and tall.';
+  }
 
   $wp_customize->remove_control( 'display_header_text' );
 
