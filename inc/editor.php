@@ -51,6 +51,7 @@ function custom_tiny_mce_options( $in ) {
   $in[ 'style_formats' ]                 = json_encode( $style_formats );
   $in[ 'paste_remove_styles' ]           = true;
   $in[ 'paste_remove_spans']             = true;
+  $in[ 'paste_data_images']              = true;
   $in[ 'invalid_styles' ]                = 'font-weight font-size font-style font-family';
   $in[ 'invalid_elements' ]              = 'h1, h2';
   $in[ 'paste_strip_class_attributes' ]  = 'all';
