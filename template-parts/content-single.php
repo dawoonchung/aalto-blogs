@@ -17,23 +17,6 @@
       sprintf( 'Continue reading...<span class="screen-reader-text"> "%s"</span>', get_the_title() )
     );
 
-		if ( is_front_page() ) : ?>
-
-		<p>You can also search for Aalto blogs and posts below.</p>
-		<script>
-			(function() {
-				var cx = '013207120921188418786:4ce3un-vgj0';
-				var gcse = document.createElement('script');
-				gcse.type = 'text/javascript';
-				gcse.async = true;
-				gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-				var s = document.getElementsByTagName('script')[0];
-				s.parentNode.insertBefore(gcse, s);
-			})();
-		</script>
-		<gcse:search></gcse:search>
-
-		<?php endif;
     // If a post is divided into pages
     wp_link_pages( array(
       'before'      => '<div class="page-links"><span class="page-links-title">' . 'Pages:' . '</span>',
