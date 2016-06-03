@@ -22,7 +22,7 @@
 		<p>You can also search for Aalto blogs and posts below.</p>
 		<script>
 			(function() {
-				var cx = '014110480835301712162:1shuqvlr8s8';
+				var cx = '013207120921188418786:4ce3un-vgj0';
 				var gcse = document.createElement('script');
 				gcse.type = 'text/javascript';
 				gcse.async = true;
