@@ -8,8 +8,8 @@ Description: Aalto Blogs Official Theme is a multi-purpose template for universi
 Version: 0.9-rc
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Tags: responsive-layout, custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns 
-Text Domain: aalto-blogs
+Tags: custom-background, custom-colors, custom-header, custom-menu, right-sidebar, editor-style, featured-images, flexible-header, one-column, two-columns 
+Text Domain: aalto-blogs-2016
 */
 /**
  * n.0 Aalto Identity
@@ -7800,3 +7800,5 @@ h6.widget-title {
         padding: 0.5em 1em;
         font-size: 14px;
         outline: none; }
+
+/*# sourceMappingURL=style.css.map */
