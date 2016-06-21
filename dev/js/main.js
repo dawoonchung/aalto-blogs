@@ -52,6 +52,38 @@ function setHeaderHeight() {
 }
 
 /**
+ * Fill space below footer if site content's height is less than window height
+ */
+function fillFooter() {
+  var docHeight = $( '.footer-fill' ).length ? $( 'html' ).height() - $( '.footer-fill' ).height() : $( 'html' ).height();
+  var windowHeight = $( window ).height();
+
+  if ( docHeight > windowHeight || docHeight == windowHeight ) {
+    if ( $( '.footer-fill' ).length ) {
+      $( '.footer-fill' ).remove();
+    }
+
+    return false;
+  }
+
+  var fillHeight = windowHeight - docHeight;
+
+  var fillColor = $( '.site-footer' ).css( 'background-color' );
+
+  if ( $( 'body' ).hasClass( 'admin-bar' ) ) {
+    var docMargin = $( 'html' ).css( 'margin-top' );
+    fillHeight -= parseInt( docMargin );
+    console.log( docMargin );
+  }
+
+  if ( !$( '.footer-fill' ).length ) {
+    $( '.site-footer' ).after( '<div class="footer-fill"></div>' );
+  }
+  $( '.footer-fill' ).css( 'height', fillHeight ).css( 'background-color', fillColor );
+  console.log( fillHeight );
+}
+
+/**
  * Initialise gallery slide
  */
 function Slider( selector ) {
@@ -276,6 +308,9 @@ $( document ).ready(function() {
   if ( $( window ).width() > 991 ) {
     setHeaderHeight();
   }
+
+  fillFooter();
+
   /**
    * Make tables responsive
    */
@@ -349,6 +384,8 @@ $( window ).resize( function() {
       slider.Init();
     } ) ;
     $( '.gallery > figure' ).css( 'transition', 'transform 0.5s ease-in-out' ).fadeIn(300);
+
+    fillFooter();
   }, 300 );
 } );
 
