@@ -782,10 +782,6 @@ function aalto_blogs_grid_style() {
     .grid-item > .pagination > .nav-links > a {
       color: {$textcolor};
     }
-
-    .is-mobile .grid-item > article > .grid-title-link {
-      background: {$hovercolor};
-    }
   ";
   wp_add_inline_style( 'aalto-blogs-style', $css );
 }
