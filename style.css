@@ -6020,6 +6020,8 @@ article .gallery-navigation .gallery-next:before, .bypostauthor span.author > a.
   padding-left: 21px;
   width: 100%;
   max-width: 33.33333%; }
+  .header-search input:focus {
+    border-bottom: 1px solid; }
 
 .navbar-toggle {
   float: left;

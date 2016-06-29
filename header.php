@@ -44,19 +44,18 @@
 
           <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
             <li class="clearfix aalto-search"><?php get_aalto_search_form(); ?></li>
-            <li><a href="http://blogs.ittest.aalto.fi/">Aalto Blogs Main</a></li>
+            <li><a href="http://blogs.aalto.fi/">Aalto Blogs Main</a></li>
             <li><a href="http://aalto.fi/en">Aalto University</a></li>
-            <li><a href="https://into.aalto.fi/display/enit/Homepage">Aalto IT</a></li>
-            <li><a href="http://blogs.ittest.aalto.fi/faq">Aalto Blogs Support (FAQ)</a></li>
+            <li><a href="http://blogs.aalto.fi/faq">Aalto Blogs Support (FAQ)</a></li>
           </ul>
         </div>
 
         <div class="aalto-blogs-link">
-        <a href="https://blogs.ittest.aalto.fi/shibboleth-login.php?redirect_to=https%3A%2F%2Fblogs.ittest.aalto.fi%2Fwp-signup.php&action=shibboleth">Create your blog</a>
+        <a href="https://blogs.aalto.fi/shibboleth-login.php?redirect_to=https%3A%2F%2Fblogs.aalto.fi%2Fwp-signup.php&action=shibboleth">Create your blog</a>
           <?php if ( is_user_logged_in() ) : ?>
           <a href="<?php echo wp_logout_url(); ?>" title="Logout">Logout</a>
           <?php else : ?>
-          <a href="https://blogs.ittest.aalto.fi/shibboleth-login.php?action=shibboleth" title="Login">Login</a>
+          <a href="https://blogs.aalto.fi/shibboleth-login.php?action=shibboleth" title="Login">Login</a>
           <?php endif; ?>
         </div>
       </div>

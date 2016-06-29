@@ -67,4 +67,8 @@
   padding-left: $grid-gutter-width/2;
   width: 100%;
   max-width: percentage(1/3);
+
+  & input:focus {
+    border-bottom: 1px solid;
+  }
 }
