@@ -65,7 +65,8 @@ function aalto_blogs_customize_register( $wp_customize ) {
 
   $wp_customize->add_setting( 'department', array(
     'sanitize_callback' => 'aalto_blogs_sanitize_color_scheme',
-    'transport'         => 'postMessage'
+    'transport'         => 'postMessage',
+    'default'           => 'default'
   ) );
   $wp_customize->add_control( 'department', array(
     'label'       => 'School Colours',
@@ -820,7 +821,7 @@ add_action( 'wp_enqueue_scripts', 'aalto_blogs_footer_style' );
  */
 function aalto_blogs_customize_control_js() {
   if ( SCRIPT_DEBUG ) {
-    wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160411', true );
+    wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/dev/js/color-scheme-control.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160411', true );
   }
   else {
     wp_enqueue_script( 'color-scheme-control', get_template_directory_uri() . '/js/color-scheme-control.min.js', array( 'customize-controls', 'iris', 'underscore', 'wp-util' ), '20160411', true );
