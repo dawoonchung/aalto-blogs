@@ -19,10 +19,12 @@ body.mce-content-body {
 
 @import 'article-common';
 
+// Gallery editor for WordPress < 4.6
 .wpview-wrap[data-wpview-text*='medium'],
 .wpview-wrap[data-wpview-text*='large'],
 .wpview-wrap[data-wpview-text*='full'] {
-  .wpview-type-gallery {
+  .wpview-type-gallery,
+  &[data-wpview-type='gallery'] {
     text-align: center;
     border: 1px solid #333;
     background: #EEE;
